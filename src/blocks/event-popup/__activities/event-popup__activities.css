@@ -1,0 +1,8 @@
+.event-popup__activities {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 52px 0 28px;
+  padding: 0;
+}

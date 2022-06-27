@@ -1,0 +1,11 @@
+.event-popup {
+  padding: 20px 20px 52px;
+  box-sizing: border-box;
+  box-shadow: 0px 12px 24px 0px rgba(0, 0, 0, 0.09);
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+  margin: 0;
+  color: #1b1b1b;
+}

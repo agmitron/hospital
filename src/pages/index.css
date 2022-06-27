@@ -40,3 +40,44 @@
 @import url(../blocks/calendar-day/_type/calendar-day_type_pressed.css);
 @import url(../blocks/calendar-day/__events-wrap/calendar-day__events-wrap.css);
 @import url(../blocks/calendar-day/__event/calendar-day__event.css);
+
+/* События */
+@import url(../blocks/page/page.css);
+@import url(../blocks/event/event.css);
+@import url(../blocks/event/__details/event__details.css);
+@import url(../blocks/icon/icon.css);
+@import url(../blocks/icon/_type/icon_type_food.css);
+@import url(../blocks/icon/_type/icon_type_health.css);
+@import url(../blocks/icon/_type/icon_type_medkit.css);
+@import url(../blocks/icon/_type/icon_type_shower.css);
+@import url(../blocks/icon/_type/icon_type_sleep.css);
+@import url(../blocks/icon/_type/icon_type_aids.css);
+@import url(../blocks/icon/_type/icon_type_clothdry.css);
+@import url(../blocks/icon/_type/icon_type_clothwash.css);
+@import url(../blocks/icon/_type/icon_type_covid.css);
+@import url(../blocks/icon/_type/icon_type_eyes.css);
+@import url(../blocks/icon/_type/icon_type_help.css);
+@import url(../blocks/icon/_type/icon_type_vaccine.css);
+@import url(../blocks/icon/_type/icon_type_warm.css);
+@import url(../blocks/icon/_type/icon_type_close.css);
+@import url(../blocks/icon/_type/icon_type_share.css);
+
+@import url(../blocks/event/__icons/event__icons.css);
+@import url(../blocks/event/__title/event__title.css);
+
+@import url(../blocks/events/events.css);
+@import url(../blocks/events/_large/events_large.css);
+@import url(../blocks/events/_title/events_title_sideway.css);
+@import url(../blocks/events/__container/events__container.css);
+@import url(../blocks/events/__title/events__title.css);
+@import url(../blocks/events/__title/_selected/events__title_selected.css);
+
+@import url(../blocks/event-popup/event-popup.css);
+@import url(../blocks/event-popup/__actions/event-popup__actions.css);
+@import url(../blocks/event-popup/__activities/event-popup__activities.css);
+@import url(../blocks/event-popup/__activity/event-popup__activity.css);
+@import url(../blocks/event-popup/__text/event-popup__text.css);
+@import url(../blocks/event-popup/__title/event-popup__title.css);
+@import url(../blocks/event-popup/__buttons/event-popup__buttons.css);
+@import url(../blocks/event-popup/__button/event-popup__button.css);
+@import url(../blocks/event-popup/__button/_red/event-popup__button_red.css);
