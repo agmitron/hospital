@@ -1,0 +1,17 @@
+.calendar-header__month {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 120%;
+  letter-spacing: 0.18px;
+  color: #1b1b1b;
+}
+
+@media screen and (max-width: 425px) {
+  .calendar-header__month {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+}
