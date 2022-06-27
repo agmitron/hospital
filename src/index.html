@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="stylesheet" href="./pages/index.css" />
+	<title>Календарь</title>
+</head>
+
+<body>
+	<div class="calendar">
+		<div class="calendar-header">
+			<span class="calendar-header__year-row">2022</span>
+			<div class="calendar-header__month-row">
+				<button class="button calendar-header__today-btn" type="button">
+					Сегодня
+				</button>
+				<div class="calendar-header__month-container">
+					<button
+						class="button calendar-header__change-month-btn calendar-header__change-month-btn_type_previous"></button>
+					<div class="calendar-header__month-wrap">
+						<span class="calendar-header__month">Апрель</span>
+						<span class="calendar-header__year-for-mobile">2022</span>
+					</div>
+					<button class="button calendar-header__change-month-btn calendar-header__change-month-btn_type_next"></button>
+				</div>
+				<button class="button calendar-header__today-btn calendar-header__period-btn" type="button">
+					Неделя
+				</button>
+			</div>
+			<span class="calendar-header__selected-period-row">11.04&ndash;17.04</span>
+		</div>
+		<div class="calendar-grid">
+			<ul class="calendar-grid__header">
+				<li class="calendar-day calendar-day_type_title">ПН</li>
+				<li class="calendar-day calendar-day_type_title">ВТ</li>
+				<li class="calendar-day calendar-day_type_title">СР</li>
+				<li class="calendar-day calendar-day_type_title">ЧТ</li>
+				<li class="calendar-day calendar-day_type_title">ПТ</li>
+				<li class="calendar-day calendar-day_type_title">СБ</li>
+				<li class="calendar-day calendar-day_type_title">ВС</li>
+			</ul>
+			<ul class="calendar-grid__days-list">
+				<!-- <li class="calendar-day calendar-day_type_dim">28</li>
+				<li class="calendar-day calendar-day_type_dim">29</li>
+				<li class="calendar-day calendar-day_type_dim">30</li>
+				<li class="calendar-day calendar-day_type_dim">31</li>
+				<li class="calendar-day">1</li>
+				<li class="calendar-day">2</li>
+				<li class="calendar-day">3</li>
+				<li class="calendar-day">4</li>
+				<li class="calendar-day">5</li>
+				<li class="calendar-day">6</li>
+				<li class="calendar-day">7</li>
+				<li class="calendar-day">8</li>
+				<li class="calendar-day">9</li>
+				<li class="calendar-day">10</li>
+				<li class="calendar-day calendar-day_type_current">
+					11
+					<div class="calendar-day__events-wrap">
+						<div class="calendar-day__event"></div>
+						<div class="calendar-day__event"></div>
+						<div class="calendar-day__event"></div>
+					</div>
+				</li>
+				<li class="calendar-day">
+					12
+					<div class="calendar-day__events-wrap">
+						<div class="calendar-day__event"></div>
+						<div class="calendar-day__event"></div>
+					</div>
+				</li>
+				<li class="calendar-day calendar-day_type_pressed">13</li>
+				<li class="calendar-day">14</li>
+				<li class="calendar-day">
+					15
+					<div class="calendar-day__events-wrap">
+						<div class="calendar-day__event"></div>
+					</div>
+				</li>
+				<li class="calendar-day">16</li>
+				<li class="calendar-day">17</li>
+				<li class="calendar-day">18</li>
+				<li class="calendar-day">19</li>
+				<li class="calendar-day">20</li>
+				<li class="calendar-day">21</li>
+				<li class="calendar-day">22</li>
+				<li class="calendar-day">23</li>
+				<li class="calendar-day">24</li>
+				<li class="calendar-day">25</li>
+				<li class="calendar-day">26</li>
+				<li class="calendar-day">27</li>
+				<li class="calendar-day">28</li>
+				<li class="calendar-day">29</li>
+				<li class="calendar-day">30</li>
+				<li class="calendar-day">31</li> -->
+			</ul>
+		</div>
+	</div>
+	<template class="calendar-day-template">
+		<li class="calendar-day">
+			11
+			<div class="calendar-day__events-wrap">
+				<div class="calendar-day__event"></div>
+				<div class="calendar-day__event"></div>
+				<div class="calendar-day__event"></div>
+			</div>
+		</li>
+	</template>
+	<script type="module" src="./pages/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+/* normalize.css */
+@import url(../vendor/normalize.css);
+
+/* Шрифты */
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Roboto&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Roboto:wght@500&display=swap);
+
+/* Кнопки */
+@import url(../blocks/button/button.css);
+
+/* Контейнер верхнего уровня для календаря */
+@import url(../blocks/calendar/calendar.css);
+
+/* Шапка календаря */
+@import url(../blocks/calendar-header/calendar-header.css);
+@import url(../blocks/calendar-header/__year-row/calendar-header__year-row.css);
+@import url(../blocks/calendar-header/__month-row/calendar-header__month-row.css);
+@import url(../blocks/calendar-header/__today-btn/calendar-header__today-btn.css);
+@import url(../blocks/calendar-header/__month-container/calendar-header__month-container.css);
+@import url(../blocks/calendar-header/__change-month-btn/calendar-header__change-month-btn.css);
+@import url(../blocks/calendar-header/__change-month-btn/_type/calendar-header__change-month-btn_type_previous.css);
+@import url(../blocks/calendar-header/__change-month-btn/_type/calendar-header__change-month-btn_type_next.css);
+@import url(../blocks/calendar-header/__month/calendar-header__month.css);
+@import url(../blocks/calendar-header/__year-for-mobile/calendar-header__year-for-mobile.css);
+@import url(../blocks/calendar-header/__selected-period-row/calendar-header__selected-period-row.css);
+
+/* Сетка календаря */
+@import url(../blocks/calendar-grid/calendar-grid.css);
+@import url(../blocks/calendar-grid/__header/calendar-grid__header.css);
+@import url(../blocks/calendar-grid/__days-list/calendar-grid__days-list.css);
+@import url(../blocks/calendar-grid/__days-list/_type/calendar-grid__days-list_type_long.css);
+@import url(../blocks/calendar-grid/__days-list/_type/calendar-grid__days-list_type_short.css);
+
+/* День календаря */
+@import url(../blocks/calendar-day/calendar-day.css);
+@import url(../blocks/calendar-day/_type/calendar-day_type_title.css);
+@import url(../blocks/calendar-day/_type/calendar-day_type_dim.css);
+@import url(../blocks/calendar-day/_type/calendar-day_type_current.css);
+@import url(../blocks/calendar-day/_type/calendar-day_type_pressed.css);
+@import url(../blocks/calendar-day/__events-wrap/calendar-day__events-wrap.css);
+@import url(../blocks/calendar-day/__event/calendar-day__event.css);

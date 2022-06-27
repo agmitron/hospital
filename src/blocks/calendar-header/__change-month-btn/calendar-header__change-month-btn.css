@@ -1,0 +1,11 @@
+.calendar-header__change-month-btn {
+  width: 44px;
+  height: 44px;
+}
+
+@media screen and (max-width: 425px) {
+  .calendar-header__change-month-btn {
+    width: 24px;
+    height: 24px;
+  }
+}

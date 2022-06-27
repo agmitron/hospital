@@ -1,0 +1,7 @@
+.calendar-grid__header {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template: 56px / repeat(7, minmax(20px, 78px));
+}

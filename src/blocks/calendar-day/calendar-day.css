@@ -1,0 +1,15 @@
+.calendar-day {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed #fff;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 120%;
+  letter-spacing: 0.18px;
+  position: relative;
+}
+
+.calendar-day:hover {
+  border-color: #787878;
+}
