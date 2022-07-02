@@ -1,0 +1,7 @@
+.page {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  padding: 0;
+  max-width: 540px;
+}

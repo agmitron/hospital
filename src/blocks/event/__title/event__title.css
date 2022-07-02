@@ -1,0 +1,11 @@
+.event__title {
+    color: rgba(191, 21, 35, 1);
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 120%;
+    margin: 0;
+    padding: 0;
+    grid-area: title;
+  }
+  
