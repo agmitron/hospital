@@ -1,5 +1,6 @@
 .calendar-day_type_title:hover {
   border-color: #fff;
+  cursor: auto;
 }
 
 @media screen and (max-width: 425px) {

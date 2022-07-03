@@ -17,6 +17,7 @@
 @import url(../blocks/calendar-header/__year-row/calendar-header__year-row.css);
 @import url(../blocks/calendar-header/__month-row/calendar-header__month-row.css);
 @import url(../blocks/calendar-header/__today-btn/calendar-header__today-btn.css);
+@import url(../blocks/calendar-header/__period-btn/calendar-header__period-btn.css);
 @import url(../blocks/calendar-header/__month-container/calendar-header__month-container.css);
 @import url(../blocks/calendar-header/__change-month-btn/calendar-header__change-month-btn.css);
 @import url(../blocks/calendar-header/__change-month-btn/_type/calendar-header__change-month-btn_type_previous.css);
@@ -27,6 +28,7 @@
 
 /* Сетка календаря */
 @import url(../blocks/calendar-grid/calendar-grid.css);
+@import url(../blocks/calendar-grid/_invisible/calendar-grid_invisible.css);
 @import url(../blocks/calendar-grid/__header/calendar-grid__header.css);
 @import url(../blocks/calendar-grid/__days-list/calendar-grid__days-list.css);
 @import url(../blocks/calendar-grid/__days-list/_type/calendar-grid__days-list_type_long.css);
@@ -40,6 +42,7 @@
 @import url(../blocks/calendar-day/_type/calendar-day_type_pressed.css);
 @import url(../blocks/calendar-day/__events-wrap/calendar-day__events-wrap.css);
 @import url(../blocks/calendar-day/__event/calendar-day__event.css);
+@import url(../blocks/calendar-day/__event/_invisible/calendar-day__event_invisible.css);
 
 /* События */
 @import url(../blocks/page/page.css);

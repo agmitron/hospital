@@ -12,4 +12,5 @@
 
 .calendar-day:hover {
   border-color: #787878;
+  cursor: pointer;
 }
