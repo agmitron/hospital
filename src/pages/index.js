@@ -4,7 +4,23 @@ import {
 	dayElementSelector,
 } from '../utils/constants.js';
 
+import EventPopup from '../utils/EventPopup.js';
+import Event from '../utils/event.js';
+
+const events = [{ title: "Сортировка", icons: ['medkit', 'aids', 'food'], metro: 'м. Обухово', hours: 'Часы работы: 10:00–17:00', address: 'Агатов переулок 37, корп 4, Санкт-Петербург' },
+{ title: "Ночной приют", icons: ['shower', 'sleep', 'covid'], metro: 'м. Ломоносовская', hours: 'Часы работы: 18:00–23:00', address: 'Богатов переулок 148, корп 2, Санкт-Петербург' },
+{ title: "Заголовок 3", icons: ['clothdry', 'vaccine', 'shower', 'haircut'], metro: 'м. Обухово', hours: 'Часы работы: 23:00–09:00', address: 'Маратов переулок 1, корп 1, Санкт-Петербург' },
+];
+
+
+// Создаем экземпляр попапа события
+
+const eventPopup = new EventPopup('.event-popup');
+
 // ==================== ВЫБОР ЭЛМЕНТОВ DOM =====================
+
+// Секция с ивентами
+const eventsElement = document.querySelector('.events');
 
 // Контейнер сетки календаря
 const daysListContainer = document.querySelector(daysListContainerSelector);
@@ -119,3 +135,11 @@ const renderDays = (elementsArray) => {
 
 // Отрисовываем сетку дней календаря
 // daysRender();
+
+const eventTemplateSelector = '.event-template';
+
+function eventPopupOpen(event) {
+	eventPopup.open(event);
+}
+
+events.forEach(event => eventsElement.append(new Event(eventTemplateSelector, event, () => eventPopupOpen(event))));

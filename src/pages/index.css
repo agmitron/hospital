@@ -74,6 +74,7 @@
 @import url(../blocks/events/__title/_selected/events__title_selected.css);
 
 @import url(../blocks/event-popup/event-popup.css);
+@import url(../blocks/event-popup/_opened/event-popup_opened.css);
 @import url(../blocks/event-popup/__actions/event-popup__actions.css);
 @import url(../blocks/event-popup/__activities/event-popup__activities.css);
 @import url(../blocks/event-popup/__activity/event-popup__activity.css);

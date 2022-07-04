@@ -1,17 +1,23 @@
-export default class eventPopup {
-    constructor({ selectors: { popup, closeButton }, classNames: { popupOpened } }) {
-        this._popupOpenedClass = popupOpened;
-        this._element = document.querySelector(popup);
-        this._closeButton = this._element.querySelector(closeButton);
+export default class EventPopup {
+    constructor(selector) {
+        this._popupOpenedClass = 'event-popup_opened';
+        this._element = document.querySelector(selector);
+        this._closeButton = this._element.querySelector('.icon_type_close');
+        this._title = this._element.querySelector('.event-popup__title');
+        this._address = this._element.querySelector('.event-popup__text_address');
+
+        return this;
     }
 
-    open() {
-        this._element.classList.add(this._popupOpenedClass);
+    open({title = '', address = '', icons = []} = {}) {
+        this._element.classList.add('event-popup_opened');
+        this._title.textContent = title;
+        this._address.textContent = address;
         this._setEventListeners();
     }
 
     close() {
-        this._element.classList.remove(this._popupOpenedClass);
+        this._element.classList.remove('event-popup_opened');
         this._removeEventListeners();
     }
 
