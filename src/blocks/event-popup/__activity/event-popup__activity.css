@@ -7,4 +7,6 @@
   line-height: 21px;
   letter-spacing: 0.5px;
   padding: 5px 0;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
 }

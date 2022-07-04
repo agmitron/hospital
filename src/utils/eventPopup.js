@@ -1,3 +1,20 @@
+const iconTexts = {
+    food: 'Еда',
+    shower: 'Душ',
+    medkit: 'Медицинская помощь',
+    clothdry: 'Сушка одежды',
+    clothwash: 'Стирка',
+    sleep: 'Ночлег',
+    help: 'Социальная помощь',
+    warm: 'Обогрев',
+    health: 'Средства гигиены',
+    eyes: 'Офтальмология',
+    vaccine: 'Вакцинация',
+    aids: 'ВИЧ',
+    covid: 'Covid',
+    haircut: 'Стрижка',
+};
+
 export default class EventPopup {
     constructor(selector) {
         this._popupOpenedClass = 'event-popup_opened';
@@ -5,20 +22,32 @@ export default class EventPopup {
         this._closeButton = this._element.querySelector('.icon_type_close');
         this._title = this._element.querySelector('.event-popup__title');
         this._address = this._element.querySelector('.event-popup__text_address');
-
+        this._activities = this._element.querySelector('.event-popup__activities');
         return this;
     }
 
-    open({title = '', address = '', icons = []} = {}) {
+    open({ title = '', address = '', icons = [] } = {}) {
         this._element.classList.add('event-popup_opened');
         this._title.textContent = title;
         this._address.textContent = address;
+        this._activities.innerHTML = '';
+        icons.forEach(icon => this._activities.append(this._createActivity(icon, iconTexts[icon])));
         this._setEventListeners();
     }
 
     close() {
         this._element.classList.remove('event-popup_opened');
         this._removeEventListeners();
+    }
+
+    _createActivity(icon, text) {
+        const element = document.createElement('li');
+        element.classList.add('event-popup__activity');
+        const iconElement = document.createElement('div');
+        iconElement.className = `icon icon_type_${icon}`;
+        element.textContent = text;
+        element.append(iconElement);
+        return element;
     }
 
     _handleCloseButton = () => {
