@@ -22,14 +22,20 @@ export default class EventPopup {
         this._closeButton = this._element.querySelector('.icon_type_close');
         this._title = this._element.querySelector('.event-popup__title');
         this._address = this._element.querySelector('.event-popup__text_address');
+        this._metro = this._element.querySelector('.event-popup__text_metro');
+        this._date = this._element.querySelector('.event-popup__text_date');
+        this._hours = this._element.querySelector('.event-popup__text_hours');
         this._activities = this._element.querySelector('.event-popup__activities');
         return this;
     }
 
-    open({ title = '', address = '', icons = [] } = {}) {
+    open({ title = '', address = '', icons = [], metro = '', hours, date } = {}) {
         this._element.classList.add('event-popup_opened');
         this._title.textContent = title;
         this._address.textContent = address;
+        this._metro.textContent = metro;
+        this._date.textContent = date;
+        this._hours.textContent = hours;
         this._activities.innerHTML = '';
         icons.forEach(icon => this._activities.append(this._createActivity(icon, iconTexts[icon])));
         this._setEventListeners();

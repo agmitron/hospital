@@ -20,11 +20,11 @@ export default class Event {
         return liElement;
     }
 
-    _fillElement({ title, icons = [], metro, address, hours }) {
+    _fillElement({ title, icons = [], metro, address, hours, date }) {
         this._title.textContent = title;
         icons.forEach(icon => this._icons.append(this._createLi({ className: `icon icon_type_${icon}` })));
         this._metro.textContent = metro;
-        this._hours.textContent = hours;
+        this._hours.textContent = `Часы работы: ${hours}`;
         this._address.textContent = address;
     }
 

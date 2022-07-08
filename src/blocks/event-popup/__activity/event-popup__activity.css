@@ -9,4 +9,5 @@
   padding: 5px 0;
   flex-direction: row-reverse;
   justify-content: flex-end;
+  cursor: pointer;
 }
