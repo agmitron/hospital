@@ -8,11 +8,11 @@ import {
 import EventPopup from '../utils/EventPopup.js';
 import Event from '../utils/event.js';
 
+
 const events = [{ title: "Сортировка", icons: ['medkit', 'aids', 'food'], metro: 'м. Обухово', hours: '10:00–17:00', address: 'Агатов переулок 37, корп 4, Санкт-Петербург', date: 'Понедельник 11 апреля' },
 { title: "Ночной приют", icons: ['shower', 'sleep', 'covid'], metro: 'м. Ломоносовская', hours: '18:00–23:00', address: 'Богатов переулок 148, корп 2, Санкт-Петербург', date: 'Вторник 12 апреля' },
 { title: "Заголовок 3", icons: ['clothdry', 'vaccine', 'shower', 'haircut'], metro: 'м. Обухово', hours: '23:00–09:00', address: 'Маратов переулок 1, корп 1, Санкт-Петербург', date: 'Среда 13 апреля' },
 ];
-
 
 // Создаем экземпляр попапа события
 
@@ -132,11 +132,26 @@ const renderDays = (elementsArray) => {
 // ==================== ОСНОВНОЙ АЛГОРИТМ =====================
 
 // Получаем массив дней для отрисовки
-// getDaysArray();
 
 // Отрисовываем сетку дней календаря
-// daysRender();
+// renderDays(getDaysArray());
 
 const eventTemplateSelector = '.event-template';
 
-events.forEach(event => eventsElement.append(new Event(eventTemplateSelector, event, () => eventPopup.open(event))));
+async function getEvents(results) {
+	results.forEach(event => eventsElement.append(new Event(eventTemplateSelector, event, () => eventPopup.open(event))));
+}
+
+const GSheetReader = require('g-sheets-api');
+
+const options = {
+	apiKey: 'AIzaSyAozRsHSFgLEZkH-Du-a2r4K1CsXPLjj2o',
+	sheetId: '1j9Ln-t7BoitA7fzeFp20tVq68h0KYO6x3PHjic4jqMA',
+	sheetName: 'Лист1',
+	returnAllResults: false,
+}
+
+GSheetReader(options, getEvents);
+//events.forEach(event => eventsElement.append(new Event(eventTemplateSelector, event, () => eventPopup.open(event))));
+
+

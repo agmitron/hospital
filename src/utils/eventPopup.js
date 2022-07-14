@@ -29,15 +29,15 @@ export default class EventPopup {
         return this;
     }
 
-    open({ title = '', address = '', icons = [], metro = '', hours, date } = {}) {
+    open({ title = '', address = '', activities = '', metro = '', hours, date } = {}) {
         this._element.classList.add(this._popupOpenedClass);
         this._title.textContent = title;
         this._address.textContent = address;
         this._metro.textContent = metro;
-        this._date.textContent = date;
+        this._date.textContent = this._convertDate(date);
         this._hours.textContent = hours;
         this._activities.innerHTML = '';
-        icons.forEach(icon => this._activities.append(this._createActivity(icon, iconTexts[icon])));
+        activities.split(' ').filter(x => x).forEach(icon => this._activities.append(this._createActivity(icon, iconTexts[icon])));
         this._setEventListeners();
     }
 
@@ -48,6 +48,15 @@ export default class EventPopup {
 
     isOpened() {
         return this._element.classList.contains(this._popupOpenedClass);
+    }
+
+    _convertDate(date) {
+        const months = { '01': 'января', '02': 'февраля', '03': 'марта', '04': 'апреля', '05': 'мая', '06': 'июня', '07': 'июля', '08': 'августа', '09': 'сентября', '10': 'октября', '11': 'ноября', '12': 'декабря' };
+        const weekdays = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+        const [day, month, year] = date.split('.');
+        const d = new Date(year, month - 1, day);
+        const dayOfWeek = weekdays[d.getDay()];
+        return `${dayOfWeek} ${day} ${months[month]}`;
     }
 
     _createActivity(icon, text) {
