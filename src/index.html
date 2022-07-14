@@ -1,49 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <title>Календарь</title>
+  </head>
 
-<head>
-	<meta charset="UTF-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<link rel="stylesheet" href="./pages/index.css" />
-	<title>Календарь</title>
-</head>
-
-<body>
-	<div class="calendar">
-		<div class="calendar-header">
-			<span class="calendar-header__year-row">2022</span>
-			<div class="calendar-header__month-row">
-				<button class="button calendar-header__today-btn" type="button">
-					Сегодня
-				</button>
-				<div class="calendar-header__month-container">
-					<button
-						class="button calendar-header__change-month-btn calendar-header__change-month-btn_type_previous"></button>
-					<div class="calendar-header__month-wrap">
-						<span class="calendar-header__month">Апрель</span>
-						<span class="calendar-header__year-for-mobile">2022</span>
-					</div>
-					<button class="button calendar-header__change-month-btn calendar-header__change-month-btn_type_next"></button>
-				</div>
-				<button class="button calendar-header__today-btn calendar-header__period-btn" type="button">
-					Неделя
-				</button>
-			</div>
-			<span class="calendar-header__selected-period-row">11.04&ndash;17.04</span>
-		</div>
-		<div class="calendar-grid">
-			<ul class="calendar-grid__header">
-				<li class="calendar-day calendar-day_type_title">ПН</li>
-				<li class="calendar-day calendar-day_type_title">ВТ</li>
-				<li class="calendar-day calendar-day_type_title">СР</li>
-				<li class="calendar-day calendar-day_type_title">ЧТ</li>
-				<li class="calendar-day calendar-day_type_title">ПТ</li>
-				<li class="calendar-day calendar-day_type_title">СБ</li>
-				<li class="calendar-day calendar-day_type_title">ВС</li>
-			</ul>
-			<ul class="calendar-grid__days-list">
-				<!-- <li class="calendar-day calendar-day_type_dim">28</li>
+  <body>
+    <div class="calendar">
+      <div class="calendar-header">
+        <span class="calendar-header__year-row">2022</span>
+        <div class="calendar-header__month-row">
+          <button class="button calendar-header__today-btn" type="button">
+            Сегодня
+          </button>
+          <div class="calendar-header__month-container">
+            <button
+              class="button calendar-header__change-month-btn calendar-header__change-month-btn_type_previous"
+            ></button>
+            <div class="calendar-header__month-wrap">
+              <span class="calendar-header__month">Апрель</span>
+              <span class="calendar-header__year-for-mobile">2022</span>
+            </div>
+            <button
+              class="button calendar-header__change-month-btn calendar-header__change-month-btn_type_next"
+            ></button>
+          </div>
+          <button
+            class="button calendar-header__today-btn calendar-header__period-btn"
+            type="button"
+          >
+            Неделя
+          </button>
+        </div>
+        <span class="calendar-header__selected-period-row"
+          >11.04&ndash;17.04</span
+        >
+      </div>
+      <div class="calendar-grid">
+        <ul class="calendar-grid__header">
+          <li class="calendar-day calendar-day_type_title">ПН</li>
+          <li class="calendar-day calendar-day_type_title">ВТ</li>
+          <li class="calendar-day calendar-day_type_title">СР</li>
+          <li class="calendar-day calendar-day_type_title">ЧТ</li>
+          <li class="calendar-day calendar-day_type_title">ПТ</li>
+          <li class="calendar-day calendar-day_type_title">СБ</li>
+          <li class="calendar-day calendar-day_type_title">ВС</li>
+        </ul>
+        <ul class="calendar-grid__days-list">
+          <!-- <li class="calendar-day calendar-day_type_dim">28</li>
 				<li class="calendar-day calendar-day_type_dim">29</li>
 				<li class="calendar-day calendar-day_type_dim">30</li>
 				<li class="calendar-day calendar-day_type_dim">31</li>
@@ -96,17 +103,19 @@
 				<li class="calendar-day">29</li>
 				<li class="calendar-day">30</li>
 				<li class="calendar-day">31</li> -->
-			</ul>
-		</div>
-	</div>
+        </ul>
+      </div>
+    </div>
     <div class="page">
+      <section class="events"></section>
       <section class="event-popup">
         <ul class="event-popup__actions">
           <li class="icon icon_type_share"></li>
           <li class="icon icon_type_close"></li>
         </ul>
         <h2 class="event-popup__title">Сортировка</h2>
-        <p class="event-popup__text">Понедельник 11 апреля, 10:00–17:00</p>
+        <p class="event-popup__text event-popup__text_date"></p>
+        <p class="event-popup__text event-popup__text_hours"></p>
         <ul class="event-popup__activities">
           <li class="event-popup__activity">
             <div class="icon icon_type_medkit"></div>
@@ -121,7 +130,8 @@
             Средства гигиены
           </li>
         </ul>
-        <p class="event-popup__text">
+        <p class="event-popup__text event-popup__text_metro">м. Обуховская</p>
+        <p class="event-popup__text event-popup__text_address">
           Агатов переулок 37, корп 4, Санкт-Петербург
         </p>
         <div class="event-popup__buttons">
@@ -131,209 +141,30 @@
           <button class="event-popup__button">Позвонить</button>
         </div>
       </section>
-      <section class="events">
-        <h2 class="events__title">ПН 11</h2>
-        <div class="events__container">
-          <div class="event">
-            <h3 class="event__title">Сортировка</h3>
-            <ul class="event__icons">
-              <li class="icon icon_type_medkit"></li>
-              <li class="icon icon_type_health"></li>
-              <li class="icon icon_type_food"></li>
-            </ul>
-            <ul class="event__details">
-              <li>м. Ломоносовская</li>
-              <li>Часы работы: 10:00–17:00</li>
-              <li>Агатов переулок 37, корп 4, Санкт-Петербург</li>
-            </ul>
-          </div>
-          <div class="event">
-            <h3 class="event__title">Ночной приют</h3>
-            <ul class="event__icons">
-              <li class="icon icon_type_shower"></li>
-              <li class="icon icon_type_medkit"></li>
-              <li class="icon icon_type_sleep"></li>
-              <li class="icon icon_type_food"></li>
-            </ul>
-            <ul class="event__details">
-              <li>м. Обухово</li>
-              <li>Часы работы: 10:00–17:00</li>
-              <li>Агатов переулок 37, корп 4, Санкт-Петербург</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      <section class="events events_large events_title_sideway">
-        <h2 class="events__title events__title_selected">ПН 11</h2>
-        <div class="events__container">
-          <div class="event">
-            <h3 class="event__title">Сортировка</h3>
-            <ul class="event__icons">
-              <li class="icon icon_type_medkit"></li>
-              <li class="icon icon_type_health"></li>
-              <li class="icon icon_type_food"></li>
-            </ul>
-            <ul class="event__details">
-              <li>м. Ломоносовская</li>
-              <li>Часы работы: 10:00–17:00</li>
-              <li>Агатов переулок 37, корп 4, Санкт-Петербург</li>
-            </ul>
-          </div>
-          <div class="event">
-            <h3 class="event__title">Ночной приют</h3>
-            <ul class="event__icons">
-              <li class="icon icon_type_shower"></li>
-              <li class="icon icon_type_medkit"></li>
-              <li class="icon icon_type_sleep"></li>
-              <li class="icon icon_type_food"></li>
-              <li class="icon icon_type_health"></li>
-            </ul>
-            <ul class="event__details">
-              <li>м. Обухово</li>
-              <li>Часы работы: 10:00–17:00</li>
-              <li>Агатов переулок 37, корп 4, Санкт-Петербург</li>
-            </ul>
-          </div>
-          <div class="event">
-            <h3 class="event__title">Ночной приют</h3>
-            <ul class="event__icons">
-              <li class="icon icon_type_shower"></li>
-              <li class="icon icon_type_medkit"></li>
-              <li class="icon icon_type_sleep"></li>
-              <li class="icon icon_type_food"></li>
-            </ul>
-            <ul class="event__details">
-              <li>м. Обухово</li>
-              <li>Часы работы: 10:00–17:00</li>
-              <li>Агатов переулок 37, корп 4, Санкт-Петербург</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      <section class="events events_large events_title_sideway">
-        <h2 class="events__title">ВТ 12</h2>
-        <div class="events__container">
-          <div class="event">
-            <h3 class="event__title">Сортировка</h3>
-            <ul class="event__icons">
-              <li class="icon icon_type_medkit"></li>
-              <li class="icon icon_type_health"></li>
-              <li class="icon icon_type_food"></li>
-            </ul>
-            <ul class="event__details">
-              <li>м. Ломоносовская</li>
-              <li>Часы работы: 10:00–17:00</li>
-              <li>Агатов переулок 37, корп 4, Санкт-Петербург</li>
-            </ul>
-          </div>
-          <div class="event">
-            <h3 class="event__title">Ночной приют</h3>
-            <ul class="event__icons">
-              <li class="icon icon_type_shower"></li>
-              <li class="icon icon_type_medkit"></li>
-              <li class="icon icon_type_sleep"></li>
-              <li class="icon icon_type_food"></li>
-            </ul>
-            <ul class="event__details">
-              <li>м. Обухово</li>
-              <li>Часы работы: 10:00–17:00</li>
-              <li>Агатов переулок 37, корп 4, Санкт-Петербург</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      <section class="events events_large">
-        <h2 class="events__title events__title_selected">Понедельник 11.04</h2>
-        <div class="events__container">
-          <div class="event">
-            <h3 class="event__title">Сортировка</h3>
-            <ul class="event__icons">
-              <li class="icon icon_type_medkit"></li>
-              <li class="icon icon_type_health"></li>
-              <li class="icon icon_type_food"></li>
-            </ul>
-            <ul class="event__details">
-              <li>м. Ломоносовская</li>
-              <li>Часы работы: 10:00–17:00</li>
-              <li>Агатов переулок 37, корп 4, Санкт-Петербург</li>
-            </ul>
-          </div>
-          <div class="event">
-            <h3 class="event__title">Ночной приют</h3>
-            <ul class="event__icons">
-              <li class="icon icon_type_shower"></li>
-              <li class="icon icon_type_medkit"></li>
-              <li class="icon icon_type_sleep"></li>
-              <li class="icon icon_type_food"></li>
-              <li class="icon icon_type_health"></li>
-            </ul>
-            <ul class="event__details">
-              <li>м. Обухово</li>
-              <li>Часы работы: 10:00–17:00</li>
-              <li>Агатов переулок 37, корп 4, Санкт-Петербург</li>
-            </ul>
-          </div>
-          <div class="event">
-            <h3 class="event__title">Ночной приют</h3>
-            <ul class="event__icons">
-              <li class="icon icon_type_shower"></li>
-              <li class="icon icon_type_medkit"></li>
-              <li class="icon icon_type_sleep"></li>
-              <li class="icon icon_type_food"></li>
-            </ul>
-            <ul class="event__details">
-              <li>м. Обухово</li>
-              <li>Часы работы: 10:00–17:00</li>
-              <li>Агатов переулок 37, корп 4, Санкт-Петербург</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-      <section class="events events_large">
-        <h2 class="events__title">Вторник 12.04</h2>
-        <div class="events__container">
-          <div class="event">
-            <h3 class="event__title">Сортировка</h3>
-            <ul class="event__icons">
-              <li class="icon icon_type_medkit"></li>
-              <li class="icon icon_type_health"></li>
-              <li class="icon icon_type_food"></li>
-            </ul>
-            <ul class="event__details">
-              <li>м. Ломоносовская</li>
-              <li>Часы работы: 10:00–17:00</li>
-              <li>Агатов переулок 37, корп 4, Санкт-Петербург</li>
-            </ul>
-          </div>
-          <div class="event">
-            <h3 class="event__title">Ночной приют</h3>
-            <ul class="event__icons">
-              <li class="icon icon_type_shower"></li>
-              <li class="icon icon_type_medkit"></li>
-              <li class="icon icon_type_sleep"></li>
-              <li class="icon icon_type_food"></li>
-            </ul>
-            <ul class="event__details">
-              <li>м. Обухово</li>
-              <li>Часы работы: 10:00–17:00</li>
-              <li>Агатов переулок 37, корп 4, Санкт-Петербург</li>
-            </ul>
-          </div>
-        </div>
-      </section>
     </div>
 
-	<template class="calendar-day-template">
-		<li class="calendar-day">
-			11
-			<div class="calendar-day__events-wrap">
-				<div class="calendar-day__event"></div>
-				<div class="calendar-day__event"></div>
-				<div class="calendar-day__event"></div>
-			</div>
-		</li>
-	</template>
-	<script type="module" src="./pages/index.js"></script>
-</body>
+    <template class="event-template">
+      <div class="event">
+        <h3 class="event__title"></h3>
+        <ul class="event__icons"></ul>
+        <ul class="event__details">
+          <li class="event__metro"></li>
+          <li class="event__hours"></li>
+          <li class="event__address"></li>
+        </ul>
+      </div>
+    </template>
 
+    <template class="calendar-day-template">
+      <li class="calendar-day">
+        11
+        <div class="calendar-day__events-wrap">
+          <div class="calendar-day__event"></div>
+          <div class="calendar-day__event"></div>
+          <div class="calendar-day__event"></div>
+        </div>
+      </li>
+    </template>
+    <script type="module" src="./pages/index.js"></script>
+  </body>
 </html>

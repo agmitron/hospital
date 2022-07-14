@@ -13,4 +13,6 @@
   grid-area: details;
   padding-right: 10px;
   max-width: 300px;
+  cursor: pointer;
+
 }
