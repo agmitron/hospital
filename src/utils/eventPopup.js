@@ -30,7 +30,7 @@ export default class EventPopup {
     }
 
     open({ title = '', address = '', icons = [], metro = '', hours, date } = {}) {
-        this._element.classList.add('event-popup_opened');
+        this._element.classList.add(this._popupOpenedClass);
         this._title.textContent = title;
         this._address.textContent = address;
         this._metro.textContent = metro;
@@ -42,8 +42,12 @@ export default class EventPopup {
     }
 
     close() {
-        this._element.classList.remove('event-popup_opened');
+        this._element.classList.remove(this._popupOpenedClass);
         this._removeEventListeners();
+    }
+
+    isOpened() {
+        return this._element.classList.contains(this._popupOpenedClass);
     }
 
     _createActivity(icon, text) {
