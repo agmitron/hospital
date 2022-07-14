@@ -54,7 +54,6 @@ export default class EventPopup {
         const [day, month, year] = dateString.split('.');
         const date = new Date(year, month - 1, day);
         const localDate = date.toLocaleString('ru', { weekday: 'long', day: 'numeric', month: 'long' });
-        console.log(localDate);
         return localDate[0].toUpperCase() + localDate.slice(1).replace(',', '');
     }
 
