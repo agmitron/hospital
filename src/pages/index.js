@@ -146,5 +146,3 @@ const options = {
 }
 
 GSheetReader(options, getEvents);
-
-

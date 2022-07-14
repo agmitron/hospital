@@ -50,13 +50,12 @@ export default class EventPopup {
         return this._element.classList.contains(this._popupOpenedClass);
     }
 
-    _convertDate(date) {
-        const months = { '01': 'января', '02': 'февраля', '03': 'марта', '04': 'апреля', '05': 'мая', '06': 'июня', '07': 'июля', '08': 'августа', '09': 'сентября', '10': 'октября', '11': 'ноября', '12': 'декабря' };
-        const weekdays = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
-        const [day, month, year] = date.split('.');
-        const d = new Date(year, month - 1, day);
-        const dayOfWeek = weekdays[d.getDay()];
-        return `${dayOfWeek} ${day} ${months[month]}`;
+    _convertDate(dateString) {
+        const [day, month, year] = dateString.split('.');
+        const date = new Date(year, month - 1, day);
+        const localDate = date.toLocaleString('ru', { weekday: 'long', day: 'numeric', month: 'long' });
+        console.log(localDate);
+        return localDate[0].toUpperCase() + localDate.slice(1).replace(',', '');
     }
 
     _createActivity(icon, text) {
