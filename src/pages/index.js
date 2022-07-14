@@ -138,8 +138,4 @@ const renderDays = (elementsArray) => {
 
 const eventTemplateSelector = '.event-template';
 
-function eventPopupOpen(event) {
-	eventPopup.open(event);
-}
-
-events.forEach(event => eventsElement.append(new Event(eventTemplateSelector, event, () => eventPopupOpen(event))));
+events.forEach(event => eventsElement.append(new Event(eventTemplateSelector, event, () => eventPopup.open(event))));
