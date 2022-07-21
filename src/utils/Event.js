@@ -8,6 +8,7 @@ export default class Event {
         this._address = this._element.querySelector('.event__address');
         this._fillElement(event);
         this._addEventListeners(onClick);
+//        console.log(this._element);
         return this._element;
     }
 
@@ -20,9 +21,10 @@ export default class Event {
         return liElement;
     }
 
-    _fillElement({ title, icons = [], metro, address, hours, date }) {
+    _fillElement({ title, activities = '', metro, address, hours, date }) {
         this._title.textContent = title;
-        icons.forEach(icon => this._icons.append(this._createLi({ className: `icon icon_type_${icon}` })));
+        activities.split(' ').filter(x => x)
+            .forEach(icon => this._icons.append(this._createLi({ className: `icon icon_type_${icon}` })));
         this._metro.textContent = metro;
         this._hours.textContent = `Часы работы: ${hours}`;
         this._address.textContent = address;

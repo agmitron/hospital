@@ -9,7 +9,7 @@ import {
 	getDaysElementsArr,
 } from './logic.js';
 
-export function initCalendar(containerSelector) {
+export function initCalendar(containerSelector, onDateClick) {
 	// --------------------- выбираем DOM элементы ------------------------
 	const {
 		daysListContainer,
@@ -32,10 +32,12 @@ export function initCalendar(containerSelector) {
 	// текущий массив дней для отрисовки сетки (элемент массива - объект с полями: data, month, year, dateObj)
 	let daysArray = getDaysArray(currentYear, currentMonth);
 	// текущий массив html-элементов дней для отрисовки сетки
-	let daysElementsArr = getDaysElementsArr(
+	let daysElementsArr = getDaysElementsArr({
 		daysArray,
 		dayTemplateElement,
-		currentMonth
+		currentMonth,
+		onClick: onDateClick,
+	}
 	);
 
 	// ------------------------------ добавляем обработчики событий --------------------------------
@@ -180,10 +182,11 @@ export function initCalendar(containerSelector) {
 	const updateCalendarGrid = (currentYear, currentMonth) => {
 		daysArray = getDaysArray(currentYear, currentMonth);
 		// обновляем массив html-элементов для отрисовки
-		daysElementsArr = getDaysElementsArr(
+		daysElementsArr = getDaysElementsArr({
 			daysArray,
 			dayTemplateElement,
-			currentMonth
-		);
+			currentMonth,
+			onClick: onDateClick,
+		});
 	};
 }

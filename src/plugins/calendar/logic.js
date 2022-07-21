@@ -130,10 +130,12 @@ const getDaysArray = (currentYear, currentMonth) => {
 
 // Функция получения массива html-элементов - ячеек сетки календаря из массива дней
 const getDaysElementsArr = (
-	daysArray,
-	dayTemplateElement,
-	currentMonth,
-	pressedDayElement
+	{ daysArray,
+		dayTemplateElement,
+		currentMonth,
+		pressedDayElement,
+		onClick
+	}
 ) => {
 	return daysArray.map((item, itemIndex) => {
 		const dayElement = dayTemplateElement.content
@@ -165,14 +167,17 @@ const getDaysElementsArr = (
 				pressedDayElement.classList.remove('calendar-day_type_pressed');
 			}
 			// назначаем новую кликнутую дату и добавляем подсветку
+			//			const 
 			pressedDayElement = e.currentTarget;
 			pressedDayElement.classList.add('calendar-day_type_pressed');
 			// выводим кликнутую дату в консоль
-			console.log(pressedDayElement.dateObj);
+//			console.log(pressedDayElement.dateObj);
 
 			// -------------------------------------------------------
 			// СЮДА НУЖНО БУДЕТ ДОБАВИТЬ ЛОГИКУ ОТОБРАЖЕНИЯ КАРТОЧЕК СОБЫТИЙ!!!!!!!!!!!!
-			// .......
+			
+			onClick && onClick(pressedDayElement.dateObj);
+
 			//--------------------------------------------------------
 		});
 

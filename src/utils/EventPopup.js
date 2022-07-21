@@ -29,15 +29,15 @@ export default class EventPopup {
         return this;
     }
 
-    open({ title = '', address = '', icons = [], metro = '', hours, date } = {}) {
+    open({ title = '', address = '', activities = '', metro = '', hours, date } = {}) {
         this._element.classList.add(this._popupOpenedClass);
         this._title.textContent = title;
         this._address.textContent = address;
         this._metro.textContent = metro;
-        this._date.textContent = date;
+        this._date.textContent = this._convertDate(date);
         this._hours.textContent = hours;
         this._activities.innerHTML = '';
-        icons.forEach(icon => this._activities.append(this._createActivity(icon, iconTexts[icon])));
+        activities.split(' ').filter(x => x).forEach(icon => this._activities.append(this._createActivity(icon, iconTexts[icon])));
         this._setEventListeners();
     }
 
@@ -48,6 +48,13 @@ export default class EventPopup {
 
     isOpened() {
         return this._element.classList.contains(this._popupOpenedClass);
+    }
+
+    _convertDate(dateString) {
+        const [day, month, year] = dateString.split('.');
+        const date = new Date(year, month - 1, day);
+        const localDate = date.toLocaleString('ru', { weekday: 'long', day: 'numeric', month: 'long' });
+        return localDate[0].toUpperCase() + localDate.slice(1).replace(',', '');
     }
 
     _createActivity(icon, text) {
