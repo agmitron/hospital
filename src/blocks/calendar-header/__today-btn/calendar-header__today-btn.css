@@ -1,4 +1,5 @@
 .calendar-header__today-btn {
+  width: 21.75%;
   height: fit-content;
   font-family: 'Inter';
   font-weight: 500;
@@ -6,6 +7,7 @@
   line-height: 22px;
   letter-spacing: 0.0018em;
   color: #0994c0;
+  text-align: left;
 }
 
 @media screen and (max-width: 425px) {
