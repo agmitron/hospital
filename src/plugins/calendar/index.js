@@ -184,13 +184,13 @@ export function initCalendar(containerSelector, onDateClick, events) {
 	const updateCalendarGrid = (currentYear, currentMonth) => {
 		daysArray = getDaysArray(currentYear, currentMonth);
 		//		console.log(daysArray);
-		getEventsCount(daysArray);
 		// обновляем массив html-элементов для отрисовки
 		daysElementsArr = getDaysElementsArr({
 			daysArray,
 			dayTemplateElement,
 			currentMonth,
 			onClick: onDateClick,
+			events,
 		});
 	};
 }

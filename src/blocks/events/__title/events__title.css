@@ -9,19 +9,18 @@
   max-width: 480px;
   box-sizing: border-box;
   display: none;
+  border: 1px solid white;
 }
 
-.events_title_sideway .events__title {
-  padding: 16px 8px;
-  width: min-content;
-  font-size: 24px;
-  font-weight: 500;
-  line-height: 29px;
-  background-color: white;
-  text-align: center;
-  display: inline-block;
-}
-
-.events_large .events__title {
-  display: inline-block;
+@media screen and (min-width: 425px) {
+  .events__title {
+    padding: 16px 8px;
+    width: min-content;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 29px;
+    background-color: white;
+    text-align: center;
+    display: inline-block;
+  }
 }

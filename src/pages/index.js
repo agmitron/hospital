@@ -26,38 +26,46 @@ const eventTemplateSelector = '.event-template';
 // Секция с ивентами
 const eventsElement = document.querySelector('.events');
 
-function makeDateSearchString(date) {
-	return `${String(date.getDate()).padStart(2, '0')}.${String(date.getMonth() + 1).padStart(2, '0')}.${date.getFullYear()}`;
+function makeDateObj(dateString) {
+	const [day, month, year] = dateString.split('.');
+	return new Date(year, month - 1, day);
 }
 
-// async function getEventsByDate(events) {
-// 	//	console.log(date, makeDateSearchString(date));
-// 	const dateString = makeDateSearchString(date);
-// 	const filterOptions = {
-// 		...options,
-// 		filter: {
-// 			'date': dateString,
-// 		},
-// 	};
-// 	//	console.log(filterOptions);
-// 	const events = await gsheets(filterOptions);
-// 	renderEvents(events);
-// }
+function makeSideDate(dateString) {
+	const date = makeDateObj(dateString);
+	return date
+		.toLocaleString('ru', { weekday: 'short', day: 'numeric' })
+		.toUpperCase()
+		.replace(',', '');
+}
+
+function isToday(dateString) {
+	const date = makeDateObj(dateString);
+	const today = new Date();
+	return date.toLocaleDateString() === today.toLocaleDateString();
+}
 
 function renderEvents(events) {
-	console.log(events);
 	eventPopup.close();
 	eventsElement.innerHTML = '';
-	events.forEach(event => eventsElement.append(new Event(eventTemplateSelector, event, () => eventPopup.open(event))));
+	let currentDate = '';
+	let wrapperElement = null;
+	events.forEach(event => {
+		console.log(event);
+		if (currentDate !== event.date) {
+			const eventsDayElement = document.querySelector('.events-template').content.cloneNode(true).querySelector('.events');
+			const titleElement = eventsDayElement.querySelector('.events__title');
+			wrapperElement = eventsDayElement.querySelector('.events__container');
+			titleElement.textContent = makeSideDate(event.date);
+			if (isToday(event.date)) titleElement.classList.add('events__title_selected');
+			eventsElement.append(eventsDayElement);
+			currentDate = event.date;
+		}
+		wrapperElement.append(new Event(eventTemplateSelector, event, () => eventPopup.open(event)))
+	});
 }
 
 gsheets(options).then(data => {
-	console.log(data);
 	initCalendar(calendarContainerSelector, renderEvents, data);
 });
 
-// async function getEvents(results) {
-// 	results.forEach(event => eventsElement.append(new Event(eventTemplateSelector, event, () => eventPopup.open(event))));
-// }
-
-//GSheetReader(options, getEvents);
