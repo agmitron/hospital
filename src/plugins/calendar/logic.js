@@ -146,7 +146,7 @@ const getDaysArray = (currentYear, currentMonth) => {
 };
 
 const getEventsPerDate = (events, date) => {
-	const dateString = `${String(date.getDate()).padStart(2, '0')}.${String(date.getMonth() + 1).padStart(2, '0')}.${date.getFullYear()} `;
+	const dateString = `${String(date.getDate()).padStart(2, '0')}.${String(date.getMonth() + 1).padStart(2, '0')}.${date.getFullYear()}`;
 	return events.filter(event => event.date === dateString);
 }
 
@@ -171,12 +171,12 @@ const getDaysElementsArr = (
 
 		// -------------------------------------------------------
 		// СЮДА НУЖНО БУДЕТ ДОБАВИТЬ ЛОГИКУ ОТОБРАЖЕНИЯ В ЭЛЕМЕНТЕ ДАТЫ КРАСНЫХ ТОЧЕК, ОБОЗНАЧАЮЩИХ СОБЫТИЯ (одно событие - одна точка, два события - две точки, три и более событий - три точки). В стилях это блок "calendar-day__event" и его модификатор "_invisible".
-
+		//		console.log(events);
 		const eventsWrapper = dayElement.querySelector('.calendar-day__events-wrap');
 		const eventsPerDate = getEventsPerDate(events, item.dateObj);
 		for (let i = 0; i < eventsPerDate.length; i++) {
 			const dot = document.createElement('div');
-			dot.innerHTML = `< div class="calendar-day__event" ></div > `;
+			dot.innerHTML = `<div class="calendar-day__event" ></div>`;
 			eventsWrapper.append(dot.firstChild);
 		}
 		//--------------------------------------------------------

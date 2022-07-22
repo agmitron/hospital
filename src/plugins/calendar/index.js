@@ -9,6 +9,10 @@ import {
 	getDaysElementsArr,
 } from './logic.js';
 
+function makeDate(dateObj) {
+	return String(dateObj.getDate()).padStart(2, '0') + '.' + String(dateObj.getMonth() + 1).padStart(2, '0') + '.' + dateObj.getFullYear();
+}
+
 export function initCalendar(containerSelector, onDateClick, events) {
 	// --------------------- выбираем DOM элементы ------------------------
 	const {
@@ -139,17 +143,20 @@ export function initCalendar(containerSelector, onDateClick, events) {
 
 	// Переключение отображаемого периода (кнопка "Сегодня")
 	todayBtnElement.addEventListener('mouseup', (e) => {
+		// переключаем значение месяца и года
+
+		// Используются для обновления сетки календаря, которая не нужна в режиме Сегодня - Безруков
+		// currentYear = new Date().getFullYear();
+		// currentMonth = new Date().getMonth();
 		// меняем значение переменной отображаемого периода на день
 		if (displayedPeriod !== timePeriodsForDisplay.day) {
 			displayedPeriod = timePeriodsForDisplay.day;
 			// для дня сетка календаря не должна отображаться, поэтому убираем её
 			calendarGridContainer.classList.add(invisibilityModifier);
 		}
-		// переключаем значение месяца и года
-		currentYear = new Date().getFullYear();
-		currentMonth = new Date().getMonth();
 		// обновляем сетку календаря и рендерим элементы
-		updateCalendarGrid(currentYear, currentMonth);
+		// В режиме Сегодня сетки календаря нет, так что обновлять нет необходимости - Безруков
+		//		updateCalendarGrid(currentYear, currentMonth);
 		renderAllCalendarElements({
 			daysListContainer,
 			daysElementsArr,
@@ -162,6 +169,9 @@ export function initCalendar(containerSelector, onDateClick, events) {
 			currentPeriodElement,
 			changePeriodBtnElement,
 		});
+
+		onDateClick(events.filter(event => event.date === makeDate(new Date())));
+
 	});
 
 	// ---------------------------- отрисовываем элементы ------------------------------
