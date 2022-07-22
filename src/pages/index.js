@@ -1,7 +1,7 @@
 import './index.css';
 import { calendarContainerSelector } from '../utils/constants.js';
 import { initCalendar } from '../plugins/calendar/index.js';
-import GSheetReader from 'g-sheets-api';
+import { gsheets } from '../api/gsheets';
 
 import EventPopup from '../utils/EventPopup.js';
 import Event from '../utils/Event.js';
@@ -10,7 +10,6 @@ const options = {
 	apiKey: 'AIzaSyAozRsHSFgLEZkH-Du-a2r4K1CsXPLjj2o',
 	sheetId: '1j9Ln-t7BoitA7fzeFp20tVq68h0KYO6x3PHjic4jqMA',
 	sheetName: 'Лист1',
-	returnAllResults: false,
 }
 
 // Создаем экземпляр попапа события
@@ -22,8 +21,6 @@ const eventPopup = new EventPopup('.event-popup');
 // 	)
 // );
 
-initCalendar(calendarContainerSelector, getEventsByDate);
-
 const eventTemplateSelector = '.event-template';
 
 // Секция с ивентами
@@ -33,25 +30,31 @@ function makeDateSearchString(date) {
 	return `${String(date.getDate()).padStart(2, '0')}.${String(date.getMonth() + 1).padStart(2, '0')}.${date.getFullYear()}`;
 }
 
-function getEventsByDate(date) {
-//	console.log(date, makeDateSearchString(date));
-	eventPopup.close();
-	eventsElement.innerHTML = '';
-	const dateString = makeDateSearchString(date);
-	const filterOptions = {
-		...options,
-		filter: {
-			'date': dateString,
-		},
-	};
-//	console.log(filterOptions);
-	GSheetReader(filterOptions, renderEvents)
-}
+// async function getEventsByDate(events) {
+// 	//	console.log(date, makeDateSearchString(date));
+// 	const dateString = makeDateSearchString(date);
+// 	const filterOptions = {
+// 		...options,
+// 		filter: {
+// 			'date': dateString,
+// 		},
+// 	};
+// 	//	console.log(filterOptions);
+// 	const events = await gsheets(filterOptions);
+// 	renderEvents(events);
+// }
 
 function renderEvents(events) {
-//	console.log(events);
+	console.log(events);
+	eventPopup.close();
+	eventsElement.innerHTML = '';
 	events.forEach(event => eventsElement.append(new Event(eventTemplateSelector, event, () => eventPopup.open(event))));
 }
+
+gsheets(options).then(data => {
+	console.log(data);
+	initCalendar(calendarContainerSelector, renderEvents, data);
+});
 
 // async function getEvents(results) {
 // 	results.forEach(event => eventsElement.append(new Event(eventTemplateSelector, event, () => eventPopup.open(event))));
