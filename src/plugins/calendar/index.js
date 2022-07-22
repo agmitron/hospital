@@ -4,10 +4,11 @@ import {
 } from '../../utils/constants.js';
 import { getDOMElements, renderAllCalendarElements } from './rendering.js';
 import {
-	getCurrentDayData,
 	getDaysArray,
 	getDaysElementsArr,
 } from './logic.js';
+import { getCurrentDayData } from '../../utils/dateUtils.js';
+
 
 function makeDate(dateObj) {
 	return String(dateObj.getDate()).padStart(2, '0') + '.' + String(dateObj.getMonth() + 1).padStart(2, '0') + '.' + dateObj.getFullYear();
@@ -139,6 +140,9 @@ export function initCalendar(containerSelector, onDateClick, events) {
 			currentPeriodElement,
 			changePeriodBtnElement,
 		});
+
+		onDateClick(events.filter(event => event.date === makeDate(new Date())));
+
 	});
 
 	// Переключение отображаемого периода (кнопка "Сегодня")
