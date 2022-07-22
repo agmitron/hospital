@@ -31,41 +31,58 @@ const getFirstAndLastDaysOfMonth = (year, month) => {
 };
 
 // Функия получения строкового представления текущей даты (например: "11.04")
-const getCurrentDateString = () => {
-	let dateObj = new Date();
-	const currentDateStringISO = dateObj.toISOString();
-	const currentDateString = currentDateStringISO[8] + currentDateStringISO[9];
-	const currentMonthString = currentDateStringISO[5] + currentDateStringISO[6];
-	return currentDateString + '.' + currentMonthString;
-};
+// const getCurrentDateString = () => {
+// 	let dateObj = new Date();
+// 	const currentDateStringISO = dateObj.toISOString();
+// 	const currentDateString = currentDateStringISO[8] + currentDateStringISO[9];
+// 	const currentMonthString = currentDateStringISO[5] + currentDateStringISO[6];
+// 	return currentDateString + '.' + currentMonthString;
+// };
+// Немножко порефакторил функцию - Безруков
+const getCurrentDateString = (date) => {
+	const dateObj = date ? new Date(date) : new Date();
+	return `${String(dateObj.getDate()).padStart(2, '0')}.${String(dateObj.getMonth() + 1).padStart(2, '0')}`;
+}
 
 // Функия получения строкового представления текущей недели (например: "11.04-17.04")
+// Немножко порефакторил функцию - Безруков
 const getCurrentWeekString = () => {
-	let dateObj = new Date();
-	const currentDate = dateObj.getDate();
+	const dateObj = new Date();
+	const epoch = dateObj.getTime();
+	const dayLength = 1000 * 60 * 60 * 24;
+	const dayOfWeek = dateObj.getDay() || 7;
 
-	const currentWeekDay = dateObj.getDay();
+	const monday = epoch - (dayOfWeek - 1) * dayLength;
+	const sunday = epoch + (7 - dayOfWeek) * dayLength;
+	return `${getCurrentDateString(monday)}-${getCurrentDateString(sunday)}`;
+}
 
-	const weekStartDate =
-		currentDate - (currentWeekDay === 0 ? 6 : currentWeekDay - 1);
-	const weekStartDateObj = new Date();
-	weekStartDateObj.setDate(weekStartDate);
-	const weekStartStringISO = weekStartDateObj.toISOString();
-	const weekStartStringDate = weekStartStringISO[8] + weekStartStringISO[9];
-	const weekStartStringMonth = weekStartStringISO[5] + weekStartStringISO[6];
-	const weekStartString = weekStartStringDate + '.' + weekStartStringMonth;
+// const getCurrentWeekString = () => {
+// 	let dateObj = new Date();
+// 	const currentDate = dateObj.getDate();
 
-	const weekEndDate =
-		currentDate + (currentWeekDay === 0 ? 0 : 7 - currentWeekDay);
-	const weekEndDateObj = new Date();
-	weekEndDateObj.setDate(weekEndDate);
-	const weekEndStringISO = weekEndDateObj.toISOString();
-	const weekEndStringDate = weekEndStringISO[8] + weekEndStringISO[9];
-	const weekEndStringMonth = weekEndStringISO[5] + weekEndStringISO[6];
-	const weekEndString = weekEndStringDate + '.' + weekEndStringMonth;
+// 	const currentWeekDay = dateObj.getDay();
 
-	return weekStartString + '\u2013' + weekEndString;
-};
+// 	const weekStartDate =
+// 		currentDate - (currentWeekDay === 0 ? 6 : currentWeekDay - 1);
+// 	const weekStartDateObj = new Date();
+// 	weekStartDateObj.setDate(weekStartDate);
+// 	const weekStartStringISO = weekStartDateObj.toISOString();
+// 	const weekStartStringDate = weekStartStringISO[8] + weekStartStringISO[9];
+// 	const weekStartStringMonth = weekStartStringISO[5] + weekStartStringISO[6];
+// 	const weekStartString = weekStartStringDate + '.' + weekStartStringMonth;
+
+// 	const weekEndDate =
+// 		currentDate + (currentWeekDay === 0 ? 0 : 7 - currentWeekDay);
+// 	const weekEndDateObj = new Date();
+// 	weekEndDateObj.setDate(weekEndDate);
+// 	const weekEndStringISO = weekEndDateObj.toISOString();
+// 	const weekEndStringDate = weekEndStringISO[8] + weekEndStringISO[9];
+// 	const weekEndStringMonth = weekEndStringISO[5] + weekEndStringISO[6];
+// 	const weekEndString = weekEndStringDate + '.' + weekEndStringMonth;
+
+// 	return weekStartString + '\u2013' + weekEndString;
+// };
 
 // Функция получения массива дат календаря для текущего месяца с добавками чисел в начале и в конце массива от предыдущего и последующего месяцев
 const getDaysArray = (currentYear, currentMonth) => {
@@ -129,7 +146,7 @@ const getDaysArray = (currentYear, currentMonth) => {
 };
 
 const getEventsPerDate = (events, date) => {
-	const dateString = `${String(date.getDate()).padStart(2, '0')}.${String(date.getMonth() + 1).padStart(2, '0')}.${date.getFullYear()}`;
+	const dateString = `${String(date.getDate()).padStart(2, '0')}.${String(date.getMonth() + 1).padStart(2, '0')}.${date.getFullYear()} `;
 	return events.filter(event => event.date === dateString);
 }
 
@@ -159,7 +176,7 @@ const getDaysElementsArr = (
 		const eventsPerDate = getEventsPerDate(events, item.dateObj);
 		for (let i = 0; i < eventsPerDate.length; i++) {
 			const dot = document.createElement('div');
-			dot.innerHTML = `<div class="calendar-day__event"></div>`;
+			dot.innerHTML = `< div class="calendar-day__event" ></div > `;
 			eventsWrapper.append(dot.firstChild);
 		}
 		//--------------------------------------------------------
