@@ -46,7 +46,7 @@ function isToday(dateString) {
 }
 
 function handleEventClick(event) {
-	console.log(window.innerHeight, eventsElement.clientWidth);
+//	console.log(window.innerHeight, eventsElement.clientWidth);
 	if (eventsElement.clientWidth > 425) return;
 	eventsElement.classList.add('hidden');
 	eventPopup.open(event);
@@ -57,7 +57,7 @@ function renderEvents(events, period) {
 	eventsElement.innerHTML = '';
 	let currentDate = '';
 	let wrapperElement = null;
-	console.log(period);
+//	console.log(period);
 	events.forEach(event => {
 		//		console.log(event);
 		if (currentDate !== event.date) {
