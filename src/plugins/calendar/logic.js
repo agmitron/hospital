@@ -4,47 +4,6 @@ import {
 	getFirstAndLastDaysOfMonth
 } from '../../utils/dateUtils.js';
 
-
-// Функия получения строкового представления текущей даты (например: "11.04")
-// const getCurrentDateString = () => {
-// 	let dateObj = new Date();
-// 	const currentDateStringISO = dateObj.toISOString();
-// 	const currentDateString = currentDateStringISO[8] + currentDateStringISO[9];
-// 	const currentMonthString = currentDateStringISO[5] + currentDateStringISO[6];
-// 	return currentDateString + '.' + currentMonthString;
-// };
-// Немножко порефакторил функцию - Безруков
-
-// Функия получения строкового представления текущей недели (например: "11.04-17.04")
-// Немножко порефакторил функцию - Безруков
-
-// const getCurrentWeekString = () => {
-// 	let dateObj = new Date();
-// 	const currentDate = dateObj.getDate();
-
-// 	const currentWeekDay = dateObj.getDay();
-
-// 	const weekStartDate =
-// 		currentDate - (currentWeekDay === 0 ? 6 : currentWeekDay - 1);
-// 	const weekStartDateObj = new Date();
-// 	weekStartDateObj.setDate(weekStartDate);
-// 	const weekStartStringISO = weekStartDateObj.toISOString();
-// 	const weekStartStringDate = weekStartStringISO[8] + weekStartStringISO[9];
-// 	const weekStartStringMonth = weekStartStringISO[5] + weekStartStringISO[6];
-// 	const weekStartString = weekStartStringDate + '.' + weekStartStringMonth;
-
-// 	const weekEndDate =
-// 		currentDate + (currentWeekDay === 0 ? 0 : 7 - currentWeekDay);
-// 	const weekEndDateObj = new Date();
-// 	weekEndDateObj.setDate(weekEndDate);
-// 	const weekEndStringISO = weekEndDateObj.toISOString();
-// 	const weekEndStringDate = weekEndStringISO[8] + weekEndStringISO[9];
-// 	const weekEndStringMonth = weekEndStringISO[5] + weekEndStringISO[6];
-// 	const weekEndString = weekEndStringDate + '.' + weekEndStringMonth;
-
-// 	return weekStartString + '\u2013' + weekEndString;
-// };
-
 // Функция получения массива дат календаря для текущего месяца с добавками чисел в начале и в конце массива от предыдущего и последующего месяцев
 const getDaysArray = (currentYear, currentMonth) => {
 	const daysArray = [];
@@ -182,11 +141,6 @@ const getDaysElementsArr = (
 };
 
 export {
-	//	getCurrentDayData,
-	//getLastDateOfMonth,
-	//	getFirstAndLastDaysOfMonth,
-	//	getCurrentDateString,
-	//	getCurrentWeekString,
 	getDaysArray,
 	getDaysElementsArr,
 };

@@ -19,22 +19,13 @@ const eventsElement = document.querySelector('.events');
 // Создаем экземпляр попапа события
 const eventPopup = new EventPopup('.event-popup', () => eventsElement.classList.remove('hidden'));
 
-// events.forEach((event) =>
-// 	eventsElement.append(
-// 		new Event(eventTemplateSelector, event, () => eventPopup.open(event))
-// 	)
-// );
-
 const eventTemplateSelector = '.event-template';
 
 function handleEventClick(event) {
-	//	console.log(window.innerHeight, eventsElement.clientWidth);
 	if (eventsElement.clientWidth > 425) return;
 	eventsElement.classList.add('hidden');
 	eventPopup.open(event);
 }
-
-//events_title_sideway
 
 function renderEvents(events, period = 'month') {
 	eventPopup.close();
@@ -42,9 +33,7 @@ function renderEvents(events, period = 'month') {
 	eventsElement.innerHTML = '';
 	let currentDate = '';
 	let wrapperElement = null;
-	//	console.log(period);
 	events.forEach(event => {
-		//		console.log(event);
 		if (currentDate !== event.date) {
 			const eventsDayElement = document.querySelector('.events-template').content.cloneNode(true).querySelector('.events');
 			const titleElement = eventsDayElement.querySelector('.events__title');
