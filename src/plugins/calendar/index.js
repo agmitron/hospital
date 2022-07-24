@@ -7,12 +7,14 @@ import {
 	getDaysArray,
 	getDaysElementsArr,
 } from './logic.js';
-import { getCurrentDayData } from '../../utils/dateUtils.js';
+import { getCurrentDayData, getCurrentWeekAsArray, getDottedDateString } from '../../utils/dateUtils.js';
 
+const filters = {
+	'day': event => event.date === getDottedDateString(),
+	'week': event => getCurrentWeekAsArray().includes(event.date),
+	'month': month => event => event.date.slice(3, 5) === String(month).padStart(2, '0'),
+};
 
-function makeDate(dateObj) {
-	return String(dateObj.getDate()).padStart(2, '0') + '.' + String(dateObj.getMonth() + 1).padStart(2, '0') + '.' + dateObj.getFullYear();
-}
 
 export function initCalendar(containerSelector, onDateClick, events) {
 	// --------------------- выбираем DOM элементы ------------------------
@@ -75,6 +77,9 @@ export function initCalendar(containerSelector, onDateClick, events) {
 			currentPeriodElement,
 			changePeriodBtnElement,
 		});
+//		console.log(currentMonth + 1);
+		onDateClick(events.filter(filters['month'](currentMonth + 1)));
+
 	});
 
 	// Переключение месяца на следующий
@@ -103,6 +108,9 @@ export function initCalendar(containerSelector, onDateClick, events) {
 			currentPeriodElement,
 			changePeriodBtnElement,
 		});
+//		console.log(currentMonth + 1);
+		onDateClick(events.filter(filters['month'](currentMonth + 1)));
+
 	});
 
 	// Переключение отображаемого периода (кнопка "Месяц/Неделя")
@@ -140,8 +148,8 @@ export function initCalendar(containerSelector, onDateClick, events) {
 			currentPeriodElement,
 			changePeriodBtnElement,
 		});
-
-		onDateClick(events.filter(event => event.date === makeDate(new Date())));
+		const filterFunction = displayedPeriod === 'week' ? filters['week'] : filters['month'](new Date().getMonth() + 1);
+		onDateClick(events.filter(filterFunction));
 
 	});
 
@@ -173,8 +181,7 @@ export function initCalendar(containerSelector, onDateClick, events) {
 			currentPeriodElement,
 			changePeriodBtnElement,
 		});
-
-		onDateClick(events.filter(event => event.date === makeDate(new Date())));
+		onDateClick(events.filter(filters[displayedPeriod]));
 
 	});
 

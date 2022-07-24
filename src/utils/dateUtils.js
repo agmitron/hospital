@@ -1,3 +1,6 @@
+
+const dayLength = 1000 * 60 * 60 * 24;
+
 // Функция получения значений текущего года, месяца, даты и дня недели
 const getCurrentDayData = () => {
     const currentDateObj = new Date();
@@ -10,19 +13,35 @@ const getCurrentDayData = () => {
     };
 };
 
+const getDottedDateString = (date) => {
+    const dateObj = date ? new Date(date) : new Date();
+    return `${String(dateObj.getDate()).padStart(2, '0')}.${String(dateObj.getMonth() + 1).padStart(2, '0')}.${dateObj.getFullYear()}`;
+}
+
 const getCurrentDateString = (date) => {
     const dateObj = date ? new Date(date) : new Date();
     return `${String(dateObj.getDate()).padStart(2, '0')}.${String(dateObj.getMonth() + 1).padStart(2, '0')}`;
 }
 
-const getCurrentWeekString = () => {
+const getCurrentWeekMonday = () => {
     const dateObj = new Date();
     const epoch = dateObj.getTime();
-    const dayLength = 1000 * 60 * 60 * 24;
     const dayOfWeek = dateObj.getDay() || 7;
+    return epoch - (dayOfWeek - 1) * dayLength;
+}
 
-    const monday = epoch - (dayOfWeek - 1) * dayLength;
-    const sunday = epoch + (7 - dayOfWeek) * dayLength;
+const getCurrentWeekAsArray = () => {
+    const daysArray = [];
+    const monday = getCurrentWeekMonday();
+    for (let i = 0; i < 7; i++) {
+        daysArray.push(getDottedDateString(monday + i * dayLength));
+    }
+    return daysArray;
+}
+
+const getCurrentWeekAsString = () => {
+    const monday = getCurrentWeekMonday();
+    const sunday = monday + 7 * dayLength;
     return `${getCurrentDateString(monday)}-${getCurrentDateString(sunday)}`;
 }
 
@@ -47,7 +66,9 @@ const getFirstAndLastDaysOfMonth = (year, month) => {
 export {
     getCurrentDayData,
     getCurrentDateString,
-    getCurrentWeekString,
+    getCurrentWeekAsString,
     getLastDateOfMonth,
-    getFirstAndLastDaysOfMonth
+    getFirstAndLastDaysOfMonth,
+    getCurrentWeekAsArray, 
+    getDottedDateString
 };

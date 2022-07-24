@@ -51,7 +51,7 @@ function renderEvents(events) {
 	let currentDate = '';
 	let wrapperElement = null;
 	events.forEach(event => {
-		console.log(event);
+//		console.log(event);
 		if (currentDate !== event.date) {
 			const eventsDayElement = document.querySelector('.events-template').content.cloneNode(true).querySelector('.events');
 			const titleElement = eventsDayElement.querySelector('.events__title');
