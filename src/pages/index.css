@@ -74,6 +74,7 @@
 @import url(../blocks/events/_title/events_title_sideway.css);
 @import url(../blocks/events/__container/events__container.css);
 @import url(../blocks/events/__title/events__title.css);
+@import url(../blocks/events/__title/_brief/events__title_brief.css);
 @import url(../blocks/events/__title/_selected/events__title_selected.css);
 
 @import url(../blocks/event-popup/event-popup.css);

@@ -2,6 +2,7 @@ import './index.css';
 import { calendarContainerSelector } from '../utils/constants.js';
 import { initCalendar } from '../plugins/calendar/index.js';
 import { gsheets } from '../api/gsheets';
+import { makeSideDate, isToday, makeTitleDate } from '../utils/dateUtils';
 
 import EventPopup from '../utils/EventPopup.js';
 import Event from '../utils/Event.js';
@@ -26,45 +27,34 @@ const eventPopup = new EventPopup('.event-popup', () => eventsElement.classList.
 
 const eventTemplateSelector = '.event-template';
 
-function makeDateObj(dateString) {
-	const [day, month, year] = dateString.split('.');
-	return new Date(year, month - 1, day);
-}
-
-function makeSideDate(dateString) {
-	const date = makeDateObj(dateString);
-	return date
-		.toLocaleString('ru', { weekday: 'short', day: 'numeric' })
-		.toUpperCase()
-		.replace(',', '');
-}
-
-function isToday(dateString) {
-	const date = makeDateObj(dateString);
-	const today = new Date();
-	return date.toLocaleDateString() === today.toLocaleDateString();
-}
-
 function handleEventClick(event) {
-//	console.log(window.innerHeight, eventsElement.clientWidth);
+	//	console.log(window.innerHeight, eventsElement.clientWidth);
 	if (eventsElement.clientWidth > 425) return;
 	eventsElement.classList.add('hidden');
 	eventPopup.open(event);
 }
 
-function renderEvents(events, period) {
+//events_title_sideway
+
+function renderEvents(events, period = 'month') {
 	eventPopup.close();
+	const titleStyle = period === 'month' && eventsElement.clientWidth > 425 ? 'full' : 'brief';
 	eventsElement.innerHTML = '';
 	let currentDate = '';
 	let wrapperElement = null;
-//	console.log(period);
+	//	console.log(period);
 	events.forEach(event => {
 		//		console.log(event);
 		if (currentDate !== event.date) {
 			const eventsDayElement = document.querySelector('.events-template').content.cloneNode(true).querySelector('.events');
 			const titleElement = eventsDayElement.querySelector('.events__title');
 			wrapperElement = eventsDayElement.querySelector('.events__container');
-			titleElement.textContent = makeSideDate(event.date);
+			console.log(period, titleStyle);
+			titleElement.textContent = titleStyle === 'brief' ? makeSideDate(event.date) : makeTitleDate(event.date);
+			if (titleStyle === 'brief') {
+				eventsDayElement.classList.add('events_title_sideway');
+				titleElement.classList.add('events__title_brief');
+			}
 			if (isToday(event.date)) titleElement.classList.add('events__title_selected');
 			eventsElement.append(eventsDayElement);
 			currentDate = event.date;

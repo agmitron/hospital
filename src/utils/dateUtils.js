@@ -63,12 +63,42 @@ const getFirstAndLastDaysOfMonth = (year, month) => {
     return { firstWeekDayOfMonth, lastWeekDayOfMonth };
 };
 
+function makeDateObj(dateString) {
+    const [day, month, year] = dateString.split('.');
+    return new Date(year, month - 1, day);
+}
+
+function makeSideDate(dateString) {
+    const date = makeDateObj(dateString);
+    return date
+        .toLocaleString('ru', { weekday: 'short', day: 'numeric' })
+        .toUpperCase()
+        .replace(',', '');
+}
+
+function makeTitleDate(dateString) {
+    const date = makeDateObj(dateString);
+    return date
+        .toLocaleString('ru', { weekday: 'long', day: 'numeric', month: 'numeric' })
+        .toUpperCase()
+        .replace(',', '');
+}
+
+function isToday(dateString) {
+    const date = makeDateObj(dateString);
+    const today = new Date();
+    return date.toLocaleDateString() === today.toLocaleDateString();
+}
+
 export {
     getCurrentDayData,
     getCurrentDateString,
     getCurrentWeekAsString,
     getLastDateOfMonth,
     getFirstAndLastDaysOfMonth,
-    getCurrentWeekAsArray, 
-    getDottedDateString
+    getCurrentWeekAsArray,
+    getDottedDateString,
+    makeSideDate,
+    makeTitleDate,
+    isToday,
 };
