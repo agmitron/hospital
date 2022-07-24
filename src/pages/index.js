@@ -12,8 +12,11 @@ const options = {
 	sheetName: 'Лист1',
 }
 
+// Секция с ивентами
+const eventsElement = document.querySelector('.events');
+
 // Создаем экземпляр попапа события
-const eventPopup = new EventPopup('.event-popup');
+const eventPopup = new EventPopup('.event-popup', () => eventsElement.classList.remove('hidden'));
 
 // events.forEach((event) =>
 // 	eventsElement.append(
@@ -22,9 +25,6 @@ const eventPopup = new EventPopup('.event-popup');
 // );
 
 const eventTemplateSelector = '.event-template';
-
-// Секция с ивентами
-const eventsElement = document.querySelector('.events');
 
 function makeDateObj(dateString) {
 	const [day, month, year] = dateString.split('.');
@@ -45,13 +45,21 @@ function isToday(dateString) {
 	return date.toLocaleDateString() === today.toLocaleDateString();
 }
 
-function renderEvents(events) {
+function handleEventClick(event) {
+	console.log(window.innerHeight, eventsElement.clientWidth);
+	if (eventsElement.clientWidth > 425) return;
+	eventsElement.classList.add('hidden');
+	eventPopup.open(event);
+}
+
+function renderEvents(events, period) {
 	eventPopup.close();
 	eventsElement.innerHTML = '';
 	let currentDate = '';
 	let wrapperElement = null;
+	console.log(period);
 	events.forEach(event => {
-//		console.log(event);
+		//		console.log(event);
 		if (currentDate !== event.date) {
 			const eventsDayElement = document.querySelector('.events-template').content.cloneNode(true).querySelector('.events');
 			const titleElement = eventsDayElement.querySelector('.events__title');
@@ -61,7 +69,7 @@ function renderEvents(events) {
 			eventsElement.append(eventsDayElement);
 			currentDate = event.date;
 		}
-		wrapperElement.append(new Event(eventTemplateSelector, event, () => eventPopup.open(event)))
+		wrapperElement.append(new Event(eventTemplateSelector, event, () => handleEventClick(event)))
 	});
 }
 

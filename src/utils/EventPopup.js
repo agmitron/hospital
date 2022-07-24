@@ -16,7 +16,7 @@ const iconTexts = {
 };
 
 export default class EventPopup {
-    constructor(selector) {
+    constructor(selector, onClose) {
         this._popupOpenedClass = 'event-popup_opened';
         this._element = document.querySelector(selector);
         this._closeButton = this._element.querySelector('.icon_type_close');
@@ -26,6 +26,7 @@ export default class EventPopup {
         this._date = this._element.querySelector('.event-popup__text_date');
         this._hours = this._element.querySelector('.event-popup__text_hours');
         this._activities = this._element.querySelector('.event-popup__activities');
+        this._onClose = onClose;
         return this;
     }
 
@@ -44,6 +45,7 @@ export default class EventPopup {
     close() {
         this._element.classList.remove(this._popupOpenedClass);
         this._removeEventListeners();
+        this._onClose && this._onClose();
     }
 
     isOpened() {

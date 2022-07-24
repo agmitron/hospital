@@ -86,3 +86,5 @@
 @import url(../blocks/event-popup/__buttons/event-popup__buttons.css);
 @import url(../blocks/event-popup/__button/event-popup__button.css);
 @import url(../blocks/event-popup/__button/_red/event-popup__button_red.css);
+
+@import url(../blocks/hidden/hidden.css);

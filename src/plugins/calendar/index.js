@@ -16,7 +16,7 @@ const filters = {
 };
 
 
-export function initCalendar(containerSelector, onDateClick, events) {
+export function initCalendar(containerSelector, updateEvents, events) {
 	// --------------------- выбираем DOM элементы ------------------------
 	const {
 		daysListContainer,
@@ -44,7 +44,7 @@ export function initCalendar(containerSelector, onDateClick, events) {
 		daysArray,
 		dayTemplateElement,
 		currentMonth,
-		onClick: onDateClick,
+		onClick: updateEvents,
 		events,
 	}
 	);
@@ -77,8 +77,8 @@ export function initCalendar(containerSelector, onDateClick, events) {
 			currentPeriodElement,
 			changePeriodBtnElement,
 		});
-//		console.log(currentMonth + 1);
-		onDateClick(events.filter(filters['month'](currentMonth + 1)));
+		//		console.log(currentMonth + 1);
+		updateEvents(events.filter(filters['month'](currentMonth + 1)), displayedPeriod);
 
 	});
 
@@ -108,8 +108,8 @@ export function initCalendar(containerSelector, onDateClick, events) {
 			currentPeriodElement,
 			changePeriodBtnElement,
 		});
-//		console.log(currentMonth + 1);
-		onDateClick(events.filter(filters['month'](currentMonth + 1)));
+		//		console.log(currentMonth + 1);
+		updateEvents(events.filter(filters['month'](currentMonth + 1)), displayedPeriod);
 
 	});
 
@@ -148,8 +148,8 @@ export function initCalendar(containerSelector, onDateClick, events) {
 			currentPeriodElement,
 			changePeriodBtnElement,
 		});
-		const filterFunction = displayedPeriod === 'week' ? filters['week'] : filters['month'](new Date().getMonth() + 1);
-		onDateClick(events.filter(filterFunction));
+		const filterFunction = displayedPeriod === 'week' ? filters['week'] : filters['month'](currentMonth + 1);
+		updateEvents(events.filter(filterFunction), displayedPeriod);
 
 	});
 
@@ -181,7 +181,7 @@ export function initCalendar(containerSelector, onDateClick, events) {
 			currentPeriodElement,
 			changePeriodBtnElement,
 		});
-		onDateClick(events.filter(filters[displayedPeriod]));
+		updateEvents(events.filter(filters[displayedPeriod]), displayedPeriod);
 
 	});
 
@@ -210,7 +210,7 @@ export function initCalendar(containerSelector, onDateClick, events) {
 			daysArray,
 			dayTemplateElement,
 			currentMonth,
-			onClick: onDateClick,
+			onClick: updateEvents,
 			events,
 		});
 	};
