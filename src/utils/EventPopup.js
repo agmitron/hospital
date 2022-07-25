@@ -1,22 +1,6 @@
-const iconTexts = {
-    food: 'Еда',
-    shower: 'Душ',
-    medkit: 'Медицинская помощь',
-    clothdry: 'Сушка одежды',
-    clothwash: 'Стирка',
-    sleep: 'Ночлег',
-    help: 'Социальная помощь',
-    warm: 'Обогрев',
-    health: 'Средства гигиены',
-    eyes: 'Офтальмология',
-    vaccine: 'Вакцинация',
-    aids: 'ВИЧ',
-    covid: 'Covid',
-    haircut: 'Стрижка',
-};
-
+import { iconTexts } from "./constants";
 export default class EventPopup {
-    constructor(selector) {
+    constructor(selector, onClose) {
         this._popupOpenedClass = 'event-popup_opened';
         this._element = document.querySelector(selector);
         this._closeButton = this._element.querySelector('.icon_type_close');
@@ -26,28 +10,37 @@ export default class EventPopup {
         this._date = this._element.querySelector('.event-popup__text_date');
         this._hours = this._element.querySelector('.event-popup__text_hours');
         this._activities = this._element.querySelector('.event-popup__activities');
+        this._onClose = onClose;
         return this;
     }
 
-    open({ title = '', address = '', icons = [], metro = '', hours, date } = {}) {
+    open({ title = '', address = '', activities = '', metro = '', hours, date } = {}) {
         this._element.classList.add(this._popupOpenedClass);
         this._title.textContent = title;
         this._address.textContent = address;
         this._metro.textContent = metro;
-        this._date.textContent = date;
+        this._date.textContent = this._convertDate(date);
         this._hours.textContent = hours;
         this._activities.innerHTML = '';
-        icons.forEach(icon => this._activities.append(this._createActivity(icon, iconTexts[icon])));
+        activities.split(' ').filter(x => x).forEach(icon => this._activities.append(this._createActivity(icon, iconTexts[icon])));
         this._setEventListeners();
     }
 
     close() {
         this._element.classList.remove(this._popupOpenedClass);
         this._removeEventListeners();
+        this._onClose && this._onClose();
     }
 
     isOpened() {
         return this._element.classList.contains(this._popupOpenedClass);
+    }
+
+    _convertDate(dateString) {
+        const [day, month, year] = dateString.split('.');
+        const date = new Date(year, month - 1, day);
+        const localDate = date.toLocaleString('ru', { weekday: 'long', day: 'numeric', month: 'long' });
+        return localDate[0].toUpperCase() + localDate.slice(1).replace(',', '');
     }
 
     _createActivity(icon, text) {

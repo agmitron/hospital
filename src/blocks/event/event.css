@@ -5,11 +5,14 @@
   background-color: white;
   color: #1b1b1b;
 }
-.events_large .event {
-  box-shadow: none;
-  display: grid;
-  grid-template-areas: "title icons" "details icons";
-  grid-auto-rows: auto 1fr;
-  padding: 0 26px;
-  column-gap: 10px;
+
+@media screen and (min-width: 425px) {
+  .event {
+    box-shadow: none;
+    display: grid;
+    grid-template-areas: "title icons" "details icons";
+    grid-auto-rows: auto 1fr;
+    padding: 0 26px;
+    column-gap: 10px;
+  }
 }

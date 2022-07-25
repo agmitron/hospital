@@ -4,12 +4,19 @@ import {
 } from '../../utils/constants.js';
 import { getDOMElements, renderAllCalendarElements } from './rendering.js';
 import {
-	getCurrentDayData,
 	getDaysArray,
 	getDaysElementsArr,
 } from './logic.js';
+import { getCurrentDayData, getCurrentWeekAsArray, getDottedDateString } from '../../utils/dateUtils.js';
 
-export function initCalendar(containerSelector) {
+const filters = {
+	'day': event => event.date === getDottedDateString(),
+	'week': event => getCurrentWeekAsArray().includes(event.date),
+	'month': month => event => event.date.slice(3, 5) === String(month).padStart(2, '0'),
+};
+
+
+export function initCalendar(containerSelector, updateEvents, events) {
 	// --------------------- выбираем DOM элементы ------------------------
 	const {
 		daysListContainer,
@@ -31,11 +38,15 @@ export function initCalendar(containerSelector) {
 	let displayedPeriod = timePeriodsForDisplay.month;
 	// текущий массив дней для отрисовки сетки (элемент массива - объект с полями: data, month, year, dateObj)
 	let daysArray = getDaysArray(currentYear, currentMonth);
+	//	console.log(events);
 	// текущий массив html-элементов дней для отрисовки сетки
-	let daysElementsArr = getDaysElementsArr(
+	let daysElementsArr = getDaysElementsArr({
 		daysArray,
 		dayTemplateElement,
-		currentMonth
+		currentMonth,
+		onClick: updateEvents,
+		events,
+	}
 	);
 
 	// ------------------------------ добавляем обработчики событий --------------------------------
@@ -66,6 +77,9 @@ export function initCalendar(containerSelector) {
 			currentPeriodElement,
 			changePeriodBtnElement,
 		});
+		//		console.log(currentMonth + 1);
+		updateEvents(events.filter(filters['month'](currentMonth + 1)), displayedPeriod);
+
 	});
 
 	// Переключение месяца на следующий
@@ -94,6 +108,9 @@ export function initCalendar(containerSelector) {
 			currentPeriodElement,
 			changePeriodBtnElement,
 		});
+		//		console.log(currentMonth + 1);
+		updateEvents(events.filter(filters['month'](currentMonth + 1)), displayedPeriod);
+
 	});
 
 	// Переключение отображаемого периода (кнопка "Месяц/Неделя")
@@ -131,21 +148,27 @@ export function initCalendar(containerSelector) {
 			currentPeriodElement,
 			changePeriodBtnElement,
 		});
+		const filterFunction = displayedPeriod === 'week' ? filters['week'] : filters['month'](currentMonth + 1);
+		updateEvents(events.filter(filterFunction), displayedPeriod);
+
 	});
 
 	// Переключение отображаемого периода (кнопка "Сегодня")
 	todayBtnElement.addEventListener('mouseup', (e) => {
+		// переключаем значение месяца и года
+
+		// Используются для обновления сетки календаря, которая не нужна в режиме Сегодня - Безруков
+		// currentYear = new Date().getFullYear();
+		// currentMonth = new Date().getMonth();
 		// меняем значение переменной отображаемого периода на день
 		if (displayedPeriod !== timePeriodsForDisplay.day) {
 			displayedPeriod = timePeriodsForDisplay.day;
 			// для дня сетка календаря не должна отображаться, поэтому убираем её
 			calendarGridContainer.classList.add(invisibilityModifier);
 		}
-		// переключаем значение месяца и года
-		currentYear = new Date().getFullYear();
-		currentMonth = new Date().getMonth();
 		// обновляем сетку календаря и рендерим элементы
-		updateCalendarGrid(currentYear, currentMonth);
+		// В режиме Сегодня сетки календаря нет, так что обновлять нет необходимости - Безруков
+		//		updateCalendarGrid(currentYear, currentMonth);
 		renderAllCalendarElements({
 			daysListContainer,
 			daysElementsArr,
@@ -158,6 +181,8 @@ export function initCalendar(containerSelector) {
 			currentPeriodElement,
 			changePeriodBtnElement,
 		});
+		updateEvents(events.filter(filters[displayedPeriod]), displayedPeriod);
+
 	});
 
 	// ---------------------------- отрисовываем элементы ------------------------------
@@ -179,11 +204,14 @@ export function initCalendar(containerSelector) {
 	// Функция обновления сетки календаря
 	const updateCalendarGrid = (currentYear, currentMonth) => {
 		daysArray = getDaysArray(currentYear, currentMonth);
+		//		console.log(daysArray);
 		// обновляем массив html-элементов для отрисовки
-		daysElementsArr = getDaysElementsArr(
+		daysElementsArr = getDaysElementsArr({
 			daysArray,
 			dayTemplateElement,
-			currentMonth
-		);
+			currentMonth,
+			onClick: updateEvents,
+			events,
+		});
 	};
 }
