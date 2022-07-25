@@ -3,9 +3,11 @@ import { calendarContainerSelector } from '../utils/constants.js';
 import { initCalendar } from '../plugins/calendar/index.js';
 import { gsheets } from '../api/gsheets';
 import { makeSideDate, isToday, makeTitleDate } from '../utils/dateUtils';
+import { iconTexts } from '../utils/constants.js';
 
 import EventPopup from '../utils/EventPopup.js';
 import Event from '../utils/Event.js';
+import Tooltip from '../utils/Tooltip';
 
 const options = {
 	apiKey: 'AIzaSyAozRsHSFgLEZkH-Du-a2r4K1CsXPLjj2o',
@@ -19,12 +21,19 @@ const eventsElement = document.querySelector('.events');
 // Создаем экземпляр попапа события
 const eventPopup = new EventPopup('.event-popup', () => eventsElement.classList.remove('hidden'));
 
+// Создаем экземпляр тултипа
+const tooltip = new Tooltip('.tooltip');
+
 const eventTemplateSelector = '.event-template';
 
 function handleEventClick(event) {
 	if (eventsElement.clientWidth > 425) return;
 	eventsElement.classList.add('hidden');
 	eventPopup.open(event);
+}
+
+function showTooltip(type, evt) {
+	tooltip.show(iconTexts[type], evt);
 }
 
 function renderEvents(events, period = 'month') {
@@ -48,7 +57,14 @@ function renderEvents(events, period = 'month') {
 			eventsElement.append(eventsDayElement);
 			currentDate = event.date;
 		}
-		wrapperElement.append(new Event(eventTemplateSelector, event, () => handleEventClick(event)))
+		wrapperElement.append(
+			new Event({
+				templateSelector: eventTemplateSelector,
+				event,
+				onClick: () => handleEventClick(event),
+				onMouseOver: showTooltip,
+				onMouseOut: tooltip.hide,
+			}))
 	});
 }
 

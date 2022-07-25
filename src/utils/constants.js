@@ -44,6 +44,23 @@ const monthsArr = [
 // Отображаемые периоды времени
 const timePeriodsForDisplay = { day: 'day', week: 'week', month: 'month' };
 
+const iconTexts = {
+	food: 'Еда',
+	shower: 'Душ',
+	medkit: 'Медицинская помощь',
+	clothdry: 'Сушка одежды',
+	clothwash: 'Стирка',
+	sleep: 'Ночлег',
+	help: 'Социальная помощь',
+	warm: 'Обогрев',
+	health: 'Средства гигиены',
+	eyes: 'Офтальмология',
+	vaccine: 'Вакцинация',
+	aids: 'ВИЧ',
+	covid: 'Covid',
+	haircut: 'Стрижка',
+};
+
 export {
 	calendarContainerSelector,
 	daysListContainerSelector,
@@ -61,4 +78,5 @@ export {
 	calendarGridContainerSelector,
 	todayBtnSelector,
 	invisibilityModifier,
+	iconTexts,
 };

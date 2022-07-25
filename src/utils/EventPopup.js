@@ -1,20 +1,4 @@
-const iconTexts = {
-    food: 'Еда',
-    shower: 'Душ',
-    medkit: 'Медицинская помощь',
-    clothdry: 'Сушка одежды',
-    clothwash: 'Стирка',
-    sleep: 'Ночлег',
-    help: 'Социальная помощь',
-    warm: 'Обогрев',
-    health: 'Средства гигиены',
-    eyes: 'Офтальмология',
-    vaccine: 'Вакцинация',
-    aids: 'ВИЧ',
-    covid: 'Covid',
-    haircut: 'Стрижка',
-};
-
+import { iconTexts } from "./constants";
 export default class EventPopup {
     constructor(selector, onClose) {
         this._popupOpenedClass = 'event-popup_opened';

@@ -1,5 +1,7 @@
 .page {
+  position: relative;
   padding: 0;
   margin: 0 auto;
   max-width: 600px;
+  font-family: "Roboto", sans-serif;
 }

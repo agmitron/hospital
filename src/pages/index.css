@@ -88,4 +88,7 @@
 @import url(../blocks/event-popup/__button/event-popup__button.css);
 @import url(../blocks/event-popup/__button/_red/event-popup__button_red.css);
 
+@import url(../blocks/tooltip/tooltip.css);
+@import url(../blocks/tooltip/__text/tooltip__text.css);
+
 @import url(../blocks/hidden/hidden.css);
