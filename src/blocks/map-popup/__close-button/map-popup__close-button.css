@@ -1,0 +1,8 @@
+.map-popup__close-button {
+  /* position: absolute;
+  top: 20px;
+  right: 20px; */
+  width: 34px;
+  height: 34px;
+  background-image: url(../../../images/icon-close.svg);
+}

@@ -1,5 +1,6 @@
 import { calendarContainerSelector } from '../utils/constants.js';
 import { initCalendar } from '../plugins/calendar/index.js';
+import inintMap from '../plugins/map/map.js';
 
 import EventPopup from '../utils/EventPopup.js';
 import Event from '../utils/Event.js';
@@ -45,4 +46,12 @@ events.forEach((event) =>
 	)
 );
 
+// Запускаем календарь
 initCalendar(calendarContainerSelector);
+
+// Координаты и адрес маркера
+const markerCoordinates = [59.937329, 30.308235];
+const markerAddres = 'Адмиралтейский проезд, 1';
+
+// Запускаем карту
+inintMap({ markerCoordinates, markerAddres });
