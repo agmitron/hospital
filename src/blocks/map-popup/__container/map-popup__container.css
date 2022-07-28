@@ -1,0 +1,6 @@
+.map-popup__container {
+  max-width: 600px;
+  min-width: 320px;
+  height: 100%;
+  margin: auto;
+}

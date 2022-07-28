@@ -44,6 +44,9 @@ const monthsArr = [
 // Отображаемые периоды времени
 const timePeriodsForDisplay = { day: 'day', week: 'week', month: 'month' };
 
+// Координаты центра карты по умолчанию (Санкт-Петербург, Адмиралтейский проезд, 1)
+const mapCenterCoords = [59.937329, 30.308235];
+
 export {
 	calendarContainerSelector,
 	daysListContainerSelector,
@@ -61,4 +64,5 @@ export {
 	calendarGridContainerSelector,
 	todayBtnSelector,
 	invisibilityModifier,
+	mapCenterCoords,
 };

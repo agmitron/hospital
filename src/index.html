@@ -84,10 +84,10 @@
         Агатов переулок 37, корп 4, Санкт-Петербург
       </p>
       <div class="event-popup__buttons">
-        <button class="event-popup__button event-popup__button_red">
+        <button class="button event-popup__button event-popup__button_red">
           Как добраться?
         </button>
-        <button class="event-popup__button">Позвонить</button>
+        <button class="button event-popup__button">Позвонить</button>
       </div>
     </section>
   </div>
@@ -104,7 +104,18 @@
     </div>
   </template>
 
+  <section class="map-popup">
+    <div class="map-popup__container">
+      <button type="button" class="button map-popup__close-button"></button>
+      <div id="map" class="map"></div>
+    </div>
+
+  </section>
+
   <script type="module" src="./pages/index.js"></script>
+  <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=08f019ca-e5f7-492b-b1e1-291179ed5f7e"
+    type="text/javascript"></script>
+  <!-- <script src="./plugins/map/map.js" type="text/javascript"></script> -->
 </body>
 
 </html>
