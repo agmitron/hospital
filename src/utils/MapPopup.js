@@ -1,24 +1,15 @@
 export default class MapPopup {
-	constructor(selector, markerData) {
+	constructor(selector, addPlaceMarker) {
 		this._popupOpenedClass = 'map-popup_opened';
 		this._element = document.querySelector(selector);
 		this._closeButton = this._element.querySelector('.map-popup__close-button');
-		this._markerData = markerData;
-		return this;
+		this._addPlaceMarker = addPlaceMarker;
 	}
 
 	open({ title = '', address = '', icons = [], metro = '', hours, date } = {}) {
-		this._element.classList.add(this._popupOpenedClass);
-		this._title.textContent = title;
-		this._address.textContent = address;
-		this._metro.textContent = metro;
-		this._date.textContent = date;
-		this._hours.textContent = hours;
-		this._activities.innerHTML = '';
-		icons.forEach((icon) =>
-			this._activities.append(this._createActivity(icon, iconTexts[icon]))
-		);
+		this._addPlaceMarker();
 		this._setEventListeners();
+		this._element.classList.add(this._popupOpenedClass);
 	}
 
 	close() {
@@ -28,16 +19,6 @@ export default class MapPopup {
 
 	isOpened() {
 		return this._element.classList.contains(this._popupOpenedClass);
-	}
-
-	_createActivity(icon, text) {
-		const element = document.createElement('li');
-		element.classList.add('event-popup__activity');
-		const iconElement = document.createElement('div');
-		iconElement.className = `icon icon_type_${icon}`;
-		element.textContent = text;
-		element.append(iconElement);
-		return element;
 	}
 
 	_handleCloseButton = () => {

@@ -90,5 +90,6 @@
 /* Карта */
 @import url(../blocks/map-popup/map-popup.css);
 @import url(../blocks/map-popup/_opened/map-popup_opened.css);
-@import url(../blocks/map-popup/__map/map-popup__map.css);
+@import url(../blocks/map-popup/__container/map-popup__container.css);
 @import url(../blocks/map-popup/__close-button/map-popup__close-button.css);
+@import url(../blocks/map-popup/__map/map-popup__map.css);
