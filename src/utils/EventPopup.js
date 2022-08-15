@@ -27,7 +27,7 @@ export default class EventPopup {
         this._date.textContent = this._convertDate(date);
         this._hours.textContent = hours;
         this._activities.innerHTML = '';
-		this.currentEvent = { title, address, icons, metro, hours, date };
+		this.currentEvent = { title, address, activities, metro, hours, date };
         activities.split(' ').filter(x => x).forEach(icon => this._activities.append(this._createActivity(icon, iconTexts[icon])));
         this._setEventListeners();
     }

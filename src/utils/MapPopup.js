@@ -6,7 +6,7 @@ export default class MapPopup {
 		this._addPlaceMarker = addPlaceMarker;
 	}
 
-	open({ title = '', address = '', icons = [], metro = '', hours, date } = {}) {
+	open() {
 		this._addPlaceMarker();
 		this._setEventListeners();
 		this._element.classList.add(this._popupOpenedClass);

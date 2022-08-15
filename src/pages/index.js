@@ -26,7 +26,7 @@ const eventsElement = document.querySelector('.events');
 const mapPopup = new MapPopup('.map-popup', () => initMap(mapCenterCoords, eventPopup.currentEvent.address));
 
 // Создаем экземпляр попапа события
-const eventPopup = new EventPopup('.event-popup', {onClose: () => eventsElement.classList.remove('hidden'), onMapOpen: () => mapPopup.open(eventPopup.currentEvent)});
+const eventPopup = new EventPopup('.event-popup', { onClose: () => eventsElement.classList.remove('hidden'), onMapOpen: () => mapPopup.open() });
 
 // Создаем экземпляр тултипа
 const tooltip = new Tooltip('.tooltip');
