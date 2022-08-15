@@ -44,6 +44,23 @@ const monthsArr = [
 // Отображаемые периоды времени
 const timePeriodsForDisplay = { day: 'day', week: 'week', month: 'month' };
 
+const iconTexts = {
+	food: 'Еда',
+	shower: 'Душ',
+	medkit: 'Медицинская помощь',
+	clothdry: 'Сушка одежды',
+	clothwash: 'Стирка',
+	sleep: 'Ночлег',
+	help: 'Социальная помощь',
+	warm: 'Обогрев',
+	health: 'Средства гигиены',
+	eyes: 'Офтальмология',
+	vaccine: 'Вакцинация',
+	aids: 'ВИЧ',
+	covid: 'Covid',
+	haircut: 'Стрижка',
+};
+
 // Координаты центра карты по умолчанию (Санкт-Петербург, Адмиралтейский проезд, 1)
 const mapCenterCoords = [59.937329, 30.308235];
 
@@ -64,5 +81,6 @@ export {
 	calendarGridContainerSelector,
 	todayBtnSelector,
 	invisibilityModifier,
+	iconTexts,
 	mapCenterCoords,
 };
