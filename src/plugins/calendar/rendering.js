@@ -13,7 +13,7 @@ import {
 	calendarGridContainerSelector,
 	todayBtnSelector,
 } from '../../utils/constants.js';
-import { getCurrentDateString, getCurrentWeekString } from './logic.js';
+import { getCurrentDateString, getCurrentWeekAsString } from '../../utils/dateUtils.js';
 
 const getDOMElements = (containerSelector) => {
 	const calendarContainer = document.querySelector(containerSelector);
@@ -91,7 +91,7 @@ const renderCurrentPeriod = (displayedPeriod, currentPeriodElement) => {
 			content = getCurrentDateString();
 			break;
 		case timePeriodsForDisplay.week:
-			content = getCurrentWeekString();
+			content = getCurrentWeekAsString();
 			break;
 		case timePeriodsForDisplay.month:
 			content = '';
