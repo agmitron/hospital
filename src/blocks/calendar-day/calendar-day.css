@@ -1,16 +1,17 @@
 .calendar-day {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px dashed #fff;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 120%;
-  letter-spacing: 0.18px;
-  position: relative;
+  margin: 0 !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  border: 1px dashed #fff !important;
+  font-weight: 400 !important;
+  font-size: 20px !important;
+  line-height: 120% !important;
+  letter-spacing: 0.18px !important;
+  position: relative !important;
 }
 
 .calendar-day:hover {
-  border-color: #787878;
-  cursor: pointer;
+  border-color: #787878 !important;
+  cursor: pointer !important;
 }

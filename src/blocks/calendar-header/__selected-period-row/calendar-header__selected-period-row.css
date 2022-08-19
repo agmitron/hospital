@@ -1,17 +1,17 @@
 .calendar-header__selected-period-row {
-  padding: 8px 0;
-  min-height: 21.6px;
-  display: block;
-  text-align: center;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 120%;
-  letter-spacing: 0.18px;
-  color: #bf1523;
+  padding: 8px 0 !important;
+  min-height: 21.6px !important;
+  display: block !important;
+  text-align: center !important;
+  font-weight: 500 !important;
+  font-size: 18px !important;
+  line-height: 120% !important;
+  letter-spacing: 0.18px !important;
+  color: #bf1523 !important;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-header__selected-period-row {
-    display: none;
+    display: none !important;
   }
 }

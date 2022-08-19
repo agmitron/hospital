@@ -1,13 +1,13 @@
 .event-popup__button {
-  width: 280px;
-  padding: 14px;
-  border: 1px solid rgba(191, 21, 35, 1);
-  color: rgba(191, 21, 35, 1);
-  background-color: white;
-  font-family: Roboto;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 20px;
-  text-align: center;
-  margin: 0 auto;
+  width: 280px !important;
+  padding: 14px !important;
+  border: 1px solid rgba(191, 21, 35, 1) !important;
+  color: rgba(191, 21, 35, 1) !important;
+  background-color: white !important;
+  font-family: Roboto !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 20px !important;
+  text-align: center !important;
+  margin: 0 auto !important;
 }

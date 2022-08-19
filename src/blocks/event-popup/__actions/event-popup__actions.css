@@ -1,9 +1,9 @@
 .event-popup__actions {
-  list-style: none;
-  display: flex;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  align-self: flex-end;
-  gap: 16px;
+  list-style: none !important;
+  display: flex !important;
+  align-items: center !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  align-self: flex-end !important;
+  gap: 16px !important;
 }

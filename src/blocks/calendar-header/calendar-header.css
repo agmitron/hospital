@@ -1,11 +1,11 @@
 .calendar-header {
-  padding: 8px 15.5px 0 14.5px;
-  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.09);
+  padding: 8px 15.5px 0 14.5px !important;
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.09) !important;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-header {
-    padding: 14px 16px 6px;
-    box-shadow: none;
+    padding: 14px 16px 6px !important;
+    box-shadow: none !important;
   }
 }

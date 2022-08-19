@@ -1,11 +1,11 @@
 .calendar-header__change-month-btn_type_previous {
-  background: content-box url(../../../../images/left-arrow.svg);
-  padding: 9.2px 16.5px 9.2px 14.7px;
+  background: content-box url(../../../../images/left-arrow.svg) !important;
+  padding: 9.2px 16.5px 9.2px 14.7px !important;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-header__change-month-btn_type_previous {
-    background-image: url(../../../../images/left-arrow_mobile.svg);
-    padding: 5px 9px 5px 8px;
+    background-image: url(../../../../images/left-arrow_mobile.svg) !important;
+    padding: 5px 9px 5px 8px !important;
   }
 }

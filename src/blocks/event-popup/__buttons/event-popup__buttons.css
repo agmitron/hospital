@@ -1,6 +1,6 @@
 .event-popup__buttons {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  margin-top: 56px;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  margin-top: 56px !important;
 }

@@ -1,10 +1,10 @@
 .calendar-day_type_title:hover {
-  border-color: #fff;
-  cursor: auto;
+  border-color: #fff !important;
+  cursor: auto !important;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-day_type_title {
-    font-size: 15px;
+    font-size: 15px !important;
   }
 }

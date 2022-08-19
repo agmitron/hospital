@@ -1,12 +1,12 @@
 .event-popup {
-  padding: 20px 20px 52px;
-  box-sizing: border-box;
-  box-shadow: 0px 12px 24px 0px rgba(0, 0, 0, 0.09);
-  background-color: white;
-  display: none;
-  flex-direction: column;
-  max-width: 320px;
-  margin: 0;
-  color: #1b1b1b;
-  margin: 0 auto;
+  padding: 20px 20px 52px !important;
+  box-sizing: border-box !important;
+  box-shadow: 0px 12px 24px 0px rgba(0, 0, 0, 0.09) !important;
+  background-color: white !important;
+  display: none !important;
+  flex-direction: column !important;
+  max-width: 320px !important;
+  margin: 0 !important;
+  color: #1b1b1b !important;
+  margin: 0 auto !important;
 }

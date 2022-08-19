@@ -1,4 +1,4 @@
 .calendar-day_type_current {
-  border-style: solid;
-  border-color: #000;
+  border-style: solid !important;
+  border-color: #000 !important;
 }

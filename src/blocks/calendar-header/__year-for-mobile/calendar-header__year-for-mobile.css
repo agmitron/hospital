@@ -1,14 +1,14 @@
 .calendar-header__year-for-mobile {
-  display: none;
-  text-align: center;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 120%;
-  color: #a0a0a0;
+  display: none !important;
+  text-align: center !important;
+  font-weight: 400 !important;
+  font-size: 15px !important;
+  line-height: 120% !important;
+  color: #a0a0a0 !important;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-header__year-for-mobile {
-    display: block;
+    display: block !important;
   }
 }

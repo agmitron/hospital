@@ -1,15 +1,16 @@
 .event__icons {
-  list-style: none;
-  margin: 8px 0 0;
-  padding: 0;
-  display: flex;
-  flex-direction: row;
-  gap: 18px;
-  grid-area: icons;
-  flex-wrap: wrap;
+  list-style: none !important;
+  margin: 8px 0 0 !important;
+  padding: 0 !important;
+  display: flex !important;
+  flex-direction: row !important;
+  gap: 18px !important;
+  grid-area: icons !important;
+  flex-wrap: wrap !important;
 }
+
 @media screen and (min-width: 425px) {
   .event__icons {
-    flex-direction: column;
+    flex-direction: column !important;
   }
 }

@@ -1,0 +1,7 @@
+.calendar-page {
+  position: relative !important;
+  padding: 0 !important;
+  margin: 0 auto !important;
+  max-width: 600px !important;
+  font-family: "Roboto", sans-serif !important;
+}

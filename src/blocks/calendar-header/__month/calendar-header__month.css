@@ -1,22 +1,22 @@
 .calendar-header__month {
-  font-weight: 500;
-  font-size: 36px;
-  line-height: 120%;
-  letter-spacing: 0.18px;
-  color: #1b1b1b;
+  font-weight: 500 !important;
+  font-size: 36px !important;
+  line-height: 120% !important;
+  letter-spacing: 0.18px !important;
+  color: #1b1b1b !important;
 }
 
 @media screen and (max-width: 480px) {
   .calendar-header__month {
-    font-size: 28px;
+    font-size: 28px !important;
   }
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-header__month {
-    font-weight: 400;
-    font-size: 16px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
+    font-weight: 400 !important;
+    font-size: 16px !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
   }
 }

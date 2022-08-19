@@ -1,12 +1,12 @@
 .calendar-header__month-container {
-  width: 56.5%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  width: 56.5% !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-header__month-container {
-    width: 100%;
+    width: 100% !important;
   }
 }

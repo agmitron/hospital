@@ -1,13 +1,13 @@
 .event-popup__activity {
-  display: flex;
-  gap: 10px;
-  font-family: Roboto;
-  font-size: 18px;
-  font-weight: 400;
-  line-height: 21px;
-  letter-spacing: 0.5px;
-  padding: 5px 0;
-  flex-direction: row-reverse;
-  justify-content: flex-end;
-  cursor: pointer;
+  display: flex !important;
+  gap: 10px !important;
+  font-family: Roboto !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 21px !important;
+  letter-spacing: 0.5px !important;
+  padding: 5px 0 !important;
+  flex-direction: row-reverse !important;
+  justify-content: flex-end !important;
+  cursor: pointer !important;
 }

@@ -1,15 +1,15 @@
 .calendar-day__events-wrap {
-  position: absolute;
-  top: 44px;
-  width: 33%;
-  height: fit-content;
-  display: flex;
-  justify-content: space-around;
+  position: absolute !important;
+  top: 44px !important;
+  width: 33% !important;
+  height: fit-content !important;
+  display: flex !important;
+  justify-content: space-around !important;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-day__events-wrap {
-    top: 46px;
-    width: 73%;
+    top: 46px !important;
+    width: 73% !important;
   }
 }

@@ -1,7 +1,5 @@
 .events_title_sideway {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 24px;
-  }
-  
-  
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 24px !important;
+}

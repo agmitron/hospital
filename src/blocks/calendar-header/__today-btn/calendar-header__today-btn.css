@@ -1,17 +1,17 @@
 .calendar-header__today-btn {
-  width: 21.75%;
-  height: fit-content;
-  font-family: 'Inter';
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0.0018em;
-  color: #0994c0;
-  text-align: left;
+  width: 21.75% !important;
+  height: fit-content !important;
+  font-family: 'Inter' !important;
+  font-weight: 500 !important;
+  font-size: 18px !important;
+  line-height: 22px !important;
+  letter-spacing: 0.0018em !important;
+  color: #0994c0 !important;
+  text-align: left !important;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-header__today-btn {
-    display: none;
+    display: none !important;
   }
 }

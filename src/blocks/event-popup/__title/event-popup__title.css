@@ -1,11 +1,11 @@
 .event-popup__title {
-  padding: 8px 0;
-  margin: 0;
-  font-family: Roboto;
-  font-size: 30px;
-  font-weight: 500;
-  line-height: 36px;
-  color: rgba(191, 21, 35, 1);
-  cursor: pointer;
+  padding: 8px 0 !important;
+  margin: 0 !important;
+  font-family: Roboto !important;
+  font-size: 30px !important;
+  font-weight: 500 !important;
+  line-height: 36px !important;
+  color: rgba(191, 21, 35, 1) !important;
+  cursor: pointer !important;
 
 }

@@ -1,15 +1,15 @@
 .calendar-grid__days-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template: repeat(5, 56px) / repeat(7, minmax(20px, 78px));
-  grid-auto-rows: 56px;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  display: grid !important;
+  grid-template: repeat(5, 56px) / repeat(7, minmax(20px, 78px)) !important;
+  grid-auto-rows: 56px !important;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-grid__days-list {
-    margin-top: -10px;
-    row-gap: 2px;
+    margin-top: -10px !important;
+    row-gap: 2px !important;
   }
 }

@@ -1,10 +1,10 @@
 .calendar-grid {
-  padding: 53px 27px 24px 24px;
-  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.09);
+  padding: 53px 27px 24px 24px !important;
+  box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.09) !important;
 }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-grid {
-    padding: 0 20px 13px;
+    padding: 0 20px 13px !important;
   }
 }

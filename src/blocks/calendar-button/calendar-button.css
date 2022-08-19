@@ -1,0 +1,14 @@
+.calendar-button {
+  display: block !important;
+  padding: 0 !important;
+  border: none !important;
+  background-color: inherit !important;
+}
+
+.calendar-button:hover {
+  cursor: pointer !important;
+}
+
+.calendar-button:focus {
+  outline: unset !important;
+}

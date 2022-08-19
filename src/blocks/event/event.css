@@ -1,18 +1,18 @@
 .event {
-  padding: 20px 28px;
-  box-sizing: border-box;
-  box-shadow: 0px 12px 24px 0px rgba(0, 0, 0, 0.09);
-  background-color: white;
-  color: #1b1b1b;
+  padding: 20px 28px !important;
+  box-sizing: border-box !important;
+  box-shadow: 0px 12px 24px 0px rgba(0, 0, 0, 0.09) !important;
+  background-color: white !important;
+  color: #1b1b1b !important;
 }
 
 @media screen and (min-width: 425px) {
   .event {
-    box-shadow: none;
-    display: grid;
-    grid-template-areas: "title icons" "details icons";
-    grid-auto-rows: auto 1fr;
-    padding: 0 26px;
-    column-gap: 10px;
+    box-shadow: none !important;
+    display: grid !important;
+    grid-template-areas: "title icons""details icons" !important;
+    grid-auto-rows: auto 1fr !important;
+    padding: 0 26px !important;
+    column-gap: 10px !important;
   }
 }

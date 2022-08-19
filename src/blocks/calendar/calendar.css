@@ -1,10 +1,10 @@
 .calendar {
-  margin: auto;
-  width: 100%;
-  max-width: 600px;
-  min-width: 320px;
-  background-color: #fff;
-  color: #1b1b1b;
-  font-family: 'Roboto';
-  margin-bottom: 20px;
+  margin: auto !important;
+  width: 100% !important;
+  max-width: 600px !important;
+  min-width: 320px !important;
+  background-color: #fff !important;
+  color: #1b1b1b !important;
+  font-family: 'Roboto' !important;
+  margin-bottom: 20px !important;
 }

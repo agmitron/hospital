@@ -1,10 +1,10 @@
 .events__container {
-  box-shadow: 0px 12px 24px 0px rgba(0, 0, 0, 0.09);
-  padding-bottom: 22px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding-top: 26px;
-  max-width: 480px;
-  box-sizing: border-box;
+  box-shadow: 0px 12px 24px 0px rgba(0, 0, 0, 0.09) !important;
+  padding-bottom: 22px !important;
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 20px !important;
+  padding-top: 26px !important;
+  max-width: 480px !important;
+  box-sizing: border-box !important;
 }

@@ -1,5 +1,5 @@
 /* normalize.css */
-@import url(../vendor/normalize.css);
+/* @import url(../vendor/normalize.css); */
 
 /* Шрифты */
 @import url(https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap);
@@ -7,7 +7,7 @@
 @import url(https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Roboto:wght@500&display=swap);
 
 /* Кнопки */
-@import url(../blocks/button/button.css);
+@import url(../blocks/calendar-button/calendar-button.css);
 
 /* Контейнер верхнего уровня для календаря */
 @import url(../blocks/calendar/calendar.css);
@@ -45,7 +45,7 @@
 @import url(../blocks/calendar-day/__event/_invisible/calendar-day__event_invisible.css);
 
 /* События */
-@import url(../blocks/page/page.css);
+@import url(../blocks/calendar-page/calendar-page.css);
 @import url(../blocks/event/event.css);
 @import url(../blocks/event/__details/event__details.css);
 @import url(../blocks/icon/icon.css);
