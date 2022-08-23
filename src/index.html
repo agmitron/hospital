@@ -16,7 +16,10 @@
         <div class="calendar-header">
           <span class="calendar-header__year-row">2022</span>
           <div class="calendar-header__month-row">
-            <button class="calendar-button calendar-header__today-btn" type="button">
+            <button
+              class="calendar-button calendar-header__today-btn"
+              type="button"
+            >
               Сегодня
             </button>
             <div class="calendar-header__month-container">
@@ -67,8 +70,12 @@
           <li class="calendar-icon calendar-icon_type_close"></li>
         </ul>
         <h2 class="calendar-event-popup__title">Сортировка</h2>
-        <p class="calendar-event-popup__text calendar-event-popup__text_date"></p>
-        <p class="calendar-event-popup__text calendar-event-popup__text_hours"></p>
+        <p
+          class="calendar-event-popup__text calendar-event-popup__text_date"
+        ></p>
+        <p
+          class="calendar-event-popup__text calendar-event-popup__text_hours"
+        ></p>
         <ul class="calendar-event-popup__activities">
           <li class="calendar-event-popup__activity">
             <div class="calendar-icon calendar-icon_type_medkit"></div>
@@ -83,12 +90,18 @@
             Средства гигиены
           </li>
         </ul>
-        <p class="calendar-event-popup__text calendar-event-popup__text_metro">м. Обуховская</p>
-        <p class="calendar-event-popup__text calendar-event-popup__text_address">
+        <p class="calendar-event-popup__text calendar-event-popup__text_metro">
+          м. Обуховская
+        </p>
+        <p
+          class="calendar-event-popup__text calendar-event-popup__text_address"
+        >
           Агатов переулок 37, корп 4, Санкт-Петербург
         </p>
         <div class="calendar-event-popup__buttons">
-          <button class="calendar-event-popup__button calendar-event-popup__button_red">
+          <button
+            class="calendar-event-popup__button calendar-event-popup__button_red"
+          >
             Как добраться?
           </button>
           <button class="calendar-event-popup__button">Позвонить</button>
@@ -96,34 +109,37 @@
       </section>
       <section class="calendar-map-popup">
         <div class="calendar-map-popup__container">
-          <button type="button" class="calendar-button calendar-map-popup__close-button"></button>
+          <button
+            type="button"
+            class="calendar-button calendar-map-popup__close-button"
+          ></button>
           <div id="map" class="calendar-map"></div>
         </div>
       </section>
+
+      <template class="events-template">
+        <section class="calendar-events calendar-events_large">
+          <h2 class="calendar-events__title"></h2>
+          <div class="calendar-events__container"></div>
+        </section>
+      </template>
+
+      <template class="event-template">
+        <div class="calendar-event">
+          <h3 class="calendar-event__title"></h3>
+          <ul class="calendar-event__icons"></ul>
+          <ul class="calendar-event__details">
+            <li class="calendar-event__metro"></li>
+            <li class="calendar-event__hours"></li>
+            <li class="calendar-event__address"></li>
+          </ul>
+        </div>
+      </template>
+      <script
+        src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=08f019ca-e5f7-492b-b1e1-291179ed5f7e"
+        type="text/javascript"
+      ></script>
+      <!-- <script src="./plugins/map/map.js" type="text/javascript"></script> -->
     </div>
-
-    <template class="events-template">
-      <section class="calendar-events calendar-events_large">
-        <h2 class="calendar-events__title"></h2>
-        <div class="calendar-events__container"></div>
-      </section>
-    </template>
-
-    <template class="event-template">
-      <div class="calendar-event">
-        <h3 class="calendar-event__title"></h3>
-        <ul class="calendar-event__icons"></ul>
-        <ul class="calendar-event__details">
-          <li class="calendar-event__metro"></li>
-          <li class="calendar-event__hours"></li>
-          <li class="calendar-event__address"></li>
-        </ul>
-      </div>
-    </template>
-    <script
-      src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=08f019ca-e5f7-492b-b1e1-291179ed5f7e"
-      type="text/javascript"
-    ></script>
-    <!-- <script src="./plugins/map/map.js" type="text/javascript"></script> -->
   </body>
 </html>
