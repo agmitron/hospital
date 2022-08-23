@@ -1,9 +1,0 @@
-.tooltip {
-  position: fixed;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0 0 5px 5px #aaa;
-  background-color: white;
-  padding: 5px 10px;
-}
