@@ -8,32 +8,32 @@
   </head>
 
   <body>
-    <div class="page">
-      <div class="tooltip hidden">
-        <p class="tooltip__text"></p>
+    <div class="calendar-widget">
+      <div class="calendar-tooltip calendar-hidden">
+        <p class="calendar-tooltip__text"></p>
       </div>
-      <div class="calendar">
+      <div class="calendar-page">
         <div class="calendar-header">
           <span class="calendar-header__year-row">2022</span>
           <div class="calendar-header__month-row">
-            <button class="button calendar-header__today-btn" type="button">
+            <button class="calendar-button calendar-header__today-btn" type="button">
               Сегодня
             </button>
             <div class="calendar-header__month-container">
               <button
-                class="button calendar-header__change-month-btn calendar-header__change-month-btn_type_previous"
+                class="calendar-button calendar-header__change-month-btn calendar-header__change-month-btn_type_previous"
               ></button>
               <div class="calendar-header__month-wrap">
                 <span class="calendar-header__month">Апрель</span>
                 <span class="calendar-header__year-for-mobile">2022</span>
               </div>
               <button
-                class="button calendar-header__change-month-btn calendar-header__change-month-btn_type_next"
+                class="calendar-button calendar-header__change-month-btn calendar-header__change-month-btn_type_next"
               ></button>
             </div>
             <button
-              class="button calendar-header__today-btn calendar-header__period-btn"
-              type="button"
+              class="calendar-button calendar-header__today-btn calendar-header__period-btn"
+              type="calendar-button"
             >
               Неделя
             </button>
@@ -60,63 +60,63 @@
           </li>
         </template>
       </div>
-      <section class="events"></section>
-      <section class="event-popup">
-        <ul class="event-popup__actions">
-          <li class="icon icon_type_share"></li>
-          <li class="icon icon_type_close"></li>
+      <section class="calendar-events"></section>
+      <section class="calendar-event-popup">
+        <ul class="calendar-event-popup__actions">
+          <li class="calendar-icon calendar-icon_type_share"></li>
+          <li class="calendar-icon calendar-icon_type_close"></li>
         </ul>
-        <h2 class="event-popup__title">Сортировка</h2>
-        <p class="event-popup__text event-popup__text_date"></p>
-        <p class="event-popup__text event-popup__text_hours"></p>
-        <ul class="event-popup__activities">
-          <li class="event-popup__activity">
-            <div class="icon icon_type_medkit"></div>
+        <h2 class="calendar-event-popup__title">Сортировка</h2>
+        <p class="calendar-event-popup__text calendar-event-popup__text_date"></p>
+        <p class="calendar-event-popup__text calendar-event-popup__text_hours"></p>
+        <ul class="calendar-event-popup__activities">
+          <li class="calendar-event-popup__activity">
+            <div class="calendar-icon calendar-icon_type_medkit"></div>
             Медико-социальная помощь
           </li>
-          <li class="event-popup__activity">
-            <div class="icon icon_type_food"></div>
+          <li class="calendar-event-popup__activity">
+            <div class="calendar-icon calendar-icon_type_food"></div>
             Еда
           </li>
-          <li class="event-popup__activity">
-            <div class="icon icon_type_health"></div>
+          <li class="calendar-event-popup__activity">
+            <div class="calendar-icon calendar-icon_type_health"></div>
             Средства гигиены
           </li>
         </ul>
-        <p class="event-popup__text event-popup__text_metro">м. Обуховская</p>
-        <p class="event-popup__text event-popup__text_address">
+        <p class="calendar-event-popup__text calendar-event-popup__text_metro">м. Обуховская</p>
+        <p class="calendar-event-popup__text calendar-event-popup__text_address">
           Агатов переулок 37, корп 4, Санкт-Петербург
         </p>
-        <div class="event-popup__buttons">
-          <button class="event-popup__button event-popup__button_red">
+        <div class="calendar-event-popup__buttons">
+          <button class="calendar-event-popup__button calendar-event-popup__button_red">
             Как добраться?
           </button>
-          <button class="event-popup__button">Позвонить</button>
+          <button class="calendar-event-popup__button">Позвонить</button>
         </div>
       </section>
-      <section class="map-popup">
-        <div class="map-popup__container">
-          <button type="button" class="button map-popup__close-button"></button>
-          <div id="map" class="map"></div>
+      <section class="calendar-map-popup">
+        <div class="calendar-map-popup__container">
+          <button type="button" class="calendar-button calendar-map-popup__close-button"></button>
+          <div id="map" class="calendar-map"></div>
         </div>
       </section>
     </div>
 
     <template class="events-template">
-      <section class="events events_large">
-        <h2 class="events__title"></h2>
-        <div class="events__container"></div>
+      <section class="calendar-events calendar-events_large">
+        <h2 class="calendar-events__title"></h2>
+        <div class="calendar-events__container"></div>
       </section>
     </template>
 
     <template class="event-template">
-      <div class="event">
-        <h3 class="event__title"></h3>
-        <ul class="event__icons"></ul>
-        <ul class="event__details">
-          <li class="event__metro"></li>
-          <li class="event__hours"></li>
-          <li class="event__address"></li>
+      <div class="calendar-event">
+        <h3 class="calendar-event__title"></h3>
+        <ul class="calendar-event__icons"></ul>
+        <ul class="calendar-event__details">
+          <li class="calendar-event__metro"></li>
+          <li class="calendar-event__hours"></li>
+          <li class="calendar-event__address"></li>
         </ul>
       </div>
     </template>

@@ -1,4 +1,4 @@
-.calendar-grid__days-list {
+.calendar .calendar-grid__days-list {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 425px) {
-  .calendar-grid__days-list {
+  .calendar .calendar-grid__days-list {
     margin-top: -10px;
     row-gap: 2px;
   }

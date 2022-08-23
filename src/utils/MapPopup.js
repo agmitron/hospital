@@ -1,8 +1,8 @@
 export default class MapPopup {
 	constructor(selector, addPlaceMarker) {
-		this._popupOpenedClass = 'map-popup_opened';
+		this._popupOpenedClass = 'calendar-map-popup_opened';
 		this._element = document.querySelector(selector);
-		this._closeButton = this._element.querySelector('.map-popup__close-button');
+		this._closeButton = this._element.querySelector('.calendar-map-popup__close-button');
 		this._addPlaceMarker = addPlaceMarker;
 	}
 

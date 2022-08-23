@@ -1,4 +1,4 @@
-.calendar-header__month {
+.calendar .calendar-header__month {
   font-weight: 500;
   font-size: 36px;
   line-height: 120%;
@@ -7,13 +7,13 @@
 }
 
 @media screen and (max-width: 480px) {
-  .calendar-header__month {
+  .calendar .calendar-header__month {
     font-size: 28px;
   }
 }
 
 @media screen and (max-width: 425px) {
-  .calendar-header__month {
+  .calendar .calendar-header__month {
     font-weight: 400;
     font-size: 16px;
     letter-spacing: 0.04em;

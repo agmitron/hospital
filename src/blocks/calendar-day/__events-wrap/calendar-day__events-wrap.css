@@ -1,4 +1,4 @@
-.calendar-day__events-wrap {
+.calendar .calendar-day__events-wrap {
   position: absolute;
   top: 44px;
   width: 33%;
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 425px) {
-  .calendar-day__events-wrap {
+  .calendar .calendar-day__events-wrap {
     top: 46px;
     width: 73%;
   }

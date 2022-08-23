@@ -20,22 +20,22 @@ const options = {
 }
 
 // Секция с ивентами
-const eventsElement = document.querySelector('.events');
+const eventsElement = document.querySelector('.calendar-events');
 
 // Создаем экземпляр попапа карты
-const mapPopup = new MapPopup('.map-popup', () => initMap(mapCenterCoords, eventPopup.currentEvent.address));
+const mapPopup = new MapPopup('.calendar-map-popup', () => initMap(mapCenterCoords, eventPopup.currentEvent.address));
 
 // Создаем экземпляр попапа события
-const eventPopup = new EventPopup('.event-popup', { onClose: () => eventsElement.classList.remove('hidden'), onMapOpen: () => mapPopup.open() });
+const eventPopup = new EventPopup('.calendar-event-popup', { onClose: () => eventsElement.classList.remove('calendar-hidden'), onMapOpen: () => mapPopup.open() });
 
 // Создаем экземпляр тултипа
-const tooltip = new Tooltip('.tooltip');
+const tooltip = new Tooltip('.calendar-tooltip');
 
 const eventTemplateSelector = '.event-template';
 
 function handleEventClick(event) {
 	if (eventsElement.clientWidth > 425) return;
-	eventsElement.classList.add('hidden');
+	eventsElement.classList.add('calendar-hidden');
 	eventPopup.open(event);
 }
 
@@ -51,16 +51,16 @@ function renderEvents(events, period = 'month') {
 	let wrapperElement = null;
 	events.forEach(event => {
 		if (currentDate !== event.date) {
-			const eventsDayElement = document.querySelector('.events-template').content.cloneNode(true).querySelector('.events');
-			const titleElement = eventsDayElement.querySelector('.events__title');
-			wrapperElement = eventsDayElement.querySelector('.events__container');
+			const eventsDayElement = document.querySelector('.events-template').content.cloneNode(true).querySelector('.calendar-events');
+			const titleElement = eventsDayElement.querySelector('.calendar-events__title');
+			wrapperElement = eventsDayElement.querySelector('.calendar-events__container');
 			console.log(period, titleStyle);
 			titleElement.textContent = titleStyle === 'brief' ? makeSideDate(event.date) : makeTitleDate(event.date);
 			if (titleStyle === 'brief') {
-				eventsDayElement.classList.add('events_title_sideway');
-				titleElement.classList.add('events__title_brief');
+				eventsDayElement.classList.add('calendar-events_title_sideway');
+				titleElement.classList.add('calendar-events__title_brief');
 			}
-			if (isToday(event.date)) titleElement.classList.add('events__title_selected');
+			if (isToday(event.date)) titleElement.classList.add('calendar-events__title_selected');
 			eventsElement.append(eventsDayElement);
 			currentDate = event.date;
 		}

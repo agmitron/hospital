@@ -1,10 +1,10 @@
-.button {
+.calendar .button {
   display: block;
   padding: 0;
   border: none;
   background-color: inherit;
 }
 
-.button:hover {
+.calendar .button:hover {
   cursor: pointer;
 }
