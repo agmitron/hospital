@@ -572,18 +572,20 @@ body .calendar-widget {
 }
 .calendar-widget .calendar-tooltip {
   align-items: center;
-  background-color: #fff;
-  box-shadow: 0 0 5px 5px #aaa;
+  background-color: #787878;
+  /* box-shadow: 0 0 5px 5px #aaa; */
   display: flex;
+  border-radius: 4px;
   justify-content: center;
-  padding: 5px 10px;
+  padding: 7px 16px;
   position: fixed;
 }
 .calendar-widget .calendar-tooltip__text {
-  color: #000;
+  color: white;
   font-size: 14px;
   font-weight: 400;
-  line-height: 1.2;
+  line-height: 22px;
+  letter-spacing: 0.1px;
   margin: 0;
   padding: 0;
   width: 100%;

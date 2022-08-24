@@ -6,8 +6,9 @@ class Tooltip {
 
     show = (text, evt) => {
         this._text.textContent = text;
-        this._element.style.top = `${evt.clientY + 5}px`;
-        this._element.style.left = `${evt.clientX + 5}px`;
+        //        debugger;
+        this._element.style.top = `${evt.clientY - 35}px`;
+        this._element.style.left = `${evt.clientX - 30}px`;
         this._element.classList.remove('calendar-hidden');
     }
 
