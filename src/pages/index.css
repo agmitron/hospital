@@ -220,6 +220,7 @@ body .calendar-widget {
   letter-spacing: 0.18px;
   line-height: 120%;
   position: relative;
+  margin: 0;
 }
 .calendar-widget .calendar-day:hover {
   border-color: #787878;
