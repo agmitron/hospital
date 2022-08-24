@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   //const mapPopup = new MapPopup(".calendar-map-popup", () =>
   //    initMap(mapCenterCoords, eventPopup.currentEvent.address)
   //);
-	const mapPopup = new MapPopup('.map-popup', mapCenterCoords, initMap);
+	const mapPopup = new MapPopup('.calendar-map-popup', mapCenterCoords, initMap);
 
   // Создаем экземпляр попапа события
   const eventPopup = new EventPopup(".calendar-event-popup", {

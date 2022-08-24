@@ -62,7 +62,7 @@ function initMap(mapCenterCoords, event) {
 		}
 
 		// слушатель событий для уничтожения карты при закрытии попапа
-		document.querySelector('.map-popup__close-button').addEventListener('click', () => map.destroy());
+		document.querySelector('.calendar-map-popup__close-button').addEventListener('click', () => map.destroy());
 		document.addEventListener('keydown', (evt) => {
 			if (evt.key === 'Escape') map.destroy();
 		});
