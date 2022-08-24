@@ -5,10 +5,13 @@ class Tooltip {
     }
 
     show = (text, evt) => {
+        const icon = evt.target;
         this._text.textContent = text;
-        //        debugger;
-        this._element.style.top = `${evt.clientY - 35}px`;
-        this._element.style.left = `${evt.clientX - 30}px`;
+
+        this._element.style.top = `${icon.offsetTop - 40}px`;
+        const middle = this._element.offsetWidth / 2;
+        const left = icon.offsetLeft - middle;
+        this._element.style.left = `${left}px`;
         this._element.classList.remove('calendar-hidden');
     }
 
