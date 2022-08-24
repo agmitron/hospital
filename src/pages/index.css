@@ -24,11 +24,14 @@ body .calendar-widget {
 .calendar-widget .calendar-button:hover {
   cursor: pointer;
 }
+.calendar-widget .calendar-button:focus {
+  outline: unset;
+}
 .calendar-widget .calendar-header {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.09);
   padding: 8px 15.5px 0 14.5px;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-widget .calendar-header {
     box-shadow: none;
     padding: 14px 16px 6px;
@@ -43,7 +46,7 @@ body .calendar-widget {
   padding: 0 0 7px;
   text-align: center;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-widget .calendar-header__year-row {
     display: none;
   }
@@ -66,7 +69,7 @@ body .calendar-widget {
   text-align: left;
   width: 21.75%;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-widget .calendar-header__today-btn {
     display: none;
   }
@@ -80,7 +83,7 @@ body .calendar-widget {
   justify-content: space-between;
   width: 56.5%;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-widget .calendar-header__month-container {
     width: 100%;
   }
@@ -89,7 +92,7 @@ body .calendar-widget {
   height: 44px;
   width: 44px;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-widget .calendar-header__change-month-btn {
     height: 24px;
     width: 24px;
@@ -99,7 +102,7 @@ body .calendar-widget {
   background: content-box url(../images/left-arrow.svg);
   padding: 9.2px 16.5px 9.2px 14.7px;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-widget .calendar-header__change-month-btn_type_previous {
     background: content-box url(../images/left-arrow.svg);
     padding: 5px 9px 5px 8px;
@@ -109,7 +112,7 @@ body .calendar-widget {
   background: content-box url(../images/right-arrow.svg);
   padding: 9.2px 14.7px 9.2px 16.5px;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-widget .calendar-header__change-month-btn_type_next {
     background: content-box url(../images/right-arrow.svg);
     padding: 5px 8px 5px 9px;
@@ -127,7 +130,7 @@ body .calendar-widget {
     font-size: 28px;
   }
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-widget .calendar-header__month {
     font-size: 16px;
     font-weight: 400;
@@ -143,7 +146,7 @@ body .calendar-widget {
   line-height: 120%;
   text-align: center;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-widget .calendar-header__year-for-mobile {
     display: block;
   }
@@ -159,7 +162,7 @@ body .calendar-widget {
   padding: 8px 0;
   text-align: center;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-widget .calendar-header__selected-period-row {
     display: none;
   }
@@ -168,7 +171,7 @@ body .calendar-widget {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.09);
   padding: 53px 27px 24px 24px;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-widget .calendar-grid {
     padding: 0 20px 13px;
   }
@@ -191,7 +194,7 @@ body .calendar-widget {
   margin: 0;
   padding: 0;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-widget .calendar-grid__days-list {
     margin-top: -10px;
     row-gap: 2px;
@@ -222,7 +225,7 @@ body .calendar-widget {
   border-color: #fff;
   cursor: auto;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-widget .calendar-day_type_title {
     font-size: 15px;
   }
@@ -249,7 +252,7 @@ body .calendar-widget {
   top: 44px;
   width: 33%;
 }
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 485px) {
   .calendar-widget .calendar-day__events-wrap {
     top: 46px;
     width: 73%;
@@ -278,7 +281,7 @@ body .calendar-widget {
   padding: 20px 28px;
 }
 @media screen and (min-width: 425px) {
-  .calendar-widget   .calendar-event {
+  .calendar-widget .calendar-event {
     box-shadow: none;
     -moz-column-gap: 10px;
     column-gap: 10px;
