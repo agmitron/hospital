@@ -1,5 +1,5 @@
 // Селектор контейнера календаря
-const calendarContainerSelector = '.calendar';
+const calendarContainerSelector = '.calendar-widget';
 // Селектор контейнера, в который динамически вставляется сетка календарных дней (чисел календаря)
 const daysListContainerSelector = '.calendar-grid__days-list';
 // Селектор элемента шаблона карточки календарного дня
@@ -47,14 +47,14 @@ const timePeriodsForDisplay = { day: 'day', week: 'week', month: 'month' };
 const iconTexts = {
 	food: 'Еда',
 	shower: 'Душ',
-	medkit: 'Медицинская помощь',
+	medkit: 'Мед. помощь',
 	clothdry: 'Сушка одежды',
 	clothwash: 'Стирка',
 	sleep: 'Ночлег',
-	help: 'Социальная помощь',
+	help: 'Соц. помощь',
 	warm: 'Обогрев',
-	health: 'Средства гигиены',
-	eyes: 'Офтальмология',
+	health: 'Ср-ва гигиены',
+	eyes: 'Окулист',
 	vaccine: 'Вакцинация',
 	aids: 'ВИЧ',
 	covid: 'Covid',

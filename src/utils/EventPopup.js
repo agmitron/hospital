@@ -1,16 +1,16 @@
 import { iconTexts } from "./constants";
 export default class EventPopup {
 	constructor(selector, {onClose, onMapOpen}) {
-		this._popupOpenedClass = 'event-popup_opened';
+		this._popupOpenedClass = 'calendar-event-popup_opened';
 		this._element = document.querySelector(selector);
-		this._closeButton = this._element.querySelector('.icon_type_close');
-		this._howToReachButton = this._element.querySelector('.event-popup__button_red');
-		this._title = this._element.querySelector('.event-popup__title');
-		this._address = this._element.querySelector('.event-popup__text_address');
-		this._metro = this._element.querySelector('.event-popup__text_metro');
-		this._date = this._element.querySelector('.event-popup__text_date');
-		this._hours = this._element.querySelector('.event-popup__text_hours');
-		this._activities = this._element.querySelector('.event-popup__activities');
+		this._closeButton = this._element.querySelector('.calendar-icon_type_close');
+		this._howToReachButton = this._element.querySelector('.calendar-event-popup__button_red');
+		this._title = this._element.querySelector('.calendar-event-popup__title');
+		this._address = this._element.querySelector('.calendar-event-popup__text_address');
+		this._metro = this._element.querySelector('.calendar-event-popup__text_metro');
+		this._date = this._element.querySelector('.calendar-event-popup__text_date');
+		this._hours = this._element.querySelector('.calendar-event-popup__text_hours');
+		this._activities = this._element.querySelector('.calendar-event-popup__activities');
 		this.currentEvent = '';
 		this._openMapPopup = onMapOpen;
 		this._onClose = onClose;
@@ -51,9 +51,9 @@ export default class EventPopup {
 
     _createActivity(icon, text) {
         const element = document.createElement('li');
-        element.classList.add('event-popup__activity');
+        element.classList.add('calendar-event-popup__activity');
         const iconElement = document.createElement('div');
-        iconElement.className = `icon icon_type_${icon}`;
+        iconElement.className = `calendar-icon calendar-icon_type_${icon}`;
         element.textContent = text;
         element.append(iconElement);
         return element;
