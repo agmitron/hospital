@@ -106,17 +106,7 @@ const renderChangePeriodBtnTextContent = (
 	displayedPeriod,
 	changePeriodBtnElement
 ) => {
-	let content;
-	switch (displayedPeriod) {
-		case timePeriodsForDisplay.day:
-			content = 'Месяц';
-			break;
-		case timePeriodsForDisplay.week:
-			content = 'Месяц';
-			break;
-		case timePeriodsForDisplay.month:
-			content = 'Неделя';
-	}
+	const content = displayedPeriod == timePeriodsForDisplay.month ? 'Неделя' : 'Месяц';
 	changePeriodBtnElement.textContent = content;
 };
 
