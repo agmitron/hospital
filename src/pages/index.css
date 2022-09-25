@@ -67,7 +67,7 @@ body .calendar-widget {
   letter-spacing: 0.0018em;
   line-height: 22px;
   text-align: left;
-  width: 21.75%;
+    width: fit-content;
 }
 @media screen and (max-width: 485px) {
   .calendar-widget .calendar-header__today-btn {
@@ -91,6 +91,7 @@ body .calendar-widget {
 .calendar-widget .calendar-header__change-month-btn {
   height: 44px;
   width: 44px;
+  visibility: hidden;
 }
 @media screen and (max-width: 485px) {
   .calendar-widget .calendar-header__change-month-btn {
