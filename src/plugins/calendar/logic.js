@@ -37,9 +37,9 @@ const getDaysArray = (currentYear, currentMonth) => {
 				month: tempDateObj.getMonth(),
 				year: tempDateObj.getFullYear(),
 				dateObj: new Date(
-					tempDateObj.getDate(),
+					tempDateObj.getFullYear(),
 					tempDateObj.getMonth(),
-					tempDateObj.getFullYear()
+					tempDateObj.getDate()
 				),
 			});
 		}
@@ -55,9 +55,9 @@ const getDaysArray = (currentYear, currentMonth) => {
 				month: tempDateObj.getMonth(),
 				year: tempDateObj.getFullYear(),
 				dateObj: new Date(
-					tempDateObj.getDate(),
+					tempDateObj.getFullYear(),
 					tempDateObj.getMonth(),
-					tempDateObj.getFullYear()
+					tempDateObj.getDate()
 				),
 			});
 		}
@@ -66,20 +66,21 @@ const getDaysArray = (currentYear, currentMonth) => {
 };
 
 const getEventsPerDate = (events, date) => {
-	const dateString = `${String(date.getDate()).padStart(2, '0')}.${String(date.getMonth() + 1).padStart(2, '0')}.${date.getFullYear()}`;
-	return events.filter(event => event.date === dateString);
-}
+	const dateString = `${String(date.getDate()).padStart(2, '0')}.${String(
+		date.getMonth() + 1
+	).padStart(2, '0')}.${date.getFullYear()}`;
+	return events.filter((event) => event.date === dateString);
+};
 
 // Функция получения массива html-элементов - ячеек сетки календаря из массива дней
-const getDaysElementsArr = (
-	{ daysArray,
-		dayTemplateElement,
-		currentMonth,
-		pressedDayElement,
-		onClick,
-		events,
-	}
-) => {
+const getDaysElementsArr = ({
+	daysArray,
+	dayTemplateElement,
+	currentMonth,
+	pressedDayElement,
+	onClick,
+	events,
+}) => {
 	return daysArray.map((item, itemIndex) => {
 		const dayElement = dayTemplateElement.content
 			.querySelector(dayElementSelector)
