@@ -94,7 +94,8 @@ const getDaysElementsArr = (
 		//		console.log(events);
 		const eventsWrapper = dayElement.querySelector('.calendar-day__events-wrap');
 		const eventsPerDate = getEventsPerDate(events, item.dateObj);
-		for (let i = 0; i < eventsPerDate.length; i++) {
+		const numberOfDots = eventsPerDate.length >= 3 ? 3 : eventsPerDate.length;
+		for (let i = 0; i < numberOfDots; i++) {
 			const dot = document.createElement('div');
 			dot.innerHTML = `<div class="calendar-day__event" ></div>`;
 			eventsWrapper.append(dot.firstChild);
