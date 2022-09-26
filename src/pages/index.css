@@ -272,6 +272,9 @@ body .calendar-widget {
 .calendar-widget .calendar-day__event_invisible {
   display: none;
 }
+.calendar-widget .calendar-day__event_unavailable {
+  background-color: #C4C4C4;
+}
 .calendar-widget .calendar-page {
   font-family: Roboto, sans-serif;
   margin: 0 auto;

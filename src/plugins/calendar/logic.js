@@ -92,12 +92,17 @@ const getDaysElementsArr = (
 		// -------------------------------------------------------
 		// СЮДА НУЖНО БУДЕТ ДОБАВИТЬ ЛОГИКУ ОТОБРАЖЕНИЯ В ЭЛЕМЕНТЕ ДАТЫ КРАСНЫХ ТОЧЕК, ОБОЗНАЧАЮЩИХ СОБЫТИЯ (одно событие - одна точка, два события - две точки, три и более событий - три точки). В стилях это блок "calendar-day__event" и его модификатор "_invisible".
 		//		console.log(events);
-		const eventsWrapper = dayElement.querySelector('.calendar-day__events-wrap');
+		const eventsWrapper = dayElement.querySelector(
+			'.calendar-day__events-wrap'
+		);
 		const eventsPerDate = getEventsPerDate(events, item.dateObj);
 		const numberOfDots = eventsPerDate.length >= 3 ? 3 : eventsPerDate.length;
 		for (let i = 0; i < numberOfDots; i++) {
 			const dot = document.createElement('div');
-			dot.innerHTML = `<div class="calendar-day__event" ></div>`;
+			dot.innerHTML =
+				item.month !== currentMonth - 1
+					? `<div class="calendar-day__event" ></div>`
+					: `<div class="calendar-day__event calendar-day__event_unavailable" ></div>`;
 			eventsWrapper.append(dot.firstChild);
 		}
 		//--------------------------------------------------------
@@ -110,27 +115,29 @@ const getDaysElementsArr = (
 		) {
 			dayElement.classList.add('calendar-day_type_current');
 		}
-		// добавляем обработчик клика даты
-		dayElement.addEventListener('click', (e) => {
-			// добавляем подсветку для кликнутой даты
-			if (pressedDayElement) {
-				// если ранее уже кликали другую дату, то с неё подсветку убираем
-				pressedDayElement.classList.remove('calendar-day_type_pressed');
-			}
-			// назначаем новую кликнутую дату и добавляем подсветку
-			//			const 
-			pressedDayElement = e.currentTarget;
-			pressedDayElement.classList.add('calendar-day_type_pressed');
-			// выводим кликнутую дату в консоль
-			//			console.log(pressedDayElement.dateObj);
+		// добавляем обработчик клика даты (исключая даты предыдущего месяца, которые должны быть некликабельными)
+		if (item.month !== currentMonth - 1) {
+			dayElement.addEventListener('click', (e) => {
+				// добавляем подсветку для кликнутой даты
+				if (pressedDayElement) {
+					// если ранее уже кликали другую дату, то с неё подсветку убираем
+					pressedDayElement.classList.remove('calendar-day_type_pressed');
+				}
+				// назначаем новую кликнутую дату и добавляем подсветку
+				//			const
+				pressedDayElement = e.currentTarget;
+				pressedDayElement.classList.add('calendar-day_type_pressed');
+				// выводим кликнутую дату в консоль
+				console.log(pressedDayElement.dateObj);
 
-			// -------------------------------------------------------
-			// СЮДА НУЖНО БУДЕТ ДОБАВИТЬ ЛОГИКУ ОТОБРАЖЕНИЯ КАРТОЧЕК СОБЫТИЙ!!!!!!!!!!!!
+				// -------------------------------------------------------
+				// СЮДА НУЖНО БУДЕТ ДОБАВИТЬ ЛОГИКУ ОТОБРАЖЕНИЯ КАРТОЧЕК СОБЫТИЙ!!!!!!!!!!!!
 
-			onClick && onClick(eventsPerDate);
+				onClick && onClick(eventsPerDate);
 
-			//--------------------------------------------------------
-		});
+				//--------------------------------------------------------
+			});
+		}
 
 		// для дат соседних месяцев добавляем тусклый цвет, убираем обводку текущей даты
 		if (item.month !== currentMonth) {
