@@ -48,7 +48,7 @@ const getDaysArray = (currentYear, currentMonth) => {
 	const addedDaysToEnd = lastWeekDayOfMonth === 0 ? 0 : 7 - lastWeekDayOfMonth;
 	if (addedDaysToEnd) {
 		const tempDateObj = new Date(currentYear, currentMonth + 1);
-		for (let i = 0; i < addedDaysToEnd; i++) {
+		for (let i = 0; i < addedDaysToEnd + 7; i++) {
 			tempDateObj.setDate(1 + i);
 			daysArray.push({
 				date: tempDateObj.getDate(),
