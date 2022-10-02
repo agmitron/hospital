@@ -1,39 +1,34 @@
-import EventObject from '../utils/EventObject.js';
+import { eventObject } from '../utils/EventObject.js';
+
+// const exampleEvent = {
+//   date: '10.10.2022',
+//   title: 'Сортировка',
+//   metro: 'м. «Площадь Восстания»',
+//   address: 'Санкт-Петербург, Агатов переулок 37, корп 4',
+//   cancelled: false,
+//   services: [
+//     {
+//       hours: '10:00-17:00',
+//       activities: ['Прием врача, перевязка ран', 'Вакцинация', 'Тест на ВИЧ', 'Телефон', 'Тест на COVID', 'Выдача лекарств']
+//     },
+//     {
+//       hours: '13:00-16:00',
+//       activities: ['Парикмахер']
+//     },
+//     {
+//       hours: '15:00-17:00',
+//       activities: ['Соц. помощь']
+//     },
+//   ]
+// };
+const titlesProps = { 'Дата': 0, 'Заголовок': 1, 'Часы работы': 2, 'Метро': 5, 'Адрес': 4, 'Активности': 3, 'Отменен?': 6, };
 
 async function getData({ sheetId, apiKey, sheetName = '', sheetNumber = 1 }) {
   const sheetNameStr = sheetName !== '' ? encodeURIComponent(sheetName) : `Лист${sheetNumber}`
   const sheetsUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetNameStr}?dateTimeRenderOption=FORMATTED_STRING&majorDimension=ROWS&valueRenderOption=FORMATTED_VALUE&key=${apiKey}`;
   const resultArray = [];
-  console.log(sheetNameStr, sheetsUrl);
-
-  const titlesProps = { 'Дата': 0, 'Заголовок': 1, 'Часы работы': 2, 'Метро': 5, 'Адрес': 4, 'Активности': 3, 'Отменен?': 6, };
-
   const { values } = await fetch(sheetsUrl).then(res => res.ok ? res.json() : Promise.reject('Error in fetch'));
-  console.log(values);
-  const titles = values[0];
-  const exampleEvent = {
-    date: '10.10.2022',
-    title: 'Сортировка',
-    metro: 'м. «Площадь Восстания»',
-    address: 'Санкт-Петербург, Агатов переулок 37, корп 4',
-    cancelled: false,
-    services: [
-      {
-        hours: '10:00-17:00',
-        activities: ['Прием врача, перевязка ран', 'Вакцинация', 'Тест на ВИЧ', 'Телефон', 'Тест на COVID', 'Выдача лекарств']
-      },
-      {
-        hours: '13:00-16:00',
-        activities: ['Парикмахер']
-      },
-      {
-        hours: '15:00-17:00',
-        activities: ['Соц. помощь']
-      },
-    ]
-  };
-  let [lastDate, lastTitle, lastHours, lastAddress, lastMetro] = ['', '', '', '', ''];
-  let currentEvent = new EventObject();
+  let [lastDate, lastTitle, lastHours] = ['', '', ''];
   for (let row of values) {
     const [currentDate, currentTitle, currentHours, currentAddress, currentMetro, currentActivity, isCancelled] =
       [
@@ -48,24 +43,24 @@ async function getData({ sheetId, apiKey, sheetName = '', sheetNumber = 1 }) {
     if ((currentDate && lastDate !== currentDate) || currentTitle && (lastTitle !== currentTitle)) {
       lastDate = currentDate ? currentDate : lastDate;
       lastTitle = currentTitle ? currentTitle : lastTitle;
-      if (currentEvent.isValid()) { resultArray.push(currentEvent.get()); }
-      currentEvent.reset();
-      currentEvent.set({
+      if (eventObject.isValid()) { resultArray.push(eventObject.get()); }
+      eventObject.init();
+      eventObject.set({
         date: currentDate,
         title: currentTitle,
         metro: currentMetro,
         address: currentAddress,
         isCancelled: isCancelled != null
       });
-      currentEvent.addService({ hours: currentHours, activity: currentActivity });
+      eventObject.addService({ hours: currentHours, activity: currentActivity });
     } else if (currentHours && (currentHours !== lastHours)) {
       lastHours = currentHours;
-      currentEvent.addService({ hours: currentHours, activity: currentActivity });
+      eventObject.addService({ hours: currentHours, activity: currentActivity });
     } else if (currentActivity) {
-      currentEvent.addActivity(currentActivity);
+      eventObject.addActivity(currentActivity);
     }
   }
-  if (currentEvent.isValid()) { resultArray.push(currentEvent.get()); }
+  if (eventObject.isValid()) { resultArray.push(eventObject.get()); }
 
   console.log(resultArray);
   return resultArray;

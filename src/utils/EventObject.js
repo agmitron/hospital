@@ -1,9 +1,9 @@
-export default class EventObject {
+export class EventObject {
   constructor() {
-    this.reset();
+    this.init();
   }
 
-  reset() {
+  init() {
     this._isCancelled = false;
     this._title = '';
     this._date = '';
@@ -42,5 +42,6 @@ export default class EventObject {
   isValid() {
     return this._title && this._title !== 'Заголовок';
   }
-
 }
+
+export const eventObject = new EventObject();
