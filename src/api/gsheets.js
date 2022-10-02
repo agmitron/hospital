@@ -66,6 +66,7 @@ async function getData({ sheetId, apiKey, sheetName = '', sheetNumber = 1 }) {
   return resultArray;
 }
 
+// В настоящее время функция не используется
 function doFilter(values, filter) {
   // В настоящее время в фильтре может быть только один ключ - значение строка или массив
   // Если массив, то к его элементам применяется условие ИЛИ
