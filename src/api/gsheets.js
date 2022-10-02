@@ -28,7 +28,7 @@ async function getData({ sheetId, apiKey, sheetName = '', sheetNumber = 1 }) {
   const sheetsUrl = `https://sheets.googleapis.com/v4/spreadsheets/${sheetId}/values/${sheetNameStr}?dateTimeRenderOption=FORMATTED_STRING&majorDimension=ROWS&valueRenderOption=FORMATTED_VALUE&key=${apiKey}`;
   const resultArray = [];
   const { values } = await fetch(sheetsUrl).then(res => res.ok ? res.json() : Promise.reject('Error in fetch'));
-  let [lastDate, lastTitle, lastHours] = ['', '', ''];
+  let [lastDate, lastTitle, lastHours, lastAddress, lastMetro] = ['', '', '', '', ''];
   for (let row of values) {
     const [currentDate, currentTitle, currentHours, currentAddress, currentMetro, currentActivity, isCancelled] =
       [
@@ -40,16 +40,20 @@ async function getData({ sheetId, apiKey, sheetName = '', sheetNumber = 1 }) {
         row[titlesProps['Активности']],
         row[titlesProps['Отменен?']],
       ];
-    if ((currentDate && lastDate !== currentDate) || currentTitle && (lastTitle !== currentTitle)) {
+    lastAddress = currentAddress ? currentAddress : lastAddress;
+    lastMetro = currentMetro ? currentMetro : lastMetro;
+    if ((currentDate && lastDate !== currentDate) || (currentTitle && lastTitle !== currentTitle)) {
+      console.log(currentDate, lastDate);
       lastDate = currentDate ? currentDate : lastDate;
       lastTitle = currentTitle ? currentTitle : lastTitle;
+      console.log(currentDate, lastDate);
       if (eventObject.isValid()) { resultArray.push(eventObject.get()); }
       eventObject.init();
       eventObject.set({
-        date: currentDate,
-        title: currentTitle,
-        metro: currentMetro,
-        address: currentAddress,
+        date: lastDate,
+        title: lastTitle,
+        metro: lastMetro,
+        address: lastAddress,
         isCancelled: isCancelled != null
       });
       eventObject.addService({ hours: currentHours, activity: currentActivity });
