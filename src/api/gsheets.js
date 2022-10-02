@@ -58,6 +58,8 @@ async function getData({ sheetId, apiKey, sheetName = '', sheetNumber = 1 }) {
       eventObject.addService({ hours: currentHours, activity: currentActivity });
     } else if (currentActivity) {
       eventObject.addActivity(currentActivity);
+    } else {
+      console.log('Неизвестный формат строки, строка проигнорирована', row);
     }
   }
   if (eventObject.isValid()) { resultArray.push(eventObject.get()); }
