@@ -80,8 +80,8 @@ function makeTitleDate(dateString) {
     const date = makeDateObj(dateString);
     return date
         .toLocaleString('ru', { weekday: 'long', day: 'numeric', month: 'numeric' })
-        .toUpperCase()
-        .replace(',', '').toLowerCase();
+        .toLowerCase()
+        .replace(',', '');
 }
 
 function isToday(dateString) {
