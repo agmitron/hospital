@@ -25,8 +25,9 @@ export default class Event {
         return icon;
     }
 
-    _fillElement({ title, activities = '', metro, address, hours }) {
+    _fillElement({ title = '', activities = '', metro, address, hours }) {
         this._title.textContent = title;
+        console.log(this._title.textContent);
         activities.split(' ').filter(x => x)
             .forEach(icon => this._icons.append(this._createIcon({ type: icon, className: `calendar-icon calendar-icon_type_${icon}` })));
         this._metro.textContent = metro;

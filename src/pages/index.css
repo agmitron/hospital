@@ -400,6 +400,7 @@ body .calendar-widget {
   flex-direction: column;
   gap: 20px;
   justify-content: center;
+  padding: 16px 24px 0;
 }
 .calendar-widget .calendar-events_large {
   gap: 0;
@@ -422,34 +423,36 @@ body .calendar-widget {
 .calendar-widget .calendar-events__title {
   border: 1px solid #fff;
   box-sizing: border-box;
-  color: #bf1523;
+  background-color: rgba(251, 251, 251, 1);
+  color: rgba(27, 27, 27, 1);
   display: none;
   font-family: Roboto, sans-serif;
-  font-size: 24px;
+  font-size: 30px;
   font-weight: 500;
   line-height: 36px;
   margin: 0;
   max-width: 480px;
-  padding: 16px 8px;
-  text-align: center;
+  padding: 16px 44px;
+  text-align: start;
   width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
+  text-transform: capitalize;
 }
 @media screen and (min-width: 425px) {
   .calendar-widget .calendar-events__title {
     background-color: #fff;
     display: inline-block;
     line-height: 29px;
-    padding: 0;
     width: 100%;
-    padding: 18px 8px;
   }
 }
 .calendar-widget .calendar-events__title_brief {
   width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
+  padding: 18px 8px;
+  text-align: center;
 }
 .calendar-widget .calendar-events__title_selected {
   border: 1px solid #787878;

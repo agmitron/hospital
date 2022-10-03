@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   // Секция с ивентами
-  const eventsElement = document.querySelector(".calendar-events");
+  const eventsElement = document.querySelector(".calendar-events-section");
 
   // Создаем экземпляр попапа карты
   //const mapPopup = new MapPopup(".calendar-map-popup", () =>

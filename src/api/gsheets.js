@@ -88,6 +88,5 @@ function doFilter(values, filter) {
 
 export async function gsheets({ filter, ...options }) {
   const values = await getData(options);
-  //    console.log(values, filter);
   return filter ? doFilter(values, filter) : values;
 }
