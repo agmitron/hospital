@@ -440,12 +440,10 @@ body .calendar-widget {
   .calendar-widget .calendar-events__title {
     background-color: #fff;
     display: inline-block;
-    font-size: 30px;
-    font-weight: 400;
     line-height: 29px;
-    padding: 16px 26px;
-    text-align: left;
+    padding: 0;
     width: 100%;
+    padding: 18px 8px;
   }
 }
 .calendar-widget .calendar-events__title_brief {
