@@ -1,43 +1,48 @@
+const eventTemplate = `
+<div class="~~PREFIX~~-event">
+  <h4 class="~~PREFIX~~-event__title"></h4>
+  <section class="~~PREFIX~~-event__section-address">
+    <h5 class="~~PREFIX~~-event__hours"></h5>
+    <p class="~~PREFIX~~-event__metro"></p>
+    <p class="~~PREFIX~~-event__address"></p>
+  </section>
+  <section class="~~PREFIX~~-event__section-services">
+  </section>
+  <div class="~~PREFIX~~-event__switches">
+    <button type="button" class="~~PREFIX~~-event__switch ~~PREFIX~~-event__switch_active">Адрес</button>
+    <button type="button" class="~~PREFIX~~-event__switch">Сервисы</button>
+  </div>
+</div>`;
+
+const serviceTemplate = `
+  <p class="~~PREFIX~~-event__hours"></p>
+ 
+`
+
 export default class Event {
-    constructor({ templateSelector, event, onClick, onMouseOver, onMouseOut }) {
-        this._element = this._createElement(templateSelector);
-        this._title = this._element.querySelector('.calendar-event__title');
-        this._icons = this._element.querySelector('.calendar-event__icons');
-        this._metro = this._element.querySelector('.calendar-event__metro');
-        this._hours = this._element.querySelector('.calendar-event__hours');
-        this._address = this._element.querySelector('.calendar-event__address');
-        this._onMouseOver = onMouseOver;
-        this._onMouseOut = onMouseOut;
-        this._onClick = onClick;
-        this._fillElement(event);
-        this._addEventListeners();
-        //        console.log(this._element);
-        return this._element;
-    }
+  constructor({ prefix = 'calendar', eventData = {} }) {
+    const element = document.createElement('div');
+    element.innerHTML = eventTemplate.replace('~~PREFIX~~', prefix);
+    this._element = element.firstChild();
+    this._prefix = prefix;
+    this._eventData = eventData;
+    this._title = this._element.querySelector(`${prefix}-event__title`);
+    this._hours = this._element.querySelector(`${prefix}-event__hours`);
+    this._metro = this._element.querySelector(`${prefix}-event__metro`);
+    this._address = this._element.querySelector(`${prefix}-event__address`);
+    this._switches = this._element.querySelectorAll(`${prefix}-event__switch`) || [];
+    this._addListeners();
+    return this._element;
+  }
 
-    _createElement = (selector) => document.querySelector(selector).content.querySelector('.calendar-event').cloneNode(true);
+  _addListeners() {
+    this._switches.forEach(element => {
+      if (!element.classList.contains(`${this._prefix}-event__switch_active`))
+        element.addEventListener('click', this._handleSwitch);
+    });
+  }
 
-    _createIcon({ className = '', type = '' }) {
-        const icon = document.createElement('li');
-        icon.className = className;
-        this._onMouseOver && icon.addEventListener('mouseenter', (evt) => this._onMouseOver(type, evt));
-        this._onMouseOut && icon.addEventListener('mouseleave', this._onMouseOut);
-        return icon;
-    }
+  _handleSwitch(evt) {
 
-    _fillElement({ title = '', activities = '', metro, address, hours }) {
-        this._title.textContent = title;
-        console.log(this._title.textContent);
-        activities.split(' ').filter(x => x)
-            .forEach(icon => this._icons.append(this._createIcon({ type: icon, className: `calendar-icon calendar-icon_type_${icon}` })));
-        this._metro.textContent = metro;
-        this._hours.textContent = `Часы работы: ${hours}`;
-        this._address.textContent = address;
-    }
-
-    _addEventListeners() {
-        console.log('listeners');
-        this._onClick && this._element.addEventListener('click', this._onClick);
-    }
-
+  }
 }
