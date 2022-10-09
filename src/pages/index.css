@@ -492,7 +492,6 @@ body .calendar-widget {
   padding: 0;
 }
 .calendar-widget .calendar-event-popup__activity {
-  cursor: pointer;
   display: flex;
   flex-direction: row-reverse;
   font-family: Roboto;
@@ -505,7 +504,6 @@ body .calendar-widget {
   padding: 5px 0;
 }
 .calendar-widget .calendar-event-popup__text {
-  cursor: pointer;
   font-family: Roboto;
   font-size: 18px;
   font-weight: 400;
@@ -515,7 +513,6 @@ body .calendar-widget {
 }
 .calendar-widget .calendar-event-popup__title {
   color: #bf1523;
-  cursor: pointer;
   font-family: Roboto;
   font-size: 30px;
   font-weight: 500;
@@ -546,6 +543,10 @@ body .calendar-widget {
   background-color: #bf1523;
   border: 0;
   color: #fff;
+}
+.calendar-widget .calendar-event-popup__button_call {
+  text-decoration: none;
+  box-sizing: border-box;
 }
 .calendar-widget .calendar-map-popup {
   background-color: #fff;
