@@ -13,7 +13,7 @@ export default class MapPopup {
 	}
 
 	open() {
-		this._initMap(this._mapCenterCoords, this._event);
+		this._initMap(this._mapCenterCoords, this._event, this._closeButton);
 		this._setEventListeners();
 		this._element.classList.add(this._popupOpenedClass);
 	}
