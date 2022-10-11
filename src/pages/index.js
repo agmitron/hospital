@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
       wrapperElement.append(
         new Event({
           templateSelector: eventTemplateSelector,
-          event,
+          eventData : event,
           onClick: () => handleEventClick(event),
           onMouseOver: showTooltip,
           onMouseOut: tooltip.hide,
