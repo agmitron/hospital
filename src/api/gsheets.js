@@ -43,10 +43,10 @@ async function getData({ sheetId, apiKey, sheetName = '', sheetNumber = 1 }) {
     lastAddress = currentAddress ? currentAddress : lastAddress;
     lastMetro = currentMetro ? currentMetro : lastMetro;
     if ((currentDate && lastDate !== currentDate) || (currentTitle && lastTitle !== currentTitle)) {
-      console.log(currentDate, lastDate);
+//      console.log(currentDate, lastDate);
       lastDate = currentDate ? currentDate : lastDate;
       lastTitle = currentTitle ? currentTitle : lastTitle;
-      console.log(currentDate, lastDate);
+//      console.log(currentDate, lastDate);
       if (eventObject.isValid()) { resultArray.push(eventObject.get()); }
       eventObject.init();
       eventObject.set({
@@ -68,7 +68,7 @@ async function getData({ sheetId, apiKey, sheetName = '', sheetNumber = 1 }) {
   }
   if (eventObject.isValid()) { resultArray.push(eventObject.get()); }
 
-  console.log(resultArray);
+  //console.log(resultArray);
   return resultArray;
 }
 

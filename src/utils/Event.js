@@ -33,9 +33,29 @@ export default class Event {
     this._switches = this._element.querySelectorAll(`.${prefix}-event__switch`) || [];
     this._hours = this._element.querySelector(`.${prefix}-event__hours`);
     this._sections = this._element.querySelectorAll(`.${prefix}-section`);
+    this._serviceSection = this._element.querySelector(`.${prefix}-section_type_services`);
     this._fillFields(eventData);
+    this._fillServices(eventData);
     this._enableSwitches();
     return this._element;
+  }
+
+  _createOneService(serviceData) {
+    console.log(serviceData);
+    const activities = serviceData.activities.reduce((acc, item) => acc + `<li class="${this._prefix}-event__activity">${item}</li>`, '');
+    const service = `<div class="${this._prefix}-event__service">
+      <h5 class="${this._prefix}-event__hours">${serviceData.hours}</h5>
+      <ul class="${this._prefix}-event__activities">${activities}</ul>
+    </div>`;
+
+    const serviceElement = document.createElement('div');
+    serviceElement.classList.add(`${this._prefix}-event__service`);
+    serviceElement.innerHTML = service;
+    return serviceElement;
+  }
+
+  _fillServices({ services }) {
+    services.forEach(service => this._serviceSection.append(this._createOneService(service)));
   }
 
   _composeHours(eventData) {
