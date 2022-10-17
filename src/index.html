@@ -66,8 +66,8 @@
       <section class="calendar-events"></section>
       <section class="calendar-event-popup">
         <ul class="calendar-event-popup__actions">
-          <li class="calendar-icon calendar-icon_type_share"></li>
-          <li class="calendar-icon calendar-icon_type_close"></li>
+          <li class="calendar-icon calendar-icon_type_share calendar-button"></li>
+          <li class="calendar-icon calendar-icon_type_close calendar-button"></li>
         </ul>
         <h2 class="calendar-event-popup__title">Сортировка</h2>
         <p
@@ -100,11 +100,11 @@
         </p>
         <div class="calendar-event-popup__buttons">
           <button
-            class="calendar-event-popup__button calendar-event-popup__button_red"
+            class="calendar-event-popup__button calendar-event-popup__button_red calendar-button"
           >
             Как добраться?
           </button>
-          <button class="calendar-event-popup__button">Позвонить</button>
+          <a class="calendar-event-popup__button calendar-event-popup__button_call calendar-button" href="tel: 88000000000">Позвонить</a>
         </div>
       </section>
       <section class="calendar-map-popup">
@@ -139,7 +139,6 @@
         src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&amp;apikey=08f019ca-e5f7-492b-b1e1-291179ed5f7e"
         type="text/javascript"
       ></script>
-      <!-- <script src="./plugins/map/map.js" type="text/javascript"></script> -->
     </div>
   </body>
 </html>
