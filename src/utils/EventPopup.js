@@ -1,6 +1,6 @@
 import { iconTexts } from "./constants";
 export default class EventPopup {
-	constructor(selector, {onClose, onMapOpen}) {
+	constructor(selector, {onClose, onMapOpen, isMapOpened}) {
 		this._popupOpenedClass = 'calendar-event-popup_opened';
 		this._element = document.querySelector(selector);
 		this._closeButton = this._element.querySelector('.calendar-icon_type_close');
@@ -15,6 +15,7 @@ export default class EventPopup {
 		this.currentEvent = '';
 		this._openMapPopup = onMapOpen;
 		this._onClose = onClose;
+		this._isMapOpened = isMapOpened;
 
 
 		return this;
@@ -65,7 +66,7 @@ export default class EventPopup {
 	};
 
 	_handleEscClose = (evt) => {
-		if (evt.key === 'Escape') this.close();
+		if (evt.key === 'Escape' && !this._isMapOpened()) this.close();
 	};
 
 	_handleShareButton = async () => {

@@ -33,6 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	const eventPopup = new EventPopup('.calendar-event-popup', {
 		onClose: () => eventsElement.classList.remove('calendar-hidden'),
 		onMapOpen: () => mapPopup.open(),
+		isMapOpened: () => mapPopup.isOpened(),
 	});
 
 	// Создаем экземпляр тултипа

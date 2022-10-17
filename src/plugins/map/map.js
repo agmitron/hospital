@@ -1,5 +1,5 @@
 // Инициализация карты (объект ymaps загружается в глобальный скоуп через тег <script> в html-файле)
-function initMap(mapCenterCoords, event) {
+function initMap(mapCenterCoords, event, closeButton) {
 	ymaps.ready(init);
 
 	function init() {
@@ -61,11 +61,33 @@ function initMap(mapCenterCoords, event) {
 				);
 		}
 
-		// слушатель событий для уничтожения карты при закрытии попапа
-		document.querySelector('.calendar-map-popup__close-button').addEventListener('click', () => map.destroy());
-		document.addEventListener('keydown', (evt) => {
-			if (evt.key === 'Escape') map.destroy();
-		});
+		// слушатели событий для уничтожения экземпляра карты при закрытии попапа		
+		function setEventListeners () {			
+      closeButton.addEventListener('click', handleMouseClose);
+      document.addEventListener('keydown', handleEscClose);
+    };
+
+    function removeEventListeners () {
+      closeButton.removeEventListener('click', handleMouseClose);
+      document.removeEventListener('keydown', handleEscClose);
+    };
+		
+		function handleMouseClose () {
+			removeMapAndListeners();
+		}
+		
+		function handleEscClose (evt) {
+			if (evt.key === 'Escape') {
+				removeMapAndListeners();
+      }
+		}
+		
+		function removeMapAndListeners () {
+			map.destroy();
+      removeEventListeners();
+		}
+		
+		setEventListeners();				
 	}
 }
 
