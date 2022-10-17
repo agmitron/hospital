@@ -6,7 +6,6 @@ const eventTemplate = `<div class="~~PREFIX~~-event">
     <p class="~~PREFIX~~-event__address"></p>
   </section>
   <section class="~~PREFIX~~-section_type_services ~~PREFIX~~-section ~~PREFIX~~-hidden">
-    Тут будут сервисы
   </section>
   <div class="~~PREFIX~~-event__switches">
     <button type="button" class="~~PREFIX~~-event__switch ~~PREFIX~~-event__switch_active" data-section="address">Адрес</button>
