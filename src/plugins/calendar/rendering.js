@@ -12,21 +12,44 @@ import {
 	changePeriodBtnSelector,
 	calendarGridContainerSelector,
 	todayBtnSelector,
+	leftBtnSelector,
 } from '../../utils/constants.js';
 import { getCurrentDateString, getCurrentWeekAsString, getCurrentMonthAsString } from '../../utils/dateUtils.js';
 
 const getDOMElements = (containerSelector) => {
 	const calendarContainer = document.querySelector(containerSelector);
-	const daysListContainer = calendarContainer.querySelector(daysListContainerSelector);
-	const dayTemplateElement = calendarContainer.querySelector(dayTemplateSelector);
-	const prevMonthBtnElement = calendarContainer.querySelector(prevMonthBtnSelector);
-	const nextMonthBtnElement = calendarContainer.querySelector(nextMonthBtnSelector);
-	const currentYearElement = calendarContainer.querySelector(currentYearElementSelector);
-	const currentYearElementForMobile = calendarContainer.querySelector(currentYearElementSelectorForMobile);
-	const currentMonthElement = calendarContainer.querySelector(currentMonthElementSelector);
-	const currentPeriodElement = calendarContainer.querySelector(currentPeriodElementSelector);
-	const changePeriodBtnElement = calendarContainer.querySelector(changePeriodBtnSelector);
-	const calendarGridContainer = calendarContainer.querySelector(calendarGridContainerSelector);
+
+	const daysListContainer = calendarContainer.querySelector(
+		daysListContainerSelector
+	);
+	const dayTemplateElement =
+		calendarContainer.querySelector(dayTemplateSelector);
+	const prevMonthBtnElement =
+		calendarContainer.querySelector(prevMonthBtnSelector);
+	const nextMonthBtnElement =
+		calendarContainer.querySelector(nextMonthBtnSelector);
+	const currentYearElement = calendarContainer.querySelector(
+		currentYearElementSelector
+	);
+	const currentYearElementForMobile = calendarContainer.querySelector(
+		currentYearElementSelectorForMobile
+	);
+	const currentMonthElement = calendarContainer.querySelector(
+		currentMonthElementSelector
+	);
+	const currentPeriodElement = calendarContainer.querySelector(
+		currentPeriodElementSelector
+	);
+	const changePeriodBtnElement = calendarContainer.querySelector(
+		changePeriodBtnSelector
+	);
+	const leftBtnElement = calendarContainer.querySelector(
+		leftBtnSelector
+	);
+	const calendarGridContainer = calendarContainer.querySelector(
+		calendarGridContainerSelector
+	);
+
 	const todayBtnElement = calendarContainer.querySelector(todayBtnSelector);
 
 	return {
@@ -42,6 +65,7 @@ const getDOMElements = (containerSelector) => {
 		changePeriodBtnElement,
 		calendarGridContainer,
 		todayBtnElement,
+		leftBtnElement,
 	};
 };
 
@@ -58,9 +82,8 @@ const renderCurrentYear = (currentYear, currentYearElement, currentYearElementFo
 };
 
 // Функция-отрисовщик текущуго месяца в шапке календаря
-const renderCurrentMonth = (currentMonth, currentMonthElement) => {
-	currentMonthElement.textContent = monthsArr[currentMonth];
-};
+const renderCurrentMonth = (currentMonth, currentMonthElement) => (currentMonthElement.textContent = monthsArr[currentMonth]);
+
 
 // Функция-отрисовщик выбранного периода (в зависисмости от текущего значения отображаемого периода выводит на экран либо актуальную дату (в формате дд.мм), либо актуальную неделю (в формате дд.мм-дд.мм), либо пустое место (если выбран месяц))
 const renderCurrentPeriod = (displayedPeriod, currentPeriodElement) => {
@@ -87,17 +110,16 @@ const renderChangePeriodBtnTextContent = (
 	displayedPeriod,
 	changePeriodBtnElement
 ) => {
-	let content;
-	switch (displayedPeriod) {
-		case timePeriodsForDisplay.day:
-			content = 'Месяц';
-			break;
-		case timePeriodsForDisplay.week:
-			content = 'Месяц';
-			break;
-		case timePeriodsForDisplay.month:
-			content = 'Неделя';
-	}
+	const content = displayedPeriod == timePeriodsForDisplay.month ? 'Неделя' : 'Месяц';
+	changePeriodBtnElement.textContent = content;
+};
+
+// Функция-отрисовщик текста левой кнопки смены периода (сегодня/неделя)
+const renderLeftBtnTextContent = (
+	displayedPeriod,
+	changePeriodBtnElement
+) => {
+	const content = displayedPeriod == timePeriodsForDisplay.day ? 'Неделя' : 'Сегодня';
 	changePeriodBtnElement.textContent = content;
 };
 
@@ -113,6 +135,7 @@ const renderAllCalendarElements = ({
 	displayedPeriod,
 	currentPeriodElement,
 	changePeriodBtnElement,
+	leftBtnElement,
 }) => {
 	renderDays(daysListContainer, daysElementsArr);
 	renderCurrentYear(
@@ -123,6 +146,7 @@ const renderAllCalendarElements = ({
 	renderCurrentMonth(currentMonth, currentMonthElement);
 	renderCurrentPeriod(displayedPeriod, currentPeriodElement);
 	renderChangePeriodBtnTextContent(displayedPeriod, changePeriodBtnElement);
+	renderLeftBtnTextContent(displayedPeriod, leftBtnElement)
 };
 
 export {
@@ -133,4 +157,5 @@ export {
 	renderCurrentPeriod,
 	renderChangePeriodBtnTextContent,
 	renderAllCalendarElements,
+	renderLeftBtnTextContent,
 };
