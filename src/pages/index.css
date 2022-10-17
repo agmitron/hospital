@@ -287,6 +287,12 @@ body .calendar-widget {
   background-color: white;
 }
 
+.calendar-widget .calendar-section_type_services {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .calendar-widget .calendar-section_type_address {
   max-width: 280px;
   display: flex;
@@ -372,7 +378,14 @@ body .calendar-widget {
   height: 24px;
   width: 24px;
 }
-.calendar-widget .calendar-icon_type_aids {
+.calendar-widget .calendar-event__activity_icon_aids::before {
+  content: "";
+  display: block;
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-position: center;
   background-image: url(../images/aids.svg);
 }
 .calendar-widget .calendar-icon_type_close {
@@ -380,33 +393,102 @@ body .calendar-widget {
   height: 34px;
   width: 34px;
 }
-.calendar-widget .calendar-icon_type_clothdry {
+.calendar-widget .calendar-event__activity_icon_clothdry::before {
+  content: "";
+  display: block;
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-position: center;
   background-image: url(../images/clothdry.svg);
 }
-.calendar-widget .calendar-icon_type_clothwash {
+.calendar-widget .calendar-event__activity_icon_clothwash::before {
+  content: "";
+  display: block;
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-position: center;
   background-image: url(../images/clothwash.svg);
 }
-.calendar-widget .calendar-icon_type_covid {
+.calendar-widget .calendar-event__activity_icon_covid::before {
+  content: "";
+  display: block;
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-position: center;
   background-image: url(../images/covid.svg);
 }
-.calendar-widget .calendar-icon_type_eyes {
+.calendar-widget .calendar-event__activity_icon_eyes::before {
+  content: "";
+  display: block;
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-position: center;
   background-image: url(../images/eyes.svg);
 }
-.calendar-widget .calendar-icon_type_food {
+.calendar-widget .calendar-event__activity_icon_food::before {
+  content: "";
+  display: block;
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-position: center;
   background-image: url(../images/food.svg);
 }
-.calendar-widget .calendar-icon_type_health {
+.calendar-widget .calendar-event__activity_icon_health::before {
+  content: "";
+  display: block;
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-position: center;
   background-image: url(../images/health.svg);
 }
-.calendar-widget .calendar-icon_type_haircut {
+.calendar-widget .calendar-event__activity_icon_haircut::before {
+  content: "";
+  display: block;
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-position: center;
   background-image: url(../images/haircut.svg);
 }
-.calendar-widget .calendar-icon_type_help {
+.calendar-widget .calendar-event__activity_icon_help::before {
+  content: "";
+  display: block;
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-position: center;
   background-image: url(../images/help.svg);
 }
-.calendar-widget .calendar-icon_type_medkit {
+
+/* .calendar-widget .calendar-icon_type_medkit {
+  background-image: url(../images/medkit.svg);
+} */
+
+.calendar-widget .calendar-event__activity_icon_medkit::before {
+  content: "";
+  display: block;
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-position: center;
   background-image: url(../images/medkit.svg);
 }
+
 .calendar-widget .calendar-icon_type_share {
   background-image: url(../images/icon-share.svg);
 }
@@ -416,12 +498,44 @@ body .calendar-widget {
 .calendar-widget .calendar-icon_type_sleep {
   background-image: url(../images/sleep.svg);
 }
-.calendar-widget .calendar-icon_type_vaccine {
+
+.calendar-widget .calendar-event__activity_icon_vaccine::before {
+  content: "";
+  display: block;
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-position: center;
   background-image: url(../images/vaccine.svg);
 }
+
+.calendar-widget .calendar-event__activity_icon_phone::before {
+  content: "";
+  display: block;
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-position: center;
+  background-image: url(../images/phone.svg);
+}
+
+.calendar-widget .calendar-event__activity_icon_pills::before {
+  content: "";
+  display: block;
+  margin-right: 20px;
+  width: 20px;
+  height: 20px;
+  background-size: contain;
+  background-position: center;
+  background-image: url(../images/pills.svg);
+}
+
 .calendar-widget .calendar-icon_type_warm {
   background-image: url(../images/warm.svg);
 }
+
 .calendar-widget .calendar-event__icons {
   display: flex;
   flex-direction: row;
@@ -465,13 +579,21 @@ body .calendar-widget {
   font-size: 18px;
   font-weight: 400;
   line-height: 28px;
-  text-transform: capitalize;
+  margin-top: 8px;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
 }
 
 .calendar-widget .calendar-event__activity {
   margin: 0;
   padding: 0;
   color: #1b1b1b;
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
 }
 
 .calendar-widget .calendar-events {
@@ -494,7 +616,7 @@ body .calendar-widget {
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 8px;
   max-width: 480px;
   padding-bottom: 22px;
 }
@@ -538,7 +660,7 @@ body .calendar-widget {
   color: rgba(191, 21, 35, 1);
 }
 .calendar-widget .calendar-events__title_selected {
-  border: 1px solid #787878;
+  border: 1px solid rgba(120, 120, 120, 1);
 }
 .calendar-widget .calendar-event-popup {
   background-color: #fff;

@@ -13,9 +13,21 @@ const eventTemplate = `<div class="~~PREFIX~~-event">
   </div>
 </div>`;
 
-const serviceTemplate = `<p class="~~PREFIX~~-event__hours"></p>
- 
-`;
+const icons = {
+  'осмотр врача': 'medkit',
+  'перевязка ран': 'medkit',
+  'социальная помощь': 'help',
+  'выдача лекарств': 'pills',
+  'подбор очков': 'eyes',
+  'вакцинация': 'vaccine',
+  'тест на covid': 'covid',
+  'тест на гепатит': 'covid',
+  'тест на сифилис': 'covid',
+  'тест на вич': 'aids',
+  'парикмахер': 'haircut',
+  'телефон': 'phone',
+};
+
 
 export default class Event {
   constructor({ prefix = 'calendar', eventData = {} }) {
@@ -30,7 +42,6 @@ export default class Event {
     this._metro = this._element.querySelector(`.${prefix}-event__metro`);
     this._address = this._element.querySelector(`.${prefix}-event__address`);
     this._switches = this._element.querySelectorAll(`.${prefix}-event__switch`) || [];
-    this._hours = this._element.querySelector(`.${prefix}-event__hours`);
     this._sections = this._element.querySelectorAll(`.${prefix}-section`);
     this._serviceSection = this._element.querySelector(`.${prefix}-section_type_services`);
     this._fillFields(eventData);
@@ -40,10 +51,14 @@ export default class Event {
   }
 
   _createOneService(serviceData) {
-    console.log(serviceData);
-    const activities = serviceData.activities.reduce((acc, item) => acc + `<li class="${this._prefix}-event__activity">${item}</li>`, '');
+    console.log(serviceData.activities);
+    console.log(icons['тест на covid']);
+    const activities = serviceData.activities
+      .reduce((acc, item) => (acc +
+        `<li class="${this._prefix}-event__activity ${icons[item.toLowerCase()] ? 'calendar-event__activity_icon_'
+          + icons[item.toLowerCase()] : ''}">${item}</li>`), '');
     const service = `<div class="${this._prefix}-event__service">
-      <h5 class="${this._prefix}-event__hours">${serviceData.hours}</h5>
+      <h5 class="${this._prefix}-event__hours">График помощи: ${serviceData.hours}</h5>
       <ul class="${this._prefix}-event__activities">${activities}</ul>
     </div>`;
 
@@ -74,7 +89,7 @@ export default class Event {
     this._title.textContent = eventData.title;
     this._metro.textContent = eventData.metro;
     this._address.textContent = eventData.address;
-    this._hours.textContent = this._composeHours(eventData);
+    this._hours.textContent = `Часы работы: ${this._composeHours(eventData)}`;
   }
 
   _enableSwitches() {
