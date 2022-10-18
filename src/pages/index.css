@@ -71,7 +71,7 @@ body .calendar-widget {
   letter-spacing: 0.0018em;
   line-height: 22px;
   text-align: left;
-  width: 21.75%;
+    width: fit-content;
 }
 @media screen and (max-width: 485px) {
   .calendar-widget .calendar-header__today-btn {
@@ -95,6 +95,7 @@ body .calendar-widget {
 .calendar-widget .calendar-header__change-month-btn {
   height: 44px;
   width: 44px;
+  visibility: hidden;
 }
 @media screen and (max-width: 485px) {
   .calendar-widget .calendar-header__change-month-btn {
@@ -274,6 +275,9 @@ body .calendar-widget {
 }
 .calendar-widget .calendar-day__event_invisible {
   display: none;
+}
+.calendar-widget .calendar-day__event_unavailable {
+  background-color: #C4C4C4;
 }
 .calendar-widget .calendar-page {
   font-family: Roboto, sans-serif;
@@ -694,7 +698,6 @@ body .calendar-widget {
   padding: 0;
 }
 .calendar-widget .calendar-event-popup__activity {
-  cursor: pointer;
   display: flex;
   flex-direction: row-reverse;
   font-family: Roboto;
@@ -707,7 +710,6 @@ body .calendar-widget {
   padding: 5px 0;
 }
 .calendar-widget .calendar-event-popup__text {
-  cursor: pointer;
   font-family: Roboto;
   font-size: 18px;
   font-weight: 400;
@@ -717,7 +719,6 @@ body .calendar-widget {
 }
 .calendar-widget .calendar-event-popup__title {
   color: #bf1523;
-  cursor: pointer;
   font-family: Roboto;
   font-size: 30px;
   font-weight: 500;
@@ -748,6 +749,10 @@ body .calendar-widget {
   background-color: #bf1523;
   border: 0;
   color: #fff;
+}
+.calendar-widget .calendar-event-popup__button_call {
+  text-decoration: none;
+  box-sizing: border-box;
 }
 .calendar-widget .calendar-map-popup {
   background-color: #fff;

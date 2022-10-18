@@ -1,54 +1,56 @@
-import "./index.css";
-import { calendarContainerSelector } from "../utils/constants.js";
-import { initCalendar } from "../plugins/calendar/index.js";
-import { initMap } from "../plugins/map/map.js";
-import { gsheets } from "../api/gsheets";
-import { makeSideDate, isToday, makeTitleDate } from "../utils/dateUtils";
-import { iconTexts } from "../utils/constants.js";
+import './index.css';
+import { calendarContainerSelector } from '../utils/constants.js';
+import { initCalendar } from '../plugins/calendar/index.js';
+import { initMap } from '../plugins/map/map.js';
+import { gsheets } from '../api/gsheets';
+import { makeSideDate, isToday, makeTitleDate } from '../utils/dateUtils';
+import { iconTexts } from '../utils/constants.js';
 
-import EventPopup from "../utils/EventPopup.js";
-import Event from "../utils/Event.js";
-import MapPopup from "../utils/MapPopup.js";
+import EventPopup from '../utils/EventPopup.js';
+import Event from '../utils/Event.js';
+import MapPopup from '../utils/MapPopup.js';
 
-import { mapCenterCoords } from "../utils/constants.js";
-import Tooltip from "../utils/Tooltip";
+import { mapCenterCoords } from '../utils/constants.js';
+import Tooltip from '../utils/Tooltip';
 
-document.addEventListener("DOMContentLoaded", () => {
-  const options = {
-    apiKey: "AIzaSyAozRsHSFgLEZkH-Du-a2r4K1CsXPLjj2o",
-    sheetId: "1j9Ln-t7BoitA7fzeFp20tVq68h0KYO6x3PHjic4jqMA",
-    sheetName: "Новая версия",
-  };
+document.addEventListener('DOMContentLoaded', () => {
+	const options = {
+		apiKey: 'AIzaSyAozRsHSFgLEZkH-Du-a2r4K1CsXPLjj2o',
+		sheetId: '1j9Ln-t7BoitA7fzeFp20tVq68h0KYO6x3PHjic4jqMA',
+		sheetName: 'Новая версия',
+	};
 
   // Секция с ивентами
   const eventsElement = document.querySelector(".calendar-events-section");
 
-  // Создаем экземпляр попапа карты
-  //const mapPopup = new MapPopup(".calendar-map-popup", () =>
-  //    initMap(mapCenterCoords, eventPopup.currentEvent.address)
-  //);
+	// Создаем экземпляр попапа карты
+	//const mapPopup = new MapPopup(".calendar-map-popup", () =>
+	//    initMap(mapCenterCoords, eventPopup.currentEvent.address)
+	//);
 	const mapPopup = new MapPopup('.calendar-map-popup', mapCenterCoords, initMap);
 
-  // Создаем экземпляр попапа события
-  const eventPopup = new EventPopup(".calendar-event-popup", {
-    onClose: () => eventsElement.classList.remove("calendar-hidden"),
-    onMapOpen: () => mapPopup.open(),
-  });
+	// Создаем экземпляр попапа события
+	const eventPopup = new EventPopup('.calendar-event-popup', {
+		onClose: () => eventsElement.classList.remove('calendar-hidden'),
+		onMapOpen: () => mapPopup.open(),
+		isMapOpened: () => mapPopup.isOpened(),
+	});
 
-  // Создаем экземпляр тултипа
-  const tooltip = new Tooltip(".calendar-tooltip");
+	// Создаем экземпляр тултипа
+	const tooltip = new Tooltip('.calendar-tooltip');
 
-  const eventTemplateSelector = ".event-template";
+	const eventTemplateSelector = '.event-template';
 
-  function handleEventClick(event) {
-    if (eventsElement.clientWidth > 425) return;
-    eventsElement.classList.add("calendar-hidden");
-    eventPopup.open(event);
-  }
+	function handleEventClick(event) {
+		if (eventsElement.clientWidth > 425) return;
+		eventsElement.classList.add('calendar-hidden');
+		eventPopup.open(event);
+		mapPopup.getEvent(event);
+	}
 
-  function showTooltip(type, evt) {
-    tooltip.show(iconTexts[type], evt);
-  }
+	function showTooltip(type, evt) {
+		tooltip.show(iconTexts[type], evt);
+	}
 
   function renderEvents(events, period = "month") {
     eventPopup.close();
@@ -95,7 +97,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  gsheets(options).then((data) => {
-    initCalendar(calendarContainerSelector, renderEvents, data);
-  });
+	gsheets(options).then((data) => {
+		initCalendar(calendarContainerSelector, renderEvents, data);
+	});
 });

@@ -19,6 +19,8 @@ const currentMonthElementSelector = '.calendar-header__month';
 const currentPeriodElementSelector = '.calendar-header__selected-period-row';
 // Селектор кнопки смены отображаемого периода (месяц/неделя)
 const changePeriodBtnSelector = '.calendar-header__period-btn';
+//
+const leftBtnSelector = '.calendar-header__today-btn';
 // Селектор кнопки "Сегодня"
 const todayBtnSelector = '.calendar-header__today-btn';
 // Селектор контейнера сетки календаря
@@ -83,4 +85,5 @@ export {
 	invisibilityModifier,
 	iconTexts,
 	mapCenterCoords,
+	leftBtnSelector,
 };

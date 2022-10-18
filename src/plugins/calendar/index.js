@@ -28,6 +28,7 @@ export function initCalendar(containerSelector, updateEvents, events) {
 		currentMonthElement,
 		currentPeriodElement,
 		changePeriodBtnElement,
+		leftBtnElement,
 		calendarGridContainer,
 		todayBtnElement,
 	} = getDOMElements(containerSelector);
@@ -76,6 +77,8 @@ export function initCalendar(containerSelector, updateEvents, events) {
 			displayedPeriod,
 			currentPeriodElement,
 			changePeriodBtnElement,
+			leftBtnElement,
+
 		});
 		//		console.log(currentMonth + 1);
 		updateEvents(events.filter(filters['month'](currentMonth + 1)), displayedPeriod);
@@ -107,6 +110,8 @@ export function initCalendar(containerSelector, updateEvents, events) {
 			displayedPeriod,
 			currentPeriodElement,
 			changePeriodBtnElement,
+			leftBtnElement,
+
 		});
 		//		console.log(currentMonth + 1);
 		updateEvents(events.filter(filters['month'](currentMonth + 1)), displayedPeriod);
@@ -147,6 +152,8 @@ export function initCalendar(containerSelector, updateEvents, events) {
 			displayedPeriod,
 			currentPeriodElement,
 			changePeriodBtnElement,
+			leftBtnElement,
+
 		});
 		const filterFunction = displayedPeriod === 'week' ? filters['week'] : filters['month'](currentMonth + 1);
 		updateEvents(events.filter(filterFunction), displayedPeriod);
@@ -164,8 +171,8 @@ export function initCalendar(containerSelector, updateEvents, events) {
 		if (displayedPeriod !== timePeriodsForDisplay.day) {
 			displayedPeriod = timePeriodsForDisplay.day;
 			// для дня сетка календаря не должна отображаться, поэтому убираем её
-			calendarGridContainer.classList.add(invisibilityModifier);
-		}
+		} else { displayedPeriod = timePeriodsForDisplay.week; }
+		calendarGridContainer.classList.add(invisibilityModifier);
 		// обновляем сетку календаря и рендерим элементы
 		// В режиме Сегодня сетки календаря нет, так что обновлять нет необходимости - Безруков
 		//		updateCalendarGrid(currentYear, currentMonth);
@@ -180,6 +187,7 @@ export function initCalendar(containerSelector, updateEvents, events) {
 			displayedPeriod,
 			currentPeriodElement,
 			changePeriodBtnElement,
+			leftBtnElement,
 		});
 		updateEvents(events.filter(filters[displayedPeriod]), displayedPeriod);
 
@@ -198,6 +206,7 @@ export function initCalendar(containerSelector, updateEvents, events) {
 		displayedPeriod,
 		currentPeriodElement,
 		changePeriodBtnElement,
+		leftBtnElement,
 	});
 
 	// ---------------------- вспомогательные функции ------------------------

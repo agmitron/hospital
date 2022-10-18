@@ -45,60 +45,68 @@ const getCurrentWeekAsString = () => {
     return `${getCurrentDateString(monday)}-${getCurrentDateString(sunday)}`;
 }
 
+const getCurrentMonthAsString = () => {
+  const { currentYear, currentMonth } = getCurrentDayData();
+  const lastDateOfCurrentMonth = getLastDateOfMonth(currentYear, currentMonth);
+  const currentMonthAsString = `01.${String(currentMonth + 1).padStart(2, 0)}-${lastDateOfCurrentMonth}.${String(
+    currentMonth + 1
+  ).padStart(2, 0)}`;
+  console.log('🚀 ~ file: dateUtils.js ~ line 54 ~ currentMonthAsString ~ currentMonthAsString', currentMonthAsString);
+  return currentMonthAsString;
+};
+
 // Функция получения последнего числа в месяце
 const getLastDateOfMonth = (year, month) => {
-    const date = new Date(year, month + 1, 0);
-    return date.getDate();
+  const date = new Date(year, month + 1, 0);
+  return date.getDate();
 };
 
 // Функция получения первого и последнего дня недели в месяце
 const getFirstAndLastDaysOfMonth = (year, month) => {
-    // первый день месяца
-    let dateObj = new Date(year, month, 1);
-    const firstWeekDayOfMonth = dateObj.getDay();
-    // последний день месяца
-    const lastDateOfMonth = getLastDateOfMonth(year, month);
-    dateObj = new Date(year, month, lastDateOfMonth);
-    const lastWeekDayOfMonth = dateObj.getDay();
-    return { firstWeekDayOfMonth, lastWeekDayOfMonth };
+  // первый день месяца
+  let dateObj = new Date(year, month, 1);
+  const firstWeekDayOfMonth = dateObj.getDay();
+  // последний день месяца
+  const lastDateOfMonth = getLastDateOfMonth(year, month);
+  dateObj = new Date(year, month, lastDateOfMonth);
+  const lastWeekDayOfMonth = dateObj.getDay();
+  return { firstWeekDayOfMonth, lastWeekDayOfMonth };
 };
 
 function makeDateObj(dateString) {
-    const [day, month, year] = dateString.split('.');
-    return new Date(year, month - 1, day);
+  const [day, month, year] = dateString.split('.');
+  return new Date(year, month - 1, day);
 }
 
 function makeSideDate(dateString) {
-    const date = makeDateObj(dateString);
-    return date
-        .toLocaleString('ru', { weekday: 'short', day: 'numeric' })
-        .toUpperCase()
-        .replace(',', '');
+  const date = makeDateObj(dateString);
+  return date.toLocaleString('ru', { weekday: 'short', day: 'numeric' }).toUpperCase().replace(',', '');
 }
 
 function makeTitleDate(dateString) {
-    const date = makeDateObj(dateString);
-    return date
-        .toLocaleString('ru', { weekday: 'long', day: 'numeric', month: 'numeric' })
-        .toLowerCase()
-        .replace(',', '');
+  const date = makeDateObj(dateString);
+  return date
+    .toLocaleString('ru', { weekday: 'long', day: 'numeric', month: 'numeric' })
+    .toLowerCase()
+    .replace(',', '');
 }
 
 function isToday(dateString) {
-    const date = makeDateObj(dateString);
-    const today = new Date();
-    return date.toLocaleDateString() === today.toLocaleDateString();
+  const date = makeDateObj(dateString);
+  const today = new Date();
+  return date.toLocaleDateString() === today.toLocaleDateString();
 }
 
 export {
-    getCurrentDayData,
-    getCurrentDateString,
-    getCurrentWeekAsString,
-    getLastDateOfMonth,
-    getFirstAndLastDaysOfMonth,
-    getCurrentWeekAsArray,
-    getDottedDateString,
-    makeSideDate,
-    makeTitleDate,
-    isToday,
+  getCurrentDayData,
+  getCurrentDateString,
+  getCurrentWeekAsString,
+  getCurrentMonthAsString,
+  getLastDateOfMonth,
+  getFirstAndLastDaysOfMonth,
+  getCurrentWeekAsArray,
+  getDottedDateString,
+  makeSideDate,
+  makeTitleDate,
+  isToday,
 };

@@ -1,9 +1,10 @@
 import { iconTexts } from "./constants";
 export default class EventPopup {
-	constructor(selector, {onClose, onMapOpen}) {
+	constructor(selector, {onClose, onMapOpen, isMapOpened}) {
 		this._popupOpenedClass = 'calendar-event-popup_opened';
 		this._element = document.querySelector(selector);
 		this._closeButton = this._element.querySelector('.calendar-icon_type_close');
+		this._shareButton = this._element.querySelector('.calendar-icon_type_share');
 		this._howToReachButton = this._element.querySelector('.calendar-event-popup__button_red');
 		this._title = this._element.querySelector('.calendar-event-popup__title');
 		this._address = this._element.querySelector('.calendar-event-popup__text_address');
@@ -14,6 +15,7 @@ export default class EventPopup {
 		this.currentEvent = '';
 		this._openMapPopup = onMapOpen;
 		this._onClose = onClose;
+		this._isMapOpened = isMapOpened;
 
 
 		return this;
@@ -27,7 +29,7 @@ export default class EventPopup {
         this._date.textContent = this._convertDate(date);
         this._hours.textContent = hours;
         this._activities.innerHTML = '';
-		this.currentEvent = { title, address, activities, metro, hours, date };
+				this.currentEvent = { title, address, activities, metro, hours, date };
         activities.split(' ').filter(x => x).forEach(icon => this._activities.append(this._createActivity(icon, iconTexts[icon])));
         this._setEventListeners();
     }
@@ -64,19 +66,33 @@ export default class EventPopup {
 	};
 
 	_handleEscClose = (evt) => {
-		if (evt.key === 'Escape') this.close();
+		if (evt.key === 'Escape' && !this._isMapOpened()) this.close();
 	};
+
+	_handleShareButton = async () => {
+		try {
+      await navigator.share({
+        text: `${this.currentEvent.title}, ${this.currentEvent.date}, ${this.currentEvent.hours}, ${this.currentEvent.address}, ${this.currentEvent.metro}, ${this.currentEvent.activities}`,
+        title: 'Мобильная клиника',
+        url: document.location.href,
+      });
+    } catch (err) {
+      alert(`Ошибка: ${err}`);
+    }
+  };
 
 	_setEventListeners() {
 		this._closeButton.addEventListener('click', this._handleCloseButton);
 		document.addEventListener('keydown', this._handleEscClose);
 		this._howToReachButton.addEventListener('click', this._openMapPopup);
+		this._shareButton.addEventListener('click', this._handleShareButton);
 	}
 
 	_removeEventListeners() {
 		document.removeEventListener('keydown', this._handleEscClose);
 		this._closeButton.removeEventListener('click', this._handleCloseButton);
 		this._howToReachButton.removeEventListener('click', this._openMapPopup);
+		this._shareButton.removeEventListener('click', this._handleShareButton);
 	}
 }
 
