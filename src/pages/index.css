@@ -657,6 +657,7 @@ body .calendar-widget {
     width: 100%;
   }
 }
+
 .calendar-widget .calendar-events__title_brief {
   width: -webkit-min-content;
   width: -moz-min-content;
@@ -672,6 +673,12 @@ body .calendar-widget {
 .calendar-widget .calendar-events__title_selected {
   border: 1px solid rgba(120, 120, 120, 1);
 }
+
+.calendar-widget .calendar-events__title_clicked {
+  background-color: rgba(240, 214, 216, 1);
+  border: 1px solid rgba(191, 21, 35, 1);
+}
+
 .calendar-widget .calendar-event-popup {
   background-color: #fff;
   box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.09);

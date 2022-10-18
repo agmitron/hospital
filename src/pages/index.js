@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     tooltip.show(iconTexts[type], evt);
   }
 
-  function createDayElement({ date }, titleStyle) {
+  function createDayElement({ date }, { titleStyle, isClicked }) {
     const eventsDayElement = document
       .querySelector(".events-template")
       .content.cloneNode(true)
@@ -65,22 +65,23 @@ document.addEventListener('DOMContentLoaded', () => {
       eventsDayElement.classList.add("calendar-events_title_sideway");
       titleElement.classList.add("calendar-events__title_brief");
     }
-    if (isToday(date))
+    if (isClicked) titleElement.classList.add('calendar-events__title_clicked');
+    else if (isToday(date))
       titleElement.classList.add("calendar-events__title_selected");
     return eventsDayElement;
   }
 
-  function renderEvents(events, period = "month") {
+  function renderEvents(events, props = { period: 'month', isClicked: false }) {
     eventPopup.close();
     //    console.log(events, typeof events, events instanceof Date);
     const titleStyle =
-      period === "month" && eventsElement.clientWidth > 425 ? "full" : "brief";
+      (!props.period || props.period === "month") && eventsElement.clientWidth > 425 ? "full" : "brief";
     eventsElement.innerHTML = "";
     let currentDate = "";
     let wrapperElement = null;
     if (events instanceof Date) {
       const date = getDottedDateString(events);
-      const eventsDayElement = createDayElement({ date }, titleStyle);
+      const eventsDayElement = createDayElement({ date }, { titleStyle, isClicked: props.isClicked });
       wrapperElement = eventsDayElement.querySelector(".calendar-events__container");
       eventsElement.append(eventsDayElement);
       wrapperElement.append(
@@ -95,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     else {
       events.forEach((event) => {
         if (currentDate !== event.date) {
-          const eventsDayElement = createDayElement(event, titleStyle);
+          const eventsDayElement = createDayElement(event, { titleStyle, isClicked: props.isClicked });
           wrapperElement = eventsDayElement.querySelector(".calendar-events__container");
           eventsElement.append(eventsDayElement);
           currentDate = event.date;

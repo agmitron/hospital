@@ -134,7 +134,7 @@ const getDaysElementsArr = ({
 				// -------------------------------------------------------
 				// СЮДА НУЖНО БУДЕТ ДОБАВИТЬ ЛОГИКУ ОТОБРАЖЕНИЯ КАРТОЧЕК СОБЫТИЙ!!!!!!!!!!!!
 
-				onClick && onClick(eventsPerDate.length ? eventsPerDate : pressedDayElement.dateObj);
+				onClick && onClick(eventsPerDate.length ? eventsPerDate : pressedDayElement.dateObj, { isClicked: true });
 
 				//--------------------------------------------------------
 			});

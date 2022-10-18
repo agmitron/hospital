@@ -83,7 +83,7 @@ export function initCalendar(containerSelector, updateEvents, events) {
 
 		});
 		//		console.log(currentMonth + 1);
-		updateEvents(events.filter(filters['month'](currentMonth + 1)), displayedPeriod);
+		updateEvents(events.filter(filters['month'](currentMonth + 1)), {period: displayedPeriod});
 
 	});
 
@@ -116,7 +116,7 @@ export function initCalendar(containerSelector, updateEvents, events) {
 
 		});
 		//		console.log(currentMonth + 1);
-		updateEvents(events.filter(filters['month'](currentMonth + 1)), displayedPeriod);
+		updateEvents(events.filter(filters['month'](currentMonth + 1)),{period: displayedPeriod});
 
 	});
 
@@ -158,7 +158,7 @@ export function initCalendar(containerSelector, updateEvents, events) {
 
 		});
 		const filterFunction = displayedPeriod === 'week' ? filters['week'] : filters['month'](currentMonth + 1);
-		updateEvents(events.filter(filterFunction), displayedPeriod);
+		updateEvents(events.filter(filterFunction), {period: displayedPeriod});
 
 	});
 
@@ -191,7 +191,7 @@ export function initCalendar(containerSelector, updateEvents, events) {
 			changePeriodBtnElement,
 			leftBtnElement,
 		});
-		updateEvents(events.filter(filters[displayedPeriod]), displayedPeriod);
+		updateEvents(events.filter(filters[displayedPeriod]), {period: displayedPeriod});
 
 	});
 
