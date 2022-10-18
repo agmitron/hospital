@@ -70,13 +70,17 @@ export default class Event {
     return this._element;
   }
 
+  _capitalizeFirstLetter(str) {
+    return str && str[0].toUpperCase() + str.slice(1);
+  }
+
   _createOneService(serviceData) {
     //    console.log(serviceData.activities);
     //    console.log(icons['тест на covid']);
     const activities = serviceData.activities
       .reduce((acc, item) => (acc +
         `<li class="${this._prefix}-event__activity ${icons[item.toLowerCase()] ? 'calendar-event__activity_icon_'
-          + icons[item.toLowerCase()] : ''}">${item}</li>`), '');
+          + icons[item.toLowerCase()] : ''}">${this._capitalizeFirstLetter(item)}</li>`), '');
     const service = `<div class="${this._prefix}-event__service">
       <h5 class="${this._prefix}-event__hours">График помощи: ${serviceData.hours}</h5>
       <ul class="${this._prefix}-event__activities">${activities}</ul>
