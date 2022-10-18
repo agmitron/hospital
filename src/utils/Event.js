@@ -2,6 +2,10 @@ const NO_EVENT_TITLE = 'Нет выезда';
 const NO_EVENT_SUBTITLE = 'На данную дату выезд не запланирован';
 const NO_EVENT_TEXT = 'Уточнить дату выезда можно по телефону:';
 const NO_EVENT_PHONE = '+7-952-230-03-49';
+const CANCELLED_TITLE = 'Выезд отменен';
+const CANCELLED_SUBTITLE = 'На данную дату выезд отменен';
+const CANCELLED_TEXT = 'Уточнить дату выезда можно по телефону:';
+const CANCELLED_PHONE = '+7-952-230-03-49';
 
 const eventTemplate = `<div class="~~PREFIX~~-event">
   <h4 class="~~PREFIX~~-event__title"></h4>
@@ -29,6 +33,17 @@ const noEventTemplate = `<div class="~~PREFIX~~-event ">
 </section>
 </div>`;
 
+const cancelledTemplate = `<div class="~~PREFIX~~-event ~~PREFIX~~-event_cancelled">
+<section class="~~PREFIX~~-section ~~PREFIX~~-section_type_empty">
+<h4 class="~~PREFIX~~-event__title">${CANCELLED_TITLE}</h4>
+<h5 class="~~PREFIX~~-event__hours">${CANCELLED_SUBTITLE}</h5>
+<div>
+<p class="~~PREFIX~~-event__metro">${CANCELLED_TEXT}</p>
+<p class="~~PREFIX~~-event__metro">${CANCELLED_PHONE}</p>
+</div>
+</section>
+</div>`;
+
 const icons = {
   'осмотр врача': 'medkit',
   'перевязка ран': 'medkit',
@@ -49,13 +64,15 @@ export default class Event {
   constructor({ prefix = 'calendar', eventData = {} }) {
     const element = document.createElement('div');
     this._prefix = prefix;
-    element.innerHTML = eventData.title
-      ? eventTemplate.replaceAll('~~PREFIX~~', prefix)
-      : noEventTemplate.replaceAll('~~PREFIX~~', prefix);
+    element.innerHTML =
+      eventData.isCancelled ? cancelledTemplate.replaceAll('~~PREFIX~~', prefix) :
+        (eventData.title
+          ? eventTemplate.replaceAll('~~PREFIX~~', prefix)
+          : noEventTemplate.replaceAll('~~PREFIX~~', prefix));
     this._element = element.firstChild;
     //    this._eventData = eventData;
     //    console.log(this._element);
-    if (eventData.title) {
+    if (eventData.title && !eventData.isCancelled) {
       this._title = this._element.querySelector(`.${prefix}-event__title`);
       this._hours = this._element.querySelector(`.${prefix}-event__hours`);
       this._metro = this._element.querySelector(`.${prefix}-event__metro`);

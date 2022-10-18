@@ -341,6 +341,10 @@ body .calendar-widget {
   }
 }
 
+.calendar-widget .calendar-event_cancelled {
+  background-color: rgba(240, 214, 216, 1);
+}
+
 .calendar-widget .calendar-event__switch {
   font-size: 18px;
   font-weight: 400;
@@ -610,7 +614,7 @@ body .calendar-widget {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 0 28px 0 24px;
+  padding: 0 28px 24px 24px;
 }
 .calendar-widget .calendar-events_large {
   gap: 0;
