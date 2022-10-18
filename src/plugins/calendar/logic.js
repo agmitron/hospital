@@ -129,7 +129,7 @@ const getDaysElementsArr = ({
 				pressedDayElement = e.currentTarget;
 				pressedDayElement.classList.add('calendar-day_type_pressed');
 				// выводим кликнутую дату в консоль
-				console.log(pressedDayElement.dateObj, eventsPerDate);
+//				console.log(pressedDayElement.dateObj, eventsPerDate);
 
 				// -------------------------------------------------------
 				// СЮДА НУЖНО БУДЕТ ДОБАВИТЬ ЛОГИКУ ОТОБРАЖЕНИЯ КАРТОЧЕК СОБЫТИЙ!!!!!!!!!!!!

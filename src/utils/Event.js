@@ -54,7 +54,7 @@ export default class Event {
       : noEventTemplate.replaceAll('~~PREFIX~~', prefix);
     this._element = element.firstChild;
     //    this._eventData = eventData;
-    console.log(this._element);
+    //    console.log(this._element);
     if (eventData.title) {
       this._title = this._element.querySelector(`.${prefix}-event__title`);
       this._hours = this._element.querySelector(`.${prefix}-event__hours`);
@@ -71,8 +71,8 @@ export default class Event {
   }
 
   _createOneService(serviceData) {
-    console.log(serviceData.activities);
-    console.log(icons['тест на covid']);
+    //    console.log(serviceData.activities);
+    //    console.log(icons['тест на covid']);
     const activities = serviceData.activities
       .reduce((acc, item) => (acc +
         `<li class="${this._prefix}-event__activity ${icons[item.toLowerCase()] ? 'calendar-event__activity_icon_'
@@ -105,7 +105,7 @@ export default class Event {
   }
 
   _fillFields(eventData) {
-    console.log(eventData);
+    //    console.log(eventData);
     this._title.textContent = eventData.title;
     this._metro.textContent = eventData.metro;
     this._address.textContent = eventData.address;
