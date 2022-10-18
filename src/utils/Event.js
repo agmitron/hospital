@@ -22,8 +22,10 @@ const noEventTemplate = `<div class="~~PREFIX~~-event ">
 <section class="~~PREFIX~~-section_type_empty ~~PREFIX~~-section">
 <h4 class="~~PREFIX~~-event__title">${NO_EVENT_TITLE}</h4>
 <h5 class="~~PREFIX~~-event__hours">${NO_EVENT_SUBTITLE}</h5>
+<div>
 <p class="~~PREFIX~~-event__metro">${NO_EVENT_TEXT}</p>
 <p class="~~PREFIX~~-event__metro">${NO_EVENT_PHONE}</p>
+</div>
 </section>
 </div>`;
 

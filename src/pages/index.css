@@ -71,7 +71,7 @@ body .calendar-widget {
   letter-spacing: 0.0018em;
   line-height: 22px;
   text-align: left;
-    width: fit-content;
+  width: fit-content;
 }
 @media screen and (max-width: 485px) {
   .calendar-widget .calendar-header__today-btn {
@@ -277,7 +277,7 @@ body .calendar-widget {
   display: none;
 }
 .calendar-widget .calendar-day__event_unavailable {
-  background-color: #C4C4C4;
+  background-color: #c4c4c4;
 }
 .calendar-widget .calendar-page {
   font-family: Roboto, sans-serif;
@@ -289,6 +289,12 @@ body .calendar-widget {
 
 .calendar-widget .calendar-events-section {
   background-color: white;
+}
+
+.calendar-widget .calendar-section_type_empty {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 .calendar-widget .calendar-section_type_services {
