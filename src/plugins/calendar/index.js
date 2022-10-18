@@ -50,6 +50,8 @@ export function initCalendar(containerSelector, updateEvents, events) {
 	}
 	);
 
+	updateEvents(events.filter(filters['month'](currentMonth + 1)));
+
 	// ------------------------------ добавляем обработчики событий --------------------------------
 
 	// Переключение месяца на предыдущий
@@ -223,4 +225,5 @@ export function initCalendar(containerSelector, updateEvents, events) {
 			events,
 		});
 	};
+
 }
