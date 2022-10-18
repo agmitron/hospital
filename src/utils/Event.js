@@ -1,3 +1,8 @@
+const NO_EVENT_TITLE = 'Нет выезда';
+const NO_EVENT_SUBTITLE = 'На данную дату выезд не запланирован';
+const NO_EVENT_TEXT = 'Уточнить дату выезда можно по телефону:';
+const NO_EVENT_PHONE = '+7-952-230-03-49';
+
 const eventTemplate = `<div class="~~PREFIX~~-event">
   <h4 class="~~PREFIX~~-event__title"></h4>
   <section class="~~PREFIX~~-section_type_address ~~PREFIX~~-section">
@@ -11,6 +16,15 @@ const eventTemplate = `<div class="~~PREFIX~~-event">
     <button type="button" class="~~PREFIX~~-event__switch ~~PREFIX~~-event__switch_active" data-section="address">Адрес</button>
     <button type="button" class="~~PREFIX~~-event__switch" data-section="services">Сервисы</button>
   </div>
+</div>`;
+
+const noEventTemplate = `<div class="~~PREFIX~~-event ">
+<section class="~~PREFIX~~-section_type_empty ~~PREFIX~~-section">
+<h4 class="~~PREFIX~~-event__title">${NO_EVENT_TITLE}</h4>
+<h5 class="~~PREFIX~~-event__hours">${NO_EVENT_SUBTITLE}</h5>
+<p class="~~PREFIX~~-event__metro">${NO_EVENT_TEXT}</p>
+<p class="~~PREFIX~~-event__metro">${NO_EVENT_PHONE}</p>
+</section>
 </div>`;
 
 const icons = {
@@ -32,21 +46,25 @@ const icons = {
 export default class Event {
   constructor({ prefix = 'calendar', eventData = {} }) {
     const element = document.createElement('div');
-    element.innerHTML = eventTemplate.replaceAll('~~PREFIX~~', prefix);
-    this._element = element.firstChild;
     this._prefix = prefix;
-    this._eventData = eventData;
+    element.innerHTML = eventData.title
+      ? eventTemplate.replaceAll('~~PREFIX~~', prefix)
+      : noEventTemplate.replaceAll('~~PREFIX~~', prefix);
+    this._element = element.firstChild;
+    //    this._eventData = eventData;
     console.log(this._element);
-    this._title = this._element.querySelector(`.${prefix}-event__title`);
-    this._hours = this._element.querySelector(`.${prefix}-event__hours`);
-    this._metro = this._element.querySelector(`.${prefix}-event__metro`);
-    this._address = this._element.querySelector(`.${prefix}-event__address`);
-    this._switches = this._element.querySelectorAll(`.${prefix}-event__switch`) || [];
-    this._sections = this._element.querySelectorAll(`.${prefix}-section`);
-    this._serviceSection = this._element.querySelector(`.${prefix}-section_type_services`);
-    this._fillFields(eventData);
-    this._fillServices(eventData);
-    this._enableSwitches();
+    if (eventData.title) {
+      this._title = this._element.querySelector(`.${prefix}-event__title`);
+      this._hours = this._element.querySelector(`.${prefix}-event__hours`);
+      this._metro = this._element.querySelector(`.${prefix}-event__metro`);
+      this._address = this._element.querySelector(`.${prefix}-event__address`);
+      this._switches = this._element.querySelectorAll(`.${prefix}-event__switch`) || [];
+      this._sections = this._element.querySelectorAll(`.${prefix}-section`);
+      this._serviceSection = this._element.querySelector(`.${prefix}-section_type_services`);
+      this._fillFields(eventData);
+      this._fillServices(eventData);
+      this._enableSwitches();
+    }
     return this._element;
   }
 
