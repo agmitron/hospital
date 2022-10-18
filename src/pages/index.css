@@ -177,7 +177,7 @@ body .calendar-widget {
   }
 }
 .calendar-widget .calendar-grid {
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.09);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.09);
   padding: 53px 27px 24px 24px;
 }
 @media screen and (max-width: 485px) {
@@ -604,10 +604,11 @@ body .calendar-widget {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: 0 28px 0 16px;
+  padding: 0 28px 0 24px;
 }
 .calendar-widget .calendar-events_large {
   gap: 0;
+  padding-top: 16px;
 }
 .calendar-widget .calendar-events_title_sideway {
   align-items: flex-start;
@@ -622,7 +623,6 @@ body .calendar-widget {
   flex-direction: column;
   gap: 8px;
   max-width: 480px;
-  padding-bottom: 22px;
 }
 .calendar-widget .calendar-events__title {
   border: 1px solid #fff;

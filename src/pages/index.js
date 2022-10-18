@@ -71,7 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         wrapperElement = eventsDayElement.querySelector(
           ".calendar-events__container"
         );
-        console.log(period, titleStyle);
+//        console.log(period, titleStyle);
         titleElement.textContent =
           titleStyle === "brief"
             ? makeSideDate(event.date)
