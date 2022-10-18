@@ -94,6 +94,7 @@ export default class Event {
 
   _enableSwitches() {
     this._switches.forEach(element => {
+      element.removeEventListener('click', this._handleSwitch);
       if (!element.classList.contains(`${this._prefix}-event__switch_active`))
         element.addEventListener('click', this._handleSwitch);
     });
