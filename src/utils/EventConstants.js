@@ -20,6 +20,9 @@ export const eventTemplate = `<div class="~~PREFIX~~-event">
     <button type="button" class="~~PREFIX~~-event__switch ~~PREFIX~~-event__switch_active" data-section="address">Адрес</button>
     <button type="button" class="~~PREFIX~~-event__switch" data-section="services">Сервисы</button>
   </div>
+  <div class="~~PREFIX~~-event__more-info-block">
+    <a href="#" class="~~PREFIX~~-event__more-info-link">Подробнее ></a>
+  </div>
 </div>`;
 
 export const noEventTemplate = `<div class="~~PREFIX~~-event ">

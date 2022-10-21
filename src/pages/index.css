@@ -315,12 +315,44 @@ body .calendar-widget {
   text-align: left;
 }
 
-.calendar-event__switches {
+.calendar-widget .calendar-event__switches {
   margin-top: 24px;
   display: flex;
   gap: 60px;
   align-items: flex-start;
 }
+
+@media screen and (max-width: 424px) {
+  .calendar-widget .calendar-event__switches {
+    display: none;
+  }
+}
+
+.calendar-widget .calendar-event__more-info-block {
+  display: none;
+}
+
+@media screen and (max-width: 424px) {
+  .calendar-widget .calendar-event__more-info-block {
+    display: block;
+    padding-top: 20px;
+    padding-bottom: 32px;
+    }
+}
+
+.calendar-widget .calendar-event__more-info-link {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  color: rgba(191, 21, 35, 1);
+}
+
+.calendar-widget .calendar-event__more-info-link:visited {
+  color: rgba(120, 120, 120, 1);
+}
+
 
 .calendar-widget .calendar-event {
   background-color: #fff;
@@ -335,6 +367,15 @@ body .calendar-widget {
     -moz-column-gap: 10px;
     column-gap: 10px;
     padding: 28px 0 48px 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media screen and (max-width: 424px) {
+  .calendar-widget .calendar-event {
+    padding: 16px 8px 0;
     display: flex;
     flex-direction: column;
     gap: 8px;
