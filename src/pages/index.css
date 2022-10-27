@@ -317,6 +317,11 @@ body .calendar-widget {
   max-width: 300px;
   padding: 0 10px 0 0;
 }
+@media screen and (min-width: 425px) {
+  .calendar-widget .calendar-event__details {
+    cursor: unset;
+  }
+}
 .calendar-widget .calendar-icon {
   background-position: 50%;
   background-repeat: no-repeat;
@@ -399,6 +404,11 @@ body .calendar-widget {
   line-height: 120%;
   margin: 0;
   padding: 0;
+}
+@media screen and (min-width: 425px) {
+  .calendar-widget .calendar-event__title {
+    cursor: unset;
+  }
 }
 .calendar-widget .calendar-events {
   display: flex;
