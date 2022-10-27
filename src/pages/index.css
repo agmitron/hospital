@@ -556,6 +556,7 @@ body .calendar-widget {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 9999;
 }
 .calendar-widget .calendar-map-popup_opened {
   display: block;
