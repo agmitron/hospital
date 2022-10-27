@@ -41,7 +41,7 @@ const getCurrentWeekAsArray = () => {
 
 const getCurrentWeekAsString = () => {
     const monday = getCurrentWeekMonday();
-    const sunday = monday + 7 * dayLength;
+    const sunday = monday + 6 * dayLength;
     return `${getCurrentDateString(monday)}-${getCurrentDateString(sunday)}`;
 }
 
