@@ -1,11 +1,20 @@
 // Инициализация карты (объект ymaps загружается в глобальный скоуп через тег <script> в html-файле)
 function initMap(mapCenterCoords, event, closeButton) {
+
+	// console.log("🚀 / event", event)
+
 	ymaps.ready(init);
 
 	function init() {
 		// создаем экземпляр карты
 		const map = new ymaps.Map(
 			'map',
+			// выбираем центр карты и zoom в зависимости от наличия в объекте события координат
+			event.coordinates ?
+			{				
+				center: event.coordinates.split(", "),
+				zoom: 14,
+			} :
 			{
 				center: mapCenterCoords,
 				zoom: 8,
@@ -20,7 +29,7 @@ function initMap(mapCenterCoords, event, closeButton) {
 			// добавляем маркер по координатам
 			map.geoObjects.add(
 				new ymaps.Placemark(
-					[event.coordinates],
+					event.coordinates.split(", "),
 					{
 						balloonContent: 'Мобильная клиника',
 					},
