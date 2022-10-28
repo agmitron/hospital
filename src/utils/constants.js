@@ -27,6 +27,8 @@ const todayBtnSelector = '.calendar-header__today-btn';
 const calendarGridContainerSelector = '.calendar-grid';
 // Модификатор стиля для скрытия сетки календаря
 const invisibilityModifier = 'calendar-grid_invisible';
+// Селектор контейнера одного события на конкретную дату
+const eventContainerSelector = '.calendar-event'
 
 // Массив названий месяцев
 const monthsArr = [
@@ -86,4 +88,5 @@ export {
 	iconTexts,
 	mapCenterCoords,
 	leftBtnSelector,
+	eventContainerSelector
 };

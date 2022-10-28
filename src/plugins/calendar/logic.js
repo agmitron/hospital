@@ -1,4 +1,4 @@
-import { dayElementSelector } from '../../utils/constants.js';
+import { dayElementSelector, eventContainerSelector } from '../../utils/constants.js';
 import {
 	getLastDateOfMonth,
 	getFirstAndLastDaysOfMonth
@@ -91,7 +91,7 @@ const getDaysElementsArr = ({
 		dayElement.prepend(String(item.date));
 
 		// -------------------------------------------------------
-		// СЮДА НУЖНО БУДЕТ ДОБАВИТЬ ЛОГИКУ ОТОБРАЖЕНИЯ В ЭЛЕМЕНТЕ ДАТЫ КРАСНЫХ ТОЧЕК, ОБОЗНАЧАЮЩИХ СОБЫТИЯ (одно событие - одна точка, два события - две точки, три и более событий - три точки). В стилях это блок "calendar-day__event" и его модификатор "_invisible".
+		// ЛОГИКА ОТОБРАЖЕНИЯ В ЭЛЕМЕНТЕ ДАТЫ КРАСНЫХ ТОЧЕК, ОБОЗНАЧАЮЩИХ СОБЫТИЯ (одно событие - одна точка, два события - две точки, три и более событий - три точки). В стилях это блок "calendar-day__event" и его модификатор "_invisible".
 		//		console.log(events);
 		const eventsWrapper = dayElement.querySelector(
 			'.calendar-day__events-wrap'
@@ -132,11 +132,12 @@ const getDaysElementsArr = ({
 				// console.log(pressedDayElement.dateObj);
 
 				// -------------------------------------------------------
-				// СЮДА НУЖНО БУДЕТ ДОБАВИТЬ ЛОГИКУ ОТОБРАЖЕНИЯ КАРТОЧЕК СОБЫТИЙ!!!!!!!!!!!!
-
+				// ЛОГИКА ОТОБРАЖЕНИЯ КАРТОЧЕК СОБЫТИЙ
 				onClick && onClick(eventsPerDate);
-
 				//--------------------------------------------------------
+				
+				// делаем плавный скролл к блоку события после клика на дате, если в ней есть события
+				if (eventsPerDate.length) document.querySelector(eventContainerSelector).scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 			});
 		}
 
