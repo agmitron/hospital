@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					.querySelector('.calendar-events');
 				const titleElement = eventsDayElement.querySelector('.calendar-events__title');
 				wrapperElement = eventsDayElement.querySelector('.calendar-events__container');
-				console.log(period, titleStyle);
+				// console.log(period, titleStyle);
 				titleElement.textContent = titleStyle === 'brief' ? makeSideDate(event.date) : makeTitleDate(event.date);
 				if (titleStyle === 'brief') {
 					eventsDayElement.classList.add('calendar-events_title_sideway');

@@ -16,7 +16,7 @@ function initMap(mapCenterCoords, event, closeButton) {
 		);
 		// если в объекте события имеются координаты, то для отображения маркера берём их, если нет - берем адрес
 		if (event.coordinates) {
-			console.log('🚀 ~ file: map.js ~ line 21 ~ init ~ event.coordinates', event.coordinates);
+			// console.log('🚀 ~ file: map.js ~ line 21 ~ init ~ event.coordinates', event.coordinates);
 			// добавляем маркер по координатам
 			map.geoObjects.add(
 				new ymaps.Placemark(
@@ -31,7 +31,7 @@ function initMap(mapCenterCoords, event, closeButton) {
 				)
 			);
 		} else if (event.address) {
-			console.log('🚀 ~ file: map.js ~ line 35 ~ init ~ event.addres', event.address);
+			// console.log('🚀 ~ file: map.js ~ line 35 ~ init ~ event.addres', event.address);
 			// запрашиваем координаты по адресу и добавляем маркер
 			ymaps
 				.geocode(

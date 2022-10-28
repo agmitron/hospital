@@ -87,7 +87,7 @@ const renderCurrentMonth = (currentMonth, currentMonthElement) => (currentMonthE
 
 // Функция-отрисовщик выбранного периода (в зависисмости от текущего значения отображаемого периода выводит на экран либо актуальную дату (в формате дд.мм), либо актуальную неделю (в формате дд.мм-дд.мм), либо пустое место (если выбран месяц))
 const renderCurrentPeriod = (displayedPeriod, currentPeriodElement) => {
-	console.log('🚀 ~ file: rendering.js ~ line 67 ~ renderCurrentPeriod ~ displayedPeriod', displayedPeriod);
+	// console.log('🚀 ~ file: rendering.js ~ line 67 ~ renderCurrentPeriod ~ displayedPeriod', displayedPeriod);
 	let content;
 	switch (displayedPeriod) {
 		case timePeriodsForDisplay.day:
