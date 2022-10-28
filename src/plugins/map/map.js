@@ -31,7 +31,7 @@ function initMap(mapCenterCoords, event, closeButton) {
 				new ymaps.Placemark(
 					event.coordinates.split(", "),
 					{
-						balloonContent: 'Мобильная клиника',
+						balloonContent: `Мобильная клиника: ${event.address}`,
 					},
 					{
 						preset: 'islands#redMedicalIcon',
