@@ -41,7 +41,7 @@ const getCurrentWeekAsArray = () => {
 
 const getCurrentWeekAsString = () => {
     const monday = getCurrentWeekMonday();
-    const sunday = monday + 7 * dayLength;
+    const sunday = monday + 6 * dayLength;
     return `${getCurrentDateString(monday)}-${getCurrentDateString(sunday)}`;
 }
 
@@ -51,7 +51,7 @@ const getCurrentMonthAsString = () => {
   const currentMonthAsString = `01.${String(currentMonth + 1).padStart(2, 0)}-${lastDateOfCurrentMonth}.${String(
     currentMonth + 1
   ).padStart(2, 0)}`;
-  console.log('🚀 ~ file: dateUtils.js ~ line 54 ~ currentMonthAsString ~ currentMonthAsString', currentMonthAsString);
+  // console.log('🚀 ~ file: dateUtils.js ~ line 54 ~ currentMonthAsString ~ currentMonthAsString', currentMonthAsString);
   return currentMonthAsString;
 };
 

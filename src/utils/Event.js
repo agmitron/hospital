@@ -35,7 +35,7 @@ export default class Event {
     }
 
     _addEventListeners() {
-        console.log('listeners');
+        // console.log('listeners');
         this._onClick && this._element.addEventListener('click', this._onClick);
     }
 

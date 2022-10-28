@@ -20,12 +20,13 @@ body .calendar-widget {
   border: none;
   display: block;
   padding: 0;
+  margin: 0;
 }
 .calendar-widget .calendar-button:hover {
   cursor: pointer;
 }
 .calendar-widget .calendar-button:focus {
-  outline: unset;
+  outline: unset !important;
 }
 .calendar-widget .calendar-header {
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.09);
@@ -316,6 +317,11 @@ body .calendar-widget {
   max-width: 300px;
   padding: 0 10px 0 0;
 }
+@media screen and (min-width: 425px) {
+  .calendar-widget .calendar-event__details {
+    cursor: unset;
+  }
+}
 .calendar-widget .calendar-icon {
   background-position: 50%;
   background-repeat: no-repeat;
@@ -398,6 +404,11 @@ body .calendar-widget {
   line-height: 120%;
   margin: 0;
   padding: 0;
+}
+@media screen and (min-width: 425px) {
+  .calendar-widget .calendar-event__title {
+    cursor: unset;
+  }
 }
 .calendar-widget .calendar-events {
   display: flex;
@@ -556,6 +567,7 @@ body .calendar-widget {
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 9999;
 }
 .calendar-widget .calendar-map-popup_opened {
   display: block;

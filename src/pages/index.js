@@ -17,7 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 	const options = {
 		apiKey: 'AIzaSyAozRsHSFgLEZkH-Du-a2r4K1CsXPLjj2o',
 		sheetId: '1j9Ln-t7BoitA7fzeFp20tVq68h0KYO6x3PHjic4jqMA',
-		sheetName: 'Лист1',
+		// sheetName: 'Лист1',
+		sheetName: 'Расписание_2022_осень',
 	};
 
 	// Секция с ивентами
@@ -66,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 					.querySelector('.calendar-events');
 				const titleElement = eventsDayElement.querySelector('.calendar-events__title');
 				wrapperElement = eventsDayElement.querySelector('.calendar-events__container');
-				console.log(period, titleStyle);
+				// console.log(period, titleStyle);
 				titleElement.textContent = titleStyle === 'brief' ? makeSideDate(event.date) : makeTitleDate(event.date);
 				if (titleStyle === 'brief') {
 					eventsDayElement.classList.add('calendar-events_title_sideway');

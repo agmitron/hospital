@@ -1,11 +1,20 @@
 // Инициализация карты (объект ymaps загружается в глобальный скоуп через тег <script> в html-файле)
 function initMap(mapCenterCoords, event, closeButton) {
+
+	// console.log("🚀 / event", event)
+
 	ymaps.ready(init);
 
 	function init() {
 		// создаем экземпляр карты
 		const map = new ymaps.Map(
 			'map',
+			// выбираем центр карты и zoom в зависимости от наличия в объекте события координат
+			event.coordinates ?
+			{				
+				center: event.coordinates.split(", "),
+				zoom: 14,
+			} :
 			{
 				center: mapCenterCoords,
 				zoom: 8,
@@ -16,13 +25,13 @@ function initMap(mapCenterCoords, event, closeButton) {
 		);
 		// если в объекте события имеются координаты, то для отображения маркера берём их, если нет - берем адрес
 		if (event.coordinates) {
-			console.log('🚀 ~ file: map.js ~ line 21 ~ init ~ event.coordinates', event.coordinates);
+			// console.log('🚀 ~ file: map.js ~ line 21 ~ init ~ event.coordinates', event.coordinates);
 			// добавляем маркер по координатам
 			map.geoObjects.add(
 				new ymaps.Placemark(
-					[event.coordinates],
+					event.coordinates.split(", "),
 					{
-						balloonContent: 'Мобильная клиника',
+						balloonContent: `Мобильная клиника: ${event.address}`,
 					},
 					{
 						preset: 'islands#redMedicalIcon',
@@ -31,7 +40,7 @@ function initMap(mapCenterCoords, event, closeButton) {
 				)
 			);
 		} else if (event.address) {
-			console.log('🚀 ~ file: map.js ~ line 35 ~ init ~ event.addres', event.address);
+			// console.log('🚀 ~ file: map.js ~ line 35 ~ init ~ event.addres', event.address);
 			// запрашиваем координаты по адресу и добавляем маркер
 			ymaps
 				.geocode(
